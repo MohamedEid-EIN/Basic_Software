@@ -1,0 +1,56 @@
+/********************************************************************************************
+* License     : MIT License
+* Copyright   : (c) 2025 Mohamed Eid
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+*
+*--------------------------------------------------------------------------------------------\
+* - Author      : Mohamed Eid
+* - File Name   : File.h
+* - File Type   : Configuration File
+* - Module      : Name
+* - Layer       : Hardware Abstraction / Low-Level Driver
+* - Description : TBD.
+* - Design Note : TBD.
+* - Toolchain   : TBD.
+* - References  : TBD.
+* - Execution Context :
+*   - Initialization     : Startup phase only
+*   - Runtime API        : Task context
+*   - ISR Usage          : Limited (see function documentation)
+*--------------------------------------------------------------------------------------------
+* - Version History :
+*   - 1.00.00  | 2025-xx-xx | Mohamed Eid | File Creation
+********************************************************************************************/
+#ifndef FILE_CFG_H
+#define FILE_CFG_H
+
+#include "PWM_Types.h"
+
+#define PWM_CHANNEL_CFG (DataType_u8)1U
+#define PWM_FREQUENCY_CFG FREQ_100_HZ
+
+static volatile Pwm_Configuration PWM_Configuration_Table[PWM_CHANNEL_CFG]
+{
+    {
+        .Channel_Cfg = PWM_CHANNEL_1,
+        .AutoReload_Cfg = AUTORELOAD_DISABLE,
+        .PreLoad_Cfg = PRELOAD_DISABLE,
+        .OutputLevel_Cfg = CHANNEL_OUPUT_NOT_ACTIVE,
+        .PwmMode_Cfg = OUTPUT_PWM_MODE1,
+        .OutputPolarity_Cfg = CHANNEL_POLARITY_ACTIVE_LOW,
+        .DutyCycle_Cfg = DUTY_CYCLE_50_PERCENT
+    }
+};
+
+#endif /* FILE_CFG_H */

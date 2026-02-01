@@ -1,0 +1,231 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00040000         xr
+SRAM             0x20000000         0x00010000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x08000000                        __MEMORY_FLASH_ADDRESS_ORIGIN = 0x8000000
+                0x00040000                        __MEMORY_FLASH_LENGTH = 0x40000
+                0x20000000                        __MEMORY_SRAM_ADDRESS_ORIGIN = 0x20000000
+                0x00010000                        __MEMORY_SRAM_LENGTH = 0x10000
+                0x08000000                        __MEM_SECTION_JUMPTABLE_START_ADDRESS = 0x8000000
+                0x08000200                        __MEM_SECTION_JUMPTABLE_END_ADDRESS = 0x8000200
+                0x08000200                        __MEM_SECTION_CONSTANT_START_ADDRESS = 0x8000200
+                0x08004200                        __MEM_SECTION_CONSTANT_END_ADDRESS = 0x8004200
+                0x08004200                        __MEM_SECTION_DATA_LOAD_START_ADDRESS = 0x8004200
+                0x08006200                        __MEM_SECTION_DATA_LOAD_END_ADDRESS = 0x8006200
+                0x08006200                        __MEM_SECTION_RAMFUNC_LOAD_START_ADDRESS = 0x8006200
+                0x08006a00                        __MEM_SECTION_RAMFUNC_LOAD_END_ADDRESS = 0x8006a00
+                0x08006a00                        __MEM_SECTION_INIT_START_ADDRESS = 0x8006a00
+                0x08007200                        __MEM_SECTION_INIT_END_ADDRESS = 0x8007200
+                0x08007200                        __MEM_SECTION_FINIT_START_ADDRESS = 0x8007200
+                0x08007a00                        __MEM_SECTION_FINIT_END_ADDRESS = 0x8007a00
+                0x08007a00                        __MEM_SECTION_CODE_START_ADDRESS = 0x8007a00
+                0x08040000                        __MEM_SECTION_CODE_END_ADDRESS = 0x8040000
+                0x20000000                        __MEM_SECTION_DATA_START_ADDRESS = 0x20000000
+                0x20002000                        __MEM_SECTION_DATA_END_ADDRESS = 0x20002000
+                0x20002000                        __MEM_SECTION_BSS_START_ADDRESS = 0x20002000
+                0x20006000                        __MEM_SECTION_BSS_END_ADDRESS = 0x20006000
+                0x20006000                        __MEM_SECTION_RAMFUNC_START_ADDRESS = 0x20006000
+                0x20006800                        __MEM_SECTION_RAMFUNC_END_ADDRESS = 0x20006800
+                0x20006800                        __MEM_SECTION_NOINIT_START_ADDRESS = 0x20006800
+                0x20007000                        __MEM_SECTION_NOINIT_END_ADDRESS = 0x20007000
+                0x20007000                        __MEM_SECTION_HEAP_START_ADDRESS = 0x20007000
+                0x20009000                        __MEM_SECTION_HEAP_END_ADDRESS = 0x20009000
+                0x20009000                        __MEM_SECTION_STACK_START_ADDRESS = 0x20009000
+                0x20010000                        __MEM_SECTION_STACK_END_ADDRESS = 0x20010000
+                0x20010000                        __STACK_POINTER_START_ADDRESS_VALUE = 0x20010000
+
+.VectorTable    0x08000000        0x8
+                0x08000000                        PROVIDE (__JUMP_TABLE_ADDRESS_BEGIN = .)
+ *(.VectorTable)
+ .VectorTable   0x08000000        0x8 Temp/Obj/Startup.o
+                0x08000008                        PROVIDE (__JUMP_TABLE_ADDRESS_END = .)
+                0x00000001                        ASSERT (((__JUMP_TABLE_ADDRESS_END - __JUMP_TABLE_ADDRESS_BEGIN) <= (__MEM_SECTION_JUMPTABLE_END_ADDRESS - __MEM_SECTION_JUMPTABLE_START_ADDRESS)), VectorTable memory section overflow!)
+
+.rodata         0x08000200       0x2a
+                0x08000200                        __CONSTANT_ADDRESS_BEGIN = .
+ *(.rodata)
+ .rodata        0x08000200       0x2a Temp/Obj/GPIO.o
+                0x08000210                Registers_Table
+                0x0800022a                        __CONSTANT_ADDRESS_END = .
+                0x00000001                        ASSERT (((__CONSTANT_ADDRESS_END - __CONSTANT_ADDRESS_BEGIN) <= (__MEM_SECTION_CONSTANT_END_ADDRESS - __MEM_SECTION_CONSTANT_START_ADDRESS)), rodata data memory section overflow!)
+
+.data_load      0x08004200        0x0
+                0x0800860c                        __DATA_LOAD_ADDRESS_BEGIN = .
+ *(.data_load)
+                0x08004200                        __DATA_LOAD_ADDRESS_END = .
+                0x00000000                        ASSERT (((__DATA_LOAD_ADDRESS_END - __DATA_LOAD_ADDRESS_BEGIN) <= (__MEM_SECTION_DATA_LOAD_END_ADDRESS - __MEM_SECTION_DATA_LOAD_START_ADDRESS)), data_load memory section overflow!)
+
+.ramfunc_load   0x08006200        0x0
+                0x08006200                        __RAMFUNC_LOAD_ADDRESS_BEGIN = .
+ *(.ramfunc_load)
+                0x08006200                        __RAMFUNC_LOAD_ADDRESS_END = .
+                0x00000001                        ASSERT (((__RAMFUNC_LOAD_ADDRESS_END - __RAMFUNC_LOAD_ADDRESS_BEGIN) <= (__MEM_SECTION_RAMFUNC_LOAD_END_ADDRESS - __MEM_SECTION_RAMFUNC_LOAD_START_ADDRESS)), ramfunc_load memory section overflow!)
+
+.init           0x08006a00        0x0
+                0x08006a00                        __INIT_ADDRESS_BEGIN = .
+ *(.init)
+                0x08006a00                        __INIT_ADDRESS_END = .
+                0x00000001                        ASSERT (((__INIT_ADDRESS_END - __INIT_ADDRESS_BEGIN) <= (__MEM_SECTION_INIT_END_ADDRESS - __MEM_SECTION_INIT_START_ADDRESS)), init memory section overflow!)
+
+.finit          0x08007200        0x0
+                0x08007200                        __FINIT_ADDRESS_BEGIN = .
+ *(.finit)
+                0x08007200                        __FINIT_ADDRESS_END = .
+                0x00000001                        ASSERT (((__FINIT_ADDRESS_END - __FINIT_ADDRESS_BEGIN) <= (__MEM_SECTION_FINIT_END_ADDRESS - __MEM_SECTION_FINIT_START_ADDRESS)), finit memory section overflow!)
+
+.text           0x08007a00      0xc0c
+                0x08007a00                        __CODE_ADDRESS_BEGIN = .
+ *(.text)
+ .text          0x08007a00      0x15c Temp/Obj/main.o
+                0x08007a00                memset
+                0x08007b04                main
+ .text          0x08007b5c      0xa50 Temp/Obj/GPIO.o
+                0x08007b5c                Gpio_Intitialization
+                0x08007be8                Build_Configuration
+                0x08007e48                Write_Registers_Configuration
+                0x08008068                Port_Lock_Init
+                0x08008160                GPIO_DeInitialization
+                0x0800816e                GPIO_Enter_SafeState
+                0x0800817c                GPIO_Set_Module_State
+                0x080081b4                GPIO_Get_Module_State
+                0x080081e8                GPIO_Write_Pin
+                0x080082ac                GPIO_Read_Pin
+                0x0800834c                GPIO_Toggel_Pin
+                0x080083d0                GPIO_Set_Pin
+                0x08008468                GPIO_Reset_Pin
+                0x08008500                Is_State_Valid
+ .text          0x080085ac       0x60 Temp/Obj/Startup.o
+                0x080085ac                RESET_HANDLER
+                0x080085e8                DEFAULT_HANDLER
+                0x0800860c                        __CODE_ADDRESS_END = .
+                0x00000001                        ASSERT (((__CODE_ADDRESS_END - __CODE_ADDRESS_BEGIN) <= (__MEM_SECTION_CODE_END_ADDRESS - __MEM_SECTION_CODE_START_ADDRESS)), text memory section overflow!)
+
+.glue_7         0x0800860c        0x0
+ .glue_7        0x0800860c        0x0 linker stubs
+
+.glue_7t        0x0800860c        0x0
+ .glue_7t       0x0800860c        0x0 linker stubs
+
+.vfp11_veneer   0x0800860c        0x0
+ .vfp11_veneer  0x0800860c        0x0 linker stubs
+
+.v4_bx          0x0800860c        0x0
+ .v4_bx         0x0800860c        0x0 linker stubs
+
+.iplt           0x0800860c        0x0
+ .iplt          0x0800860c        0x0 Temp/Obj/GPIO.o
+
+.rel.dyn        0x0800860c        0x0
+ .rel.iplt      0x0800860c        0x0 Temp/Obj/GPIO.o
+
+.data           0x20000000        0xc load address 0x0800860c
+                0x20000000                        __DATA_ADDRESS_BEGIN = .
+ *(.data)
+ .data          0x20000000        0x0 Temp/Obj/main.o
+ .data          0x20000000        0xc Temp/Obj/GPIO.o
+                0x20000000                Port_Lock_Key_Status_Table
+ .data          0x2000000c        0x0 Temp/Obj/Startup.o
+                0x2000000c                        __DATA_ADDRESS_END = .
+                0x00000001                        ASSERT (((__DATA_ADDRESS_END - __DATA_ADDRESS_BEGIN) <= (__MEM_SECTION_DATA_END_ADDRESS - __MEM_SECTION_DATA_START_ADDRESS)), data memory section overflow!)
+                0x0800860c                        __DATA_LOAD_ADDRESS_BEGIN = LOADADDR (.data)
+
+.igot.plt       0x2000000c        0x0 load address 0x08008618
+ .igot.plt      0x2000000c        0x0 Temp/Obj/GPIO.o
+
+.bss            0x20002000        0xc
+                0x20002000                        __BSS_ADDRESS_BEGIN = .
+ *(.bss)
+ .bss           0x20002000        0x0 Temp/Obj/main.o
+ .bss           0x20002000        0xc Temp/Obj/GPIO.o
+ .bss           0x2000200c        0x0 Temp/Obj/Startup.o
+                0x2000200c                        __BSS_ADDRESS_END = .
+                0x00000001                        ASSERT (((__BSS_ADDRESS_END - __BSS_ADDRESS_BEGIN) <= (__MEM_SECTION_BSS_END_ADDRESS - __MEM_SECTION_BSS_START_ADDRESS)), bss memory section overflow!)
+
+.ramfunc        0x20006000        0x0
+                0x20006000                        __RAMFUNC_ADDRESS_BEGIN = .
+ *(.ramfunc)
+                0x20006000                        __RAMFUNC_ADDRESS_END = .
+                0x00000001                        ASSERT (((__RAMFUNC_ADDRESS_END - __RAMFUNC_ADDRESS_BEGIN) <= (__MEM_SECTION_RAMFUNC_END_ADDRESS - __MEM_SECTION_RAMFUNC_START_ADDRESS)), ramfunc memory section overflow!)
+
+.noinit         0x20006800        0x0
+                0x20006800                        __NOINIT_ADDRESS_BEGIN = .
+ *(.noinit)
+                0x20006800                        __NOINIT_ADDRESS_END = .
+                0x00000001                        ASSERT (((__NOINIT_ADDRESS_END - __NOINIT_ADDRESS_BEGIN) <= (__MEM_SECTION_NOINIT_END_ADDRESS - __MEM_SECTION_NOINIT_START_ADDRESS)), noinit memory section overflow!)
+
+.heap           0x20007000        0x0
+                0x20007000                        __HEAP_ADDRESS_BEGIN = .
+ *(.heap)
+                0x20007000                        __HEAP_ADDRESS_END = .
+                0x00000001                        ASSERT (((__HEAP_ADDRESS_END - __HEAP_ADDRESS_BEGIN) <= (__MEM_SECTION_HEAP_END_ADDRESS - __MEM_SECTION_HEAP_START_ADDRESS)), heap memory section overflow!)
+
+.stack          0x20009000        0x0
+                0x20009000                        __STACK_ADDRESS_BEGIN = .
+ *(.stack)
+                0x20009000                        __STACK_ADDRESS_END = .
+                0x00000001                        ASSERT (((__STACK_ADDRESS_END - __STACK_ADDRESS_BEGIN) <= (__MEM_SECTION_STACK_END_ADDRESS - __MEM_SECTION_STACK_START_ADDRESS)), stack memory section overflow!)
+LOAD Temp/Obj/main.o
+LOAD Temp/Obj/GPIO.o
+LOAD Temp/Obj/Startup.o
+OUTPUT(Temp/Elf/ProjectBuildFile.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0xcab
+ .debug_info    0x00000000      0x13c Temp/Obj/main.o
+ .debug_info    0x0000013c      0xb4b Temp/Obj/GPIO.o
+ .debug_info    0x00000c87       0x24 Temp/Obj/Startup.o
+
+.debug_abbrev   0x00000000      0x2d6
+ .debug_abbrev  0x00000000       0xee Temp/Obj/main.o
+ .debug_abbrev  0x000000ee      0x1d4 Temp/Obj/GPIO.o
+ .debug_abbrev  0x000002c2       0x14 Temp/Obj/Startup.o
+
+.debug_aranges  0x00000000       0x60
+ .debug_aranges
+                0x00000000       0x20 Temp/Obj/main.o
+ .debug_aranges
+                0x00000020       0x20 Temp/Obj/GPIO.o
+ .debug_aranges
+                0x00000040       0x20 Temp/Obj/Startup.o
+
+.debug_line     0x00000000      0x908
+ .debug_line    0x00000000      0x185 Temp/Obj/main.o
+ .debug_line    0x00000185      0x713 Temp/Obj/GPIO.o
+ .debug_line    0x00000898       0x70 Temp/Obj/Startup.o
+
+.debug_str      0x00000000      0xbfd
+ .debug_str     0x00000000      0xbfd Temp/Obj/main.o
+                                0x1ec (size before relaxing)
+ .debug_str     0x00000bfd      0xb03 Temp/Obj/GPIO.o
+ .debug_str     0x00000bfd       0xe7 Temp/Obj/Startup.o
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 Temp/Obj/main.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 Temp/Obj/GPIO.o
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x2e Temp/Obj/main.o
+ .ARM.attributes
+                0x0000002e       0x2e Temp/Obj/GPIO.o
+ .ARM.attributes
+                0x0000005c       0x21 Temp/Obj/Startup.o
+
+.debug_frame    0x00000000      0x2ec
+ .debug_frame   0x00000000       0xc4 Temp/Obj/main.o
+ .debug_frame   0x000000c4      0x228 Temp/Obj/GPIO.o
+
+.debug_line_str
+                0x00000000       0xdb
+ .debug_line_str
+                0x00000000       0xdb Temp/Obj/Startup.o

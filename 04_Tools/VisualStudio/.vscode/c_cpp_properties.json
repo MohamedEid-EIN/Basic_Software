@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "name": "",
+      "compilerPath": "",
+      "compilerArgs": [],
+      "cStandard": "",
+      "cppStandard": "",
+      "intelliSenseMode": "",
+      "includePath": [],
+      "defines": [],
+      "forcedInclude": [],
+      "browse": {
+        "path": [],
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "compileCommands": "",
+      "configurationProvider": "",
+      "dotConfig": "",
+      "windowsSdkVersion": "",
+      "macFrameworkPath": [],
+      "customConfigurationVariables": {},
+      "mergeConfigurations": false
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,293 @@
+/********************************************************************************************************************************
+* License     : MIT License
+* Copyright (c) 2025 Mohamed Eid
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+* - Description: This file is used to define all used data types ( All sizes based on Architecture or compiler dependent).
+* - Author      : Mohamed Eid
+* - File Name   : DataTypes.h
+* - File Type   : Header file
+* - References  : Compiler Manual
+* - Toolchain   : TBD
+* - Version : History
+* - 1.00.00 : File Creation
+*******************************************************************************************************************************/
+STM32F411xC devices: STM32F411CC, STM32F411RC, STM32F411VC
+STM2F411xE devices: STM32F411CE, STM32F411RE, STM32F411VE
+/*******************************************************************************************************************************
+ * GPIO PORT registers definations
+ * Base Address:
+ * GPIOH : 0x4002 1C00 - 0x4002 1FFF
+ * GPIOE : 0x4002 1000 - 0x4002 13FF
+ * GPIOD : 0x4002 0C00 - 0x4002 0FFF
+ * GPIOC : 0x4002 0800 - 0x4002 0BFF
+ * GPIOB : 0x4002 0400 - 0x4002 07FF
+ * GPIOA : 0x4002 0000 - 0x4002 03FF
+ *******************************************************************************************************************************/        
+/********************************************************************************************************************************
+ * Register Name: GPIOx_MODER - port mode register
+ * Description: configure the I/O direction mode
+ * Offset: 0x00
+ * Reset Value: 0xA800 0000 for port A - 0x0000 0280 for port B - 0x0000 0000 for other ports
+ * Configuration:
+ * 00: Input (reset state)
+ * 01: General purpose output mode
+ * 10: Alternate function mode
+ * 11: Analog mode
+ * Note:
+ *  _______________________________________________________________________
+ * |  31  30   29  28    27   26  25  24  23  22  21  20   19 18    17 16  |
+ * |  MODER15  MODER14   MODER13  MODER12 MODER11 MODER10  MODER9   MODER8 |
+ * |____rw________rw________rw_______rw______rw______rw______rw_______rw___|
+ * |_______________________________________________________________________|
+ * |  15   14   13   12   11   10   9   8   7   6   5   4   3   2   1   0  |
+ * |  MODER7    MODER6    MODER5   MODER4  MODER3  MODER2  MODER1   MODER0 |
+ * |____rw________rw________rw_______rw______rw______rw______rw_______rw___|
+ * |_______________________________________________________________________|
+ *******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_OTYPER - port output type register
+ * Description: configure the output type of the I/O port
+ * Offset: 0x04
+ * Reset Value: 0x0000 0000
+ * Configuration:
+ * 0: Output push-pull
+ * 1: Output open-drain
+ * Note:
+ * - This register is meaningful only when the corresponding pin is configured
+ *   as a general purpose output or alternate function output in GPIOx_MODER.
+ *  _______________________________________________________________________
+ * |  31  30    29   28   27   26  25   24  23  22  21  20 19   18  17  16 |
+ * |_______________________________Reserved________________________________|
+ * |  15   14   13   12   11   10   9   8   7   6   5   4   3   2   1   0  |
+ * | OT15 OT14 OT13 OT12 OT11 OT10 OT9 OT8O T7 OT6 OT5 OT4 OT3 OT2 OT1 OT0 |
+ * |__rw___rw___rw___rw___rw___rw__rw___rw__rw__rw__rw__rw__rwr_wr__wr__wr_|
+ * |_______________________________________________________________________|
+ *******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_OSPEEDR – GPIO port output speed register
+ * Description  : Configures the output speed of each I/O pin.
+ * Offset       : 0x08
+ * Reset Value: 0x0000 0000
+ * Configuration:
+ * 00: Low speed
+ * 01: Medium speed
+ * 10: Fast speed
+ * 11: High speed
+ * Note:
+ * - Output speed configuration applies to output and alternate function modes.
+ *  _______________________________________________________________________
+ * | 31  30 | 29  28 | 27  26 | 25  24 | 23  22 | 21  20 | 19  18 | 17  16 |
+ * |  OS15  |  OS14  |  OS13  |  OS12  |  OS11  |  OS10  |   OS9  |   OS8  |
+ * |__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|
+ * |_______________________________________________________________________|
+ * | 15  14 | 13  12 | 11  10 |  9   8 |  7   6 |  5   4 |  3   2 |  1   0 |
+ * |  OS7   |  OS6   |  OS5   |  OS4   |  OS3   |  OS2   |  OS1   |  OS0   |
+ * |__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|
+ * |_______________________________________________________________________|
+ *******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_PUPDR – GPIO port pull-up/pull-down register
+ * Description  : Configures the internal pull-up or pull-down resistors for each I/O pin.
+ * Offset       : 0x0C
+ * Reset Value  : 0x0000 0000
+ * Configuration:
+ * 00: No pull-up or pull-down
+ * 01: Pull-up
+ * 10: Pull-down
+ * 11: Reserved
+ * Note:
+ * - Pull-up/pull-down configuration is applied when the pin is configured
+ *   as input, output, or alternate function.
+ *  _______________________________________________________________________
+ * | 31  30 | 29  28 | 27  26 | 25  24 | 23  22 | 21  20 | 19  18 | 17  16 |
+ * |PUPD15  |PUPD14  |PUPD13  |PUPD12  |PUPD11  |PUPD10  | PUPD9  | PUPD8  |
+ * |__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|
+ * |_______________________________________________________________________|
+ * | 15  14 | 13  12 | 11  10 |  9   8 |  7   6 |  5   4 |  3   2 |  1   0 |
+ * |PUPD7   |PUPD6   |PUPD5   |PUPD4   |PUPD3   |PUPD2   |PUPD1   |PUPD0   |
+ * |__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|__rw____|
+ * |_______________________________________________________________________|
+ *******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_IDR – GPIO port input data register
+ * Description  : Reads the logical input level of each I/O pin.
+ * Offset       : 0x10
+ * Reset Value  : Undefined
+ * Configuration:
+ * 0: Input is logic low
+ * 1: Input is logic high
+ * Note:
+ * - This register is read-only.
+ * - Each bit reflects the actual logic level present on the corresponding I/O pin,
+ *   regardless of the pin configuration (input, output, or alternate function).
+ *  _______________________________________________________________________________
+ * | 31    30   29   28   27   26   25  24   23   22   21   20   19   18   17  16  |
+ * |___________________________________Reserved____________________________________|
+ * |_______________________________________________________________________________|
+ * |  15   14   13   12   11   10   9   8    7    6    5    4    3    2    1    0  |
+ * | ID15 ID14 ID13 ID12 ID11 ID10 ID9 ID8  ID7  ID6  ID5  ID4  ID3  ID2  ID1  ID0 |
+ * |__r____r____r____r____r____r___r____r____r____r____r____r____r____r____r____r__|
+ * |_______________________________________________________________________________|
+ *******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_ODR – GPIO port output data register
+ * Description  : Controls the logical output level of each I/O pin.
+ * Offset       : 0x14
+ * Reset Value  : 0x0000 0000
+ *
+ * Configuration:
+ * 0: Output is logic low
+ * 1: Output is logic high
+ * Note:
+ * - Writing to this register directly sets or clears the corresponding output pin.
+ * - For atomic set/reset operations, GPIOx_BSRR should be used instead.
+ *  _______________________________________________________________________________
+ * |  31    30   29   28   27   26   25  24   23   22   21   20   19   18   17  16  |
+ * |____________________________________Reserved____________________________________|
+ * |________________________________________________________________________________|
+ * |  15   14   13   12   11   10   9    8    7    6    5    4    3    2    1    0  |
+ * | OD15 OD14 OD13 OD12 OD11 OD10 OD9  OD8  OD7  OD6  OD5  OD4  OD3  OD2  OD1  OD0 |
+ * |__rw___rw___rw___rw___rw___rw__rw___rw___rw___rw___rw___rw___rw___rw___rw___rw__|
+ * |________________________________________________________________________________|
+*******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_BSRR – GPIO port bit set/reset register
+ * Description  : Performs atomic bit set and reset operations on GPIO output pins.
+ * Offset       : 0x18
+ * Reset Value  : 0x0000 0000
+ * Configuration:
+ * Bits [15:0]   (BSn): Bit set
+ * 0: No action
+ * 1: Sets the corresponding ODR bit
+ * Bits [31:16]  (BRn): Bit reset
+ * 0: No action
+ * 1: Resets the corresponding ODR bit
+ * Note:
+ * - Writing to this register is atomic.
+ * - Writing '1' to a BSx bit sets the corresponding pin.
+ * - Writing '1' to a BRx bit resets the corresponding pin.
+ * - Writing '0' has no effect.
+ * - This register should be used instead of GPIOx_ODR for safe concurrent access.
+ * - If both BSx and BRx are set, BSx has priority.
+ *  ________________________________________________________________________________
+ * |  31   30   29   28   27   26   25   24   23   22   21   20   19   18   17   16 |
+ * | BR15 BR14 BR13 BR12 BR11 BR10 BR9  BR8  BR7  BR6  BR5  BR4  BR3  BR2  BR1  BR0 |
+ * |__w____w____w____w____w____w____w____w____w____w____w____w____w____w____w____w__|
+ * |________________________________________________________________________________|
+ * |  15   14   13   12   11   10   9    8    7    6    5    4    3    2    1    0  |
+ * | BS15 BS14 BS13 BS12 BS11 BS10 BS9  BS8  BS7  BS6  BS5  BS4  BS3  BS2  BS1  BS0 |
+ * |__w____w____w____w____w____w____w____w____w____w____w____w____w____w____w____w__|
+ * |________________________________________________________________________________|
+*******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_LCKR – GPIO port configuration lock register
+ * Description  : Locks the configuration of the GPIO port pins.
+ * Offset       : 0x1C
+ * Reset Value  : 0x0000 0000
+ * Configuration:
+ * Bits [15:0] (LCKn): Lock configuration bits
+ * 0: Pin configuration not locked
+ * 1: Pin configuration locked
+ * Bit [16] (LCKK): Lock key used to activate the locking mechanism.
+ * 0: Port configuration lock key not active
+ * 1: Port configuration lock key active. The GPIOx_LCKR register is locked until an MCU reset or a peripheral reset occurs.
+ * Note:
+ * - The lock sequence must be followed to activate the lock:
+ *   1. Write 1 to LCKK
+ *   2. Write 0 to LCKK
+ *   3. Write 1 to LCKK
+ *   4. Read LCKK (should read as 1) this read operation is optional but it confirms that the lock is active
+ * - During the LOCK key write sequence, the value of LCK[15:0] must not change.
+ * - Any error in the lock sequence aborts the lock.
+ * - After the first lock sequence on any bit of the port, any read access on the LCKK bit returns ‘1’ until the next CPU reset.
+ * - Once locked, the configuration of the corresponding pins cannot be modified
+ *   until the next system reset.
+ *  ________________________________________________________________________________________________
+ * |   31   30    29    28    27    26    25    24    23    22    21    20    19    18    17 |  16  |
+ * |________________________________________Reserved_________________________________________| LCKK |
+ * |________________________________________________________________________________________________|
+ * |   15   14    13    12    11    10    9     8     7     6     5     4     3     2     1     0   |
+ * | LCK15 LCK14 LCK13 LCK12 LCK11 LCK10 LCK9  LCK8  LCK7  LCK6  LCK5  LCK4  LCK3  LCK2  LCK1  LCK0 |
+ * |__rw____rw____rw____rw____rw____rw____rw____rw____rw____rw____rw____rw____rw____rw____rw____rw__|
+ * |________________________________________________________________________________________________|
+ *******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_AFRL – GPIO alternate function low register
+ * Description  : Selects the alternate function for GPIO pins 0 to 7.
+ * Offset       : 0x20
+ * Reset Value  : 0x0000 0000
+ * Configuration:
+ * Each pin uses 4 bits to select the alternate function:
+ * These bits are written by software to configure alternate function I/Os
+ * AFRLn selection:
+ * 0000: AF0        1000: AF8
+ * 0001: AF1        1001: AF9
+ * 0010: AF2        1010: AF10
+ * 0011: AF3        1011: AF11
+ * 0100: AF4        1100: AF12
+ * 0101: AF5        1101: AF13
+ * 0110: AF6        1110: AF14
+ * 0111: AF7        1111: AF15
+ * Note:
+ * - This register is used only when the corresponding pin is configured
+ *   in alternate function mode in GPIOx_MODER.
+ *  _______________________________________________________________________
+ * |  31  30  29  28 | 27  26  25  24 | 23  22  21  20  | 19  18  17  16   |
+ * |      AFRL7      |      AFRL6     |       AFRL5     |      AFRL4       |
+ * |________rw_______|________rw______|_______rw_______|________rw_________|
+ * |_______________________________________________________________________|
+ * |  15  14  13  12 | 11  10   9   8 |  7   6   5   4 |  3   2   1   0    |
+ * |      AFRL3      |      AFRL2     |      AFRL1     |      AFRL0        |
+ * |________rw_______|________rw______|_______rw_______|________rw_________|
+ * |_______________________________________________________________________|
+*******************************************************************************************************************************/
+/********************************************************************************************************************************
+ * Register Name: GPIOx_AFRH – GPIO alternate function high register
+ * Description  : Selects the alternate function for GPIO pins 8 to 15.
+ * Offset       : 0x24
+ * Reset Value  : 0x0000 0000
+ * Configuration:
+ * Each pin uses 4 bits to select the alternate function:
+ * These bits are written by software to configure alternate function I/Os
+ * AFRHn selection:
+ * 0000: AF0        1000: AF8
+ * 0001: AF1        1001: AF9
+ * 0010: AF2        1010: AF10
+ * 0011: AF3        1011: AF11
+ * 0100: AF4        1100: AF12
+ * 0101: AF5        1101: AF13
+ * 0110: AF6        1110: AF14
+ * 0111: AF7        1111: AF15
+ * Note:
+ * - This register is used only when the corresponding pin is configured in alternate function mode in GPIOx_MODER.
+ * - GPIOx_AFRH applies only to pins 8–15 (AFRL is used for pins 0–7).
+ * - AF selection configures pin routing only; it does not enable the peripheral.
+ * - Only one peripheral mapped to a given AF should be enabled at a time.
+ *
+ * Bit Mapping:
+ *  _____________________________________________________________________
+ * | 31  30  29  28 | 27  26  25  24 | 23  22  21  20 | 19  18  17  16   |
+ * |      AFRH15    |      AFRH14    |      AFRH13    |      AFRH12      |
+ * |_____________________________________________________________________|
+ * | 15  14  13  12 | 11  10   9   8 |  7   6   5   4 |  3   2   1   0   |
+ * |      AFRH11    |      AFRH10    |       AFRH9    |       AFRH8      |
+ * |________rw______|________rw______|_______rw_______|________rw________|
+ * |_____________________________________________________________________|
+ *******************************************************************************************************************************/

@@ -1,0 +1,2267 @@
+
+Temp/Elf/ProjectBuildFile.elf:     file format elf32-littlearm
+Temp/Elf/ProjectBuildFile.elf
+architecture: armv7e-m, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x080085ad
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x08000000 paddr 0x08000000 align 2**12
+         filesz 0x0000022a memsz 0x0000022a flags r--
+    LOAD off    0x00001a00 vaddr 0x08007a00 paddr 0x08007a00 align 2**12
+         filesz 0x00000c0c memsz 0x00000c0c flags r-x
+    LOAD off    0x00003000 vaddr 0x20000000 paddr 0x0800860c align 2**12
+         filesz 0x0000000c memsz 0x0000000c flags rw-
+    LOAD off    0x00000000 vaddr 0x20002000 paddr 0x20002000 align 2**12
+         filesz 0x00000000 memsz 0x0000000c flags rw-
+private flags = 0x5000200: [Version5 EABI] [soft-float ABI]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .VectorTable  00000008  08000000  08000000  00001000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .rodata       0000002a  08000200  08000200  00001200  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .text         00000c0c  08007a00  08007a00  00001a00  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .data         0000000c  20000000  0800860c  00003000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .bss          0000000c  20002000  20002000  00004000  2**2
+                  ALLOC
+  5 .debug_info   00000cab  00000000  00000000  0000300c  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  6 .debug_abbrev 000002d6  00000000  00000000  00003cb7  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  7 .debug_aranges 00000060  00000000  00000000  00003f90  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  8 .debug_line   00000908  00000000  00000000  00003ff0  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  9 .debug_str    00000bfd  00000000  00000000  000048f8  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 10 .comment      00000026  00000000  00000000  000054f5  2**0
+                  CONTENTS, READONLY
+ 11 .ARM.attributes 0000002c  00000000  00000000  0000551b  2**0
+                  CONTENTS, READONLY
+ 12 .debug_frame  000002ec  00000000  00000000  00005548  2**2
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 13 .debug_line_str 000000db  00000000  00000000  00005834  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+SYMBOL TABLE:
+08000000 l    d  .VectorTable	00000000 .VectorTable
+08000200 l    d  .rodata	00000000 .rodata
+08007a00 l    d  .text	00000000 .text
+20000000 l    d  .data	00000000 .data
+20002000 l    d  .bss	00000000 .bss
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_line_str	00000000 .debug_line_str
+00000000 l    df *ABS*	00000000 Startup.o
+08000000 l     O .VectorTable	00000000 VectorTable
+080085b2 l       .text	00000000 MEM_DATA_COPY_LOOP
+080085c0 l       .text	00000000 LOOP1_DONE
+080085c6 l       .text	00000000 MEM_RAMFUNC_COPY_LOOP
+080085d4 l       .text	00000000 LOOP2_DONE
+080085da l       .text	00000000 MEM_BSS_CLEAR_LOOP
+080085e4 l       .text	00000000 LOOP3_DONE
+00000000 l    df *ABS*	00000000 GPIO.c
+08000200 l     O .rodata	00000009 Pin_Configuration_Table
+0800020c l     O .rodata	00000002 Port_Lock_Status_Table
+08000228 l     O .rodata	00000002 Port_Lock_Configuration_Table
+20002000 l       .bss	00000006 Port_Usage_Table
+20002008 l       .bss	00000004 GPIO_Module_State
+00000000 l    df *ABS*	00000000 main.c
+08007a34 l     F .text	00000022 delay
+08007a56 l     F .text	0000007e USART2_Init
+08007ad4 l     F .text	00000030 USART2_SendByte
+2000000c g       .data	00000000 __DATA_ADDRESS_END
+08006200 g       .rodata	00000000 __RAMFUNC_LOAD_ADDRESS_END
+20009000 g       .debug_info	00000000 __STACK_ADDRESS_END
+20006800 g       *ABS*	00000000 __MEM_SECTION_NOINIT_START_ADDRESS
+0800860c g       .text	00000000 __CODE_ADDRESS_END
+08007a00 g       *ABS*	00000000 __MEM_SECTION_FINIT_END_ADDRESS
+08007b5c g     F .text	0000008c Gpio_Intitialization
+20002000 g       *ABS*	00000000 __MEM_SECTION_BSS_START_ADDRESS
+080082ac g     F .text	000000a0 GPIO_Read_Pin
+08008068 g     F .text	000000f8 Port_Lock_Init
+20007000 g       *ABS*	00000000 __MEM_SECTION_NOINIT_END_ADDRESS
+20007000 g       .debug_info	00000000 __HEAP_ADDRESS_END
+080085e8 g       .text	00000000 DEFAULT_HANDLER
+0800022a g       .rodata	00000000 __CONSTANT_ADDRESS_END
+08004200 g       *ABS*	00000000 __MEM_SECTION_DATA_LOAD_START_ADDRESS
+08006a00 g       .rodata	00000000 __INIT_ADDRESS_BEGIN
+08000000 g       *ABS*	00000000 __MEM_SECTION_JUMPTABLE_START_ADDRESS
+20006000 g       .debug_info	00000000 __RAMFUNC_ADDRESS_BEGIN
+20010000 g       *ABS*	00000000 __MEM_SECTION_STACK_END_ADDRESS
+08007be8 g     F .text	00000260 Build_Configuration
+08007200 g       *ABS*	00000000 __MEM_SECTION_INIT_END_ADDRESS
+20009000 g       *ABS*	00000000 __MEM_SECTION_STACK_START_ADDRESS
+00040000 g       *ABS*	00000000 __MEMORY_FLASH_LENGTH
+08000210 g     O .rodata	00000018 Registers_Table
+08006200 g       .rodata	00000000 __RAMFUNC_LOAD_ADDRESS_BEGIN
+080085ac g     F .text	00000000 RESET_HANDLER
+08007200 g       .rodata	00000000 __FINIT_ADDRESS_BEGIN
+08000200 g       *ABS*	00000000 __MEM_SECTION_JUMPTABLE_END_ADDRESS
+08000000 g       *ABS*	00000000 __MEMORY_FLASH_ADDRESS_ORIGIN
+20009000 g       .debug_info	00000000 __STACK_ADDRESS_BEGIN
+08007a00 g       .text	00000000 __CODE_ADDRESS_BEGIN
+00010000 g       *ABS*	00000000 __MEMORY_SRAM_LENGTH
+08006a00 g       .rodata	00000000 __INIT_ADDRESS_END
+20006000 g       *ABS*	00000000 __MEM_SECTION_RAMFUNC_START_ADDRESS
+08004200 g       *ABS*	00000000 __MEM_SECTION_CONSTANT_END_ADDRESS
+20002000 g       .bss	00000000 __BSS_ADDRESS_BEGIN
+08008500 g     F .text	000000ac Is_State_Valid
+08006200 g       *ABS*	00000000 __MEM_SECTION_RAMFUNC_LOAD_START_ADDRESS
+20006800 g       .debug_info	00000000 __NOINIT_ADDRESS_BEGIN
+0800834c g     F .text	00000084 GPIO_Toggel_Pin
+080081b4 g     F .text	00000034 GPIO_Get_Module_State
+0800817c g     F .text	00000038 GPIO_Set_Module_State
+20007000 g       *ABS*	00000000 __MEM_SECTION_HEAP_START_ADDRESS
+08007a00 g     F .text	00000034 memset
+08007b04 g     F .text	00000058 main
+20000000 g       .data	00000000 __DATA_ADDRESS_BEGIN
+20000000 g     O .data	0000000c Port_Lock_Key_Status_Table
+08000008 g       .VectorTable	00000000 __JUMP_TABLE_ADDRESS_END
+08000000 g       .VectorTable	00000000 __JUMP_TABLE_ADDRESS_BEGIN
+20007000 g       .debug_info	00000000 __HEAP_ADDRESS_BEGIN
+08040000 g       *ABS*	00000000 __MEM_SECTION_CODE_END_ADDRESS
+20009000 g       *ABS*	00000000 __MEM_SECTION_HEAP_END_ADDRESS
+08008160 g     F .text	0000000e GPIO_DeInitialization
+20002000 g       *ABS*	00000000 __MEM_SECTION_DATA_END_ADDRESS
+08000200 g       .rodata	00000000 __CONSTANT_ADDRESS_BEGIN
+080083d0 g     F .text	00000098 GPIO_Set_Pin
+08004200 g       .rodata	00000000 __DATA_LOAD_ADDRESS_END
+08007200 g       *ABS*	00000000 __MEM_SECTION_FINIT_START_ADDRESS
+08007a00 g       *ABS*	00000000 __MEM_SECTION_CODE_START_ADDRESS
+08006200 g       *ABS*	00000000 __MEM_SECTION_DATA_LOAD_END_ADDRESS
+08006a00 g       *ABS*	00000000 __MEM_SECTION_RAMFUNC_LOAD_END_ADDRESS
+080081e8 g     F .text	000000c4 GPIO_Write_Pin
+2000200c g       .bss	00000000 __BSS_ADDRESS_END
+08000200 g       *ABS*	00000000 __MEM_SECTION_CONSTANT_START_ADDRESS
+20010000 g       *ABS*	00000000 __STACK_POINTER_START_ADDRESS_VALUE
+20006800 g       *ABS*	00000000 __MEM_SECTION_RAMFUNC_END_ADDRESS
+20006800 g       .debug_info	00000000 __NOINIT_ADDRESS_END
+20000000 g       *ABS*	00000000 __MEM_SECTION_DATA_START_ADDRESS
+20006000 g       *ABS*	00000000 __MEM_SECTION_BSS_END_ADDRESS
+08006a00 g       *ABS*	00000000 __MEM_SECTION_INIT_START_ADDRESS
+0800816e g     F .text	0000000e GPIO_Enter_SafeState
+08008468 g     F .text	00000098 GPIO_Reset_Pin
+08007200 g       .rodata	00000000 __FINIT_ADDRESS_END
+20000000 g       *ABS*	00000000 __MEMORY_SRAM_ADDRESS_ORIGIN
+0800860c g       *ABS*	00000000 __DATA_LOAD_ADDRESS_BEGIN
+08007e48 g     F .text	00000220 Write_Registers_Configuration
+20006000 g       .debug_info	00000000 __RAMFUNC_ADDRESS_END
+
+
+
+Disassembly of section .text:
+
+08007a00 <memset>:
+
+/* ------------------------------------------------------------
+ * Minimal memset (because no stdlib)
+ * ------------------------------------------------------------ */
+void *memset(void *dest, int value, size_t len)
+{
+ 8007a00:	b480      	push	{r7}
+ 8007a02:	b087      	sub	sp, #28
+ 8007a04:	af00      	add	r7, sp, #0
+ 8007a06:	60f8      	str	r0, [r7, #12]
+ 8007a08:	60b9      	str	r1, [r7, #8]
+ 8007a0a:	607a      	str	r2, [r7, #4]
+    unsigned char *p = (unsigned char *)dest;
+ 8007a0c:	68fb      	ldr	r3, [r7, #12]
+ 8007a0e:	617b      	str	r3, [r7, #20]
+    while (len--)
+ 8007a10:	e005      	b.n	8007a1e <memset+0x1e>
+    {
+        *p++ = (unsigned char)value;
+ 8007a12:	697b      	ldr	r3, [r7, #20]
+ 8007a14:	1c5a      	adds	r2, r3, #1
+ 8007a16:	617a      	str	r2, [r7, #20]
+ 8007a18:	68ba      	ldr	r2, [r7, #8]
+ 8007a1a:	b2d2      	uxtb	r2, r2
+ 8007a1c:	701a      	strb	r2, [r3, #0]
+    while (len--)
+ 8007a1e:	687b      	ldr	r3, [r7, #4]
+ 8007a20:	1e5a      	subs	r2, r3, #1
+ 8007a22:	607a      	str	r2, [r7, #4]
+ 8007a24:	2b00      	cmp	r3, #0
+ 8007a26:	d1f4      	bne.n	8007a12 <memset+0x12>
+    }
+    return dest;
+ 8007a28:	68fb      	ldr	r3, [r7, #12]
+}
+ 8007a2a:	4618      	mov	r0, r3
+ 8007a2c:	371c      	adds	r7, #28
+ 8007a2e:	46bd      	mov	sp, r7
+ 8007a30:	bc80      	pop	{r7}
+ 8007a32:	4770      	bx	lr
+
+08007a34 <delay>:
+
+/* ------------------------------------------------------------
+ * Simple delay
+ * ------------------------------------------------------------ */
+static void delay(volatile unsigned int count)
+{
+ 8007a34:	b480      	push	{r7}
+ 8007a36:	b083      	sub	sp, #12
+ 8007a38:	af00      	add	r7, sp, #0
+ 8007a3a:	6078      	str	r0, [r7, #4]
+    while (count--)
+ 8007a3c:	e000      	b.n	8007a40 <delay+0xc>
+    {
+        __asm__("nop");
+ 8007a3e:	bf00      	nop
+    while (count--)
+ 8007a40:	687b      	ldr	r3, [r7, #4]
+ 8007a42:	1e5a      	subs	r2, r3, #1
+ 8007a44:	607a      	str	r2, [r7, #4]
+ 8007a46:	2b00      	cmp	r3, #0
+ 8007a48:	d1f9      	bne.n	8007a3e <delay+0xa>
+    }
+}
+ 8007a4a:	bf00      	nop
+ 8007a4c:	bf00      	nop
+ 8007a4e:	370c      	adds	r7, #12
+ 8007a50:	46bd      	mov	sp, r7
+ 8007a52:	bc80      	pop	{r7}
+ 8007a54:	4770      	bx	lr
+
+08007a56 <USART2_Init>:
+
+/* ------------------------------------------------------------
+ * USART2 init: TX only, 9600 baud @ 16 MHz
+ * ------------------------------------------------------------ */
+static void USART2_Init(void)
+{
+ 8007a56:	b480      	push	{r7}
+ 8007a58:	af00      	add	r7, sp, #0
+    /* Enable clocks */
+    RCC_AHB1ENR |= (1 << 0);   // GPIOA
+ 8007a5a:	4b18      	ldr	r3, [pc, #96]	@ (8007abc <USART2_Init+0x66>)
+ 8007a5c:	681b      	ldr	r3, [r3, #0]
+ 8007a5e:	4a17      	ldr	r2, [pc, #92]	@ (8007abc <USART2_Init+0x66>)
+ 8007a60:	f043 0301 	orr.w	r3, r3, #1
+ 8007a64:	6013      	str	r3, [r2, #0]
+    RCC_APB1ENR |= (1 << 17);  // USART2
+ 8007a66:	4b16      	ldr	r3, [pc, #88]	@ (8007ac0 <USART2_Init+0x6a>)
+ 8007a68:	681b      	ldr	r3, [r3, #0]
+ 8007a6a:	4a15      	ldr	r2, [pc, #84]	@ (8007ac0 <USART2_Init+0x6a>)
+ 8007a6c:	f443 3300 	orr.w	r3, r3, #131072	@ 0x20000
+ 8007a70:	6013      	str	r3, [r2, #0]
+
+    /* PA2 -> Alternate Function (AF7) */
+    GPIOA_MODER &= ~(3U << (2 * 2));
+ 8007a72:	4b14      	ldr	r3, [pc, #80]	@ (8007ac4 <USART2_Init+0x6e>)
+ 8007a74:	681b      	ldr	r3, [r3, #0]
+ 8007a76:	4a13      	ldr	r2, [pc, #76]	@ (8007ac4 <USART2_Init+0x6e>)
+ 8007a78:	f023 0330 	bic.w	r3, r3, #48	@ 0x30
+ 8007a7c:	6013      	str	r3, [r2, #0]
+    GPIOA_MODER |=  (2U << (2 * 2));   // AF mode
+ 8007a7e:	4b11      	ldr	r3, [pc, #68]	@ (8007ac4 <USART2_Init+0x6e>)
+ 8007a80:	681b      	ldr	r3, [r3, #0]
+ 8007a82:	4a10      	ldr	r2, [pc, #64]	@ (8007ac4 <USART2_Init+0x6e>)
+ 8007a84:	f043 0320 	orr.w	r3, r3, #32
+ 8007a88:	6013      	str	r3, [r2, #0]
+
+    GPIOA_AFRL &= ~(0xFU << (2 * 4));
+ 8007a8a:	4b0f      	ldr	r3, [pc, #60]	@ (8007ac8 <USART2_Init+0x72>)
+ 8007a8c:	681b      	ldr	r3, [r3, #0]
+ 8007a8e:	4a0e      	ldr	r2, [pc, #56]	@ (8007ac8 <USART2_Init+0x72>)
+ 8007a90:	f423 6370 	bic.w	r3, r3, #3840	@ 0xf00
+ 8007a94:	6013      	str	r3, [r2, #0]
+    GPIOA_AFRL |=  (7U  << (2 * 4));   // AF7 = USART2
+ 8007a96:	4b0c      	ldr	r3, [pc, #48]	@ (8007ac8 <USART2_Init+0x72>)
+ 8007a98:	681b      	ldr	r3, [r3, #0]
+ 8007a9a:	4a0b      	ldr	r2, [pc, #44]	@ (8007ac8 <USART2_Init+0x72>)
+ 8007a9c:	f443 63e0 	orr.w	r3, r3, #1792	@ 0x700
+ 8007aa0:	6013      	str	r3, [r2, #0]
+
+    /* Baud rate = 9600 (16 MHz / 9600 = 1666 = 0x0682~0x0683) */
+    USART2_BRR = 0x0683;
+ 8007aa2:	4b0a      	ldr	r3, [pc, #40]	@ (8007acc <USART2_Init+0x76>)
+ 8007aa4:	f240 6283 	movw	r2, #1667	@ 0x683
+ 8007aa8:	601a      	str	r2, [r3, #0]
+
+    /* Enable USART + TX */
+    USART2_CR1 =
+ 8007aaa:	4b09      	ldr	r3, [pc, #36]	@ (8007ad0 <USART2_Init+0x7a>)
+ 8007aac:	f242 0208 	movw	r2, #8200	@ 0x2008
+ 8007ab0:	601a      	str	r2, [r3, #0]
+        (1 << 13) |   // UE
+        (1 << 3);     // TE
+}
+ 8007ab2:	bf00      	nop
+ 8007ab4:	46bd      	mov	sp, r7
+ 8007ab6:	bc80      	pop	{r7}
+ 8007ab8:	4770      	bx	lr
+ 8007aba:	bf00      	nop
+ 8007abc:	40023830 	.word	0x40023830
+ 8007ac0:	40023840 	.word	0x40023840
+ 8007ac4:	40020000 	.word	0x40020000
+ 8007ac8:	40020020 	.word	0x40020020
+ 8007acc:	40004408 	.word	0x40004408
+ 8007ad0:	4000440c 	.word	0x4000440c
+
+08007ad4 <USART2_SendByte>:
+
+/* ------------------------------------------------------------
+ * Send one byte (blocking)
+ * ------------------------------------------------------------ */
+static void USART2_SendByte(unsigned char data)
+{
+ 8007ad4:	b480      	push	{r7}
+ 8007ad6:	b083      	sub	sp, #12
+ 8007ad8:	af00      	add	r7, sp, #0
+ 8007ada:	4603      	mov	r3, r0
+ 8007adc:	71fb      	strb	r3, [r7, #7]
+    while (!(USART2_SR & (1 << 7)))
+ 8007ade:	bf00      	nop
+ 8007ae0:	4b06      	ldr	r3, [pc, #24]	@ (8007afc <USART2_SendByte+0x28>)
+ 8007ae2:	681b      	ldr	r3, [r3, #0]
+ 8007ae4:	f003 0380 	and.w	r3, r3, #128	@ 0x80
+ 8007ae8:	2b00      	cmp	r3, #0
+ 8007aea:	d0f9      	beq.n	8007ae0 <USART2_SendByte+0xc>
+    {
+        /* wait until TXE */
+    }
+    USART2_DR = data;
+ 8007aec:	4a04      	ldr	r2, [pc, #16]	@ (8007b00 <USART2_SendByte+0x2c>)
+ 8007aee:	79fb      	ldrb	r3, [r7, #7]
+ 8007af0:	6013      	str	r3, [r2, #0]
+}
+ 8007af2:	bf00      	nop
+ 8007af4:	370c      	adds	r7, #12
+ 8007af6:	46bd      	mov	sp, r7
+ 8007af8:	bc80      	pop	{r7}
+ 8007afa:	4770      	bx	lr
+ 8007afc:	40004400 	.word	0x40004400
+ 8007b00:	40004404 	.word	0x40004404
+
+08007b04 <main>:
+
+/* ------------------------------------------------------------
+ * MAIN
+ * ------------------------------------------------------------ */
+int main(void)
+{
+ 8007b04:	b580      	push	{r7, lr}
+ 8007b06:	af00      	add	r7, sp, #0
+    /* Enable GPIOB clock */
+    RCC_AHB1ENR |= (1 << 1);
+ 8007b08:	4b10      	ldr	r3, [pc, #64]	@ (8007b4c <main+0x48>)
+ 8007b0a:	681b      	ldr	r3, [r3, #0]
+ 8007b0c:	4a0f      	ldr	r2, [pc, #60]	@ (8007b4c <main+0x48>)
+ 8007b0e:	f043 0302 	orr.w	r3, r3, #2
+ 8007b12:	6013      	str	r3, [r2, #0]
+
+    /* PB5 as output */
+    GPIOB_MODER &= ~(3U << (5 * 2));
+ 8007b14:	4b0e      	ldr	r3, [pc, #56]	@ (8007b50 <main+0x4c>)
+ 8007b16:	681b      	ldr	r3, [r3, #0]
+ 8007b18:	4a0d      	ldr	r2, [pc, #52]	@ (8007b50 <main+0x4c>)
+ 8007b1a:	f423 6340 	bic.w	r3, r3, #3072	@ 0xc00
+ 8007b1e:	6013      	str	r3, [r2, #0]
+    GPIOB_MODER |=  (1U << (5 * 2));
+ 8007b20:	4b0b      	ldr	r3, [pc, #44]	@ (8007b50 <main+0x4c>)
+ 8007b22:	681b      	ldr	r3, [r3, #0]
+ 8007b24:	4a0a      	ldr	r2, [pc, #40]	@ (8007b50 <main+0x4c>)
+ 8007b26:	f443 6380 	orr.w	r3, r3, #1024	@ 0x400
+ 8007b2a:	6013      	str	r3, [r2, #0]
+
+    /* Init USART */
+    USART2_Init();
+ 8007b2c:	f7ff ff93 	bl	8007a56 <USART2_Init>
+
+    while (1)
+    {
+        GPIOB_ODR ^= (1 << 5);   // Toggle LED
+ 8007b30:	4b08      	ldr	r3, [pc, #32]	@ (8007b54 <main+0x50>)
+ 8007b32:	681b      	ldr	r3, [r3, #0]
+ 8007b34:	4a07      	ldr	r2, [pc, #28]	@ (8007b54 <main+0x50>)
+ 8007b36:	f083 0320 	eor.w	r3, r3, #32
+ 8007b3a:	6013      	str	r3, [r2, #0]
+        USART2_SendByte(0xA5);   // Send 0xA5
+ 8007b3c:	20a5      	movs	r0, #165	@ 0xa5
+ 8007b3e:	f7ff ffc9 	bl	8007ad4 <USART2_SendByte>
+        delay(1000000);
+ 8007b42:	4805      	ldr	r0, [pc, #20]	@ (8007b58 <main+0x54>)
+ 8007b44:	f7ff ff76 	bl	8007a34 <delay>
+        GPIOB_ODR ^= (1 << 5);   // Toggle LED
+ 8007b48:	e7f2      	b.n	8007b30 <main+0x2c>
+ 8007b4a:	bf00      	nop
+ 8007b4c:	40023830 	.word	0x40023830
+ 8007b50:	40020400 	.word	0x40020400
+ 8007b54:	40020414 	.word	0x40020414
+ 8007b58:	000f4240 	.word	0x000f4240
+
+08007b5c <Gpio_Intitialization>:
+ | Reentrunt:                                                                                                                                             |
+ | Size :                                                                                                                                                 |
+ | Excution Time : TBD                                                                                                                                    |
+ |_______________________________________________________________________________________________________________________________________________________*/
+DataType_Request_Status Gpio_Intitialization(void)
+{
+ 8007b5c:	b580      	push	{r7, lr}
+ 8007b5e:	b0be      	sub	sp, #248	@ 0xf8
+ 8007b60:	af00      	add	r7, sp, #0
+    /* initialize return status  = Error */
+    DataType_Request_Status Return_Status = Error;
+ 8007b62:	2307      	movs	r3, #7
+ 8007b64:	f887 30f7 	strb.w	r3, [r7, #247]	@ 0xf7
+
+    /* Initialize Module state = UnInitialized */
+    GPIO_Module_State = STATE_UNINTIALIZED;
+ 8007b68:	4b1d      	ldr	r3, [pc, #116]	@ (8007be0 <Gpio_Intitialization+0x84>)
+ 8007b6a:	f04f 3211 	mov.w	r2, #286331153	@ 0x11111111
+ 8007b6e:	601a      	str	r2, [r3, #0]
+    }
+
+    else
+    {
+        /* create registers Shadow Table to to store the configuration values */
+        DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION] = {INITIALIZE_ZERO};
+ 8007b70:	1d3b      	adds	r3, r7, #4
+ 8007b72:	22f0      	movs	r2, #240	@ 0xf0
+ 8007b74:	2100      	movs	r1, #0
+ 8007b76:	4618      	mov	r0, r3
+ 8007b78:	f7ff ff42 	bl	8007a00 <memset>
+
+        /* Build configurations in the shadow registers map */
+        Build_Configuration(Registers_Shadow);
+ 8007b7c:	1d3b      	adds	r3, r7, #4
+ 8007b7e:	4618      	mov	r0, r3
+ 8007b80:	f000 f832 	bl	8007be8 <Build_Configuration>
+        
+        /* Set all the IO regosters values and store operation status */
+        Return_Status = Write_Registers_Configuration(Registers_Shadow, Registers_Table);
+ 8007b84:	1d3b      	adds	r3, r7, #4
+ 8007b86:	4917      	ldr	r1, [pc, #92]	@ (8007be4 <Gpio_Intitialization+0x88>)
+ 8007b88:	4618      	mov	r0, r3
+ 8007b8a:	f000 f95d 	bl	8007e48 <Write_Registers_Configuration>
+ 8007b8e:	4603      	mov	r3, r0
+ 8007b90:	f887 30f7 	strb.w	r3, [r7, #247]	@ 0xf7
+
+        /* check the registers configuration status */
+        if(Return_Status != Success)
+ 8007b94:	f897 30f7 	ldrb.w	r3, [r7, #247]	@ 0xf7
+ 8007b98:	2b01      	cmp	r3, #1
+ 8007b9a:	d003      	beq.n	8007ba4 <Gpio_Intitialization+0x48>
+        {
+            /* Set return status with error */
+            Return_Status = Error;
+ 8007b9c:	2307      	movs	r3, #7
+ 8007b9e:	f887 30f7 	strb.w	r3, [r7, #247]	@ 0xf7
+ 8007ba2:	e007      	b.n	8007bb4 <Gpio_Intitialization+0x58>
+        }
+        else
+        {
+            /* Configure port lock featuer and store operation status */
+            Return_Status = Port_Lock_Init(Registers_Shadow, Registers_Table);
+ 8007ba4:	1d3b      	adds	r3, r7, #4
+ 8007ba6:	490f      	ldr	r1, [pc, #60]	@ (8007be4 <Gpio_Intitialization+0x88>)
+ 8007ba8:	4618      	mov	r0, r3
+ 8007baa:	f000 fa5d 	bl	8008068 <Port_Lock_Init>
+ 8007bae:	4603      	mov	r3, r0
+ 8007bb0:	f887 30f7 	strb.w	r3, [r7, #247]	@ 0xf7
+        }
+
+        /* check the registers configuration status */
+        if(Return_Status != Success)
+ 8007bb4:	f897 30f7 	ldrb.w	r3, [r7, #247]	@ 0xf7
+ 8007bb8:	2b01      	cmp	r3, #1
+ 8007bba:	d003      	beq.n	8007bc4 <Gpio_Intitialization+0x68>
+        {
+            /* Set return status with error */
+            Return_Status = Error;
+ 8007bbc:	2307      	movs	r3, #7
+ 8007bbe:	f887 30f7 	strb.w	r3, [r7, #247]	@ 0xf7
+ 8007bc2:	e002      	b.n	8007bca <Gpio_Intitialization+0x6e>
+        }
+        else
+        {
+            /* Set return status with operation succssed */
+            Return_Status = Success;
+ 8007bc4:	2301      	movs	r3, #1
+ 8007bc6:	f887 30f7 	strb.w	r3, [r7, #247]	@ 0xf7
+        }
+    }
+
+    /* Set Module state variable IO is Ready */
+    GPIO_Set_Module_State(STATE_READY);
+ 8007bca:	f04f 3077 	mov.w	r0, #2004318071	@ 0x77777777
+ 8007bce:	f000 fad5 	bl	800817c <GPIO_Set_Module_State>
+
+    return Return_Status;
+ 8007bd2:	f897 30f7 	ldrb.w	r3, [r7, #247]	@ 0xf7
+}
+ 8007bd6:	4618      	mov	r0, r3
+ 8007bd8:	37f8      	adds	r7, #248	@ 0xf8
+ 8007bda:	46bd      	mov	sp, r7
+ 8007bdc:	bd80      	pop	{r7, pc}
+ 8007bde:	bf00      	nop
+ 8007be0:	20002008 	.word	0x20002008
+ 8007be4:	08000210 	.word	0x08000210
+
+08007be8 <Build_Configuration>:
+ | Reentrunt:                                                                              |
+ | Size :                                                                                  |
+ | Excution Time : TBD                                                                     |
+ |_________________________________________________________________________________________*/
+void Build_Configuration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION])
+{
+ 8007be8:	b480      	push	{r7}
+ 8007bea:	b085      	sub	sp, #20
+ 8007bec:	af00      	add	r7, sp, #0
+ 8007bee:	6078      	str	r0, [r7, #4]
+    DataType_u8  Index;
+    DataType_u8 PortId;
+    DataType_u32 PinId;
+
+    /* Loop on all configured pins */
+    for(Index = INITIALIZE_ZERO; Index < PIN_CFG; Index++)
+ 8007bf0:	2300      	movs	r3, #0
+ 8007bf2:	73fb      	strb	r3, [r7, #15]
+ 8007bf4:	e11a      	b.n	8007e2c <Build_Configuration+0x244>
+    {
+        /* Store current PORT number and pin number */
+        PortId = Pin_Configuration_Table[Index].Port_Id;
+ 8007bf6:	7bfa      	ldrb	r2, [r7, #15]
+ 8007bf8:	4991      	ldr	r1, [pc, #580]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007bfa:	4613      	mov	r3, r2
+ 8007bfc:	00db      	lsls	r3, r3, #3
+ 8007bfe:	4413      	add	r3, r2
+ 8007c00:	440b      	add	r3, r1
+ 8007c02:	781b      	ldrb	r3, [r3, #0]
+ 8007c04:	73bb      	strb	r3, [r7, #14]
+        PinId = Pin_Configuration_Table[Index].Pin_Id;
+ 8007c06:	7bfa      	ldrb	r2, [r7, #15]
+ 8007c08:	498d      	ldr	r1, [pc, #564]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007c0a:	4613      	mov	r3, r2
+ 8007c0c:	00db      	lsls	r3, r3, #3
+ 8007c0e:	4413      	add	r3, r2
+ 8007c10:	440b      	add	r3, r1
+ 8007c12:	3301      	adds	r3, #1
+ 8007c14:	781b      	ldrb	r3, [r3, #0]
+ 8007c16:	60bb      	str	r3, [r7, #8]
+
+        /* Set current port is used in the port Usage_table*/
+        Port_Usage_Table[PortId] = Used;
+ 8007c18:	7bbb      	ldrb	r3, [r7, #14]
+ 8007c1a:	4a8a      	ldr	r2, [pc, #552]	@ (8007e44 <Build_Configuration+0x25c>)
+ 8007c1c:	2101      	movs	r1, #1
+ 8007c1e:	54d1      	strb	r1, [r2, r3]
+
+        /* Configure Shadow GPIO Mode register for current port and pin */
+        Registers_Shadow[PortId].Gpio_Moder |= (Pin_Configuration_Table[Index].Pin_Mode << (PinId * REG_MODER_BITS));
+ 8007c20:	7bba      	ldrb	r2, [r7, #14]
+ 8007c22:	4613      	mov	r3, r2
+ 8007c24:	009b      	lsls	r3, r3, #2
+ 8007c26:	4413      	add	r3, r2
+ 8007c28:	00db      	lsls	r3, r3, #3
+ 8007c2a:	461a      	mov	r2, r3
+ 8007c2c:	687b      	ldr	r3, [r7, #4]
+ 8007c2e:	4413      	add	r3, r2
+ 8007c30:	6819      	ldr	r1, [r3, #0]
+ 8007c32:	7bfa      	ldrb	r2, [r7, #15]
+ 8007c34:	4882      	ldr	r0, [pc, #520]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007c36:	4613      	mov	r3, r2
+ 8007c38:	00db      	lsls	r3, r3, #3
+ 8007c3a:	4413      	add	r3, r2
+ 8007c3c:	4403      	add	r3, r0
+ 8007c3e:	3302      	adds	r3, #2
+ 8007c40:	781b      	ldrb	r3, [r3, #0]
+ 8007c42:	461a      	mov	r2, r3
+ 8007c44:	68bb      	ldr	r3, [r7, #8]
+ 8007c46:	005b      	lsls	r3, r3, #1
+ 8007c48:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007c4c:	4618      	mov	r0, r3
+ 8007c4e:	7bba      	ldrb	r2, [r7, #14]
+ 8007c50:	4613      	mov	r3, r2
+ 8007c52:	009b      	lsls	r3, r3, #2
+ 8007c54:	4413      	add	r3, r2
+ 8007c56:	00db      	lsls	r3, r3, #3
+ 8007c58:	461a      	mov	r2, r3
+ 8007c5a:	687b      	ldr	r3, [r7, #4]
+ 8007c5c:	4413      	add	r3, r2
+ 8007c5e:	ea41 0200 	orr.w	r2, r1, r0
+ 8007c62:	601a      	str	r2, [r3, #0]
+
+        /* Configure Shadow GPIO Output Type register for current port and pin */
+        Registers_Shadow[PortId].Gpio_Otyper |= (Pin_Configuration_Table[Index].Pin_Output_Type << PinId);
+ 8007c64:	7bba      	ldrb	r2, [r7, #14]
+ 8007c66:	4613      	mov	r3, r2
+ 8007c68:	009b      	lsls	r3, r3, #2
+ 8007c6a:	4413      	add	r3, r2
+ 8007c6c:	00db      	lsls	r3, r3, #3
+ 8007c6e:	461a      	mov	r2, r3
+ 8007c70:	687b      	ldr	r3, [r7, #4]
+ 8007c72:	4413      	add	r3, r2
+ 8007c74:	6859      	ldr	r1, [r3, #4]
+ 8007c76:	7bfa      	ldrb	r2, [r7, #15]
+ 8007c78:	4871      	ldr	r0, [pc, #452]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007c7a:	4613      	mov	r3, r2
+ 8007c7c:	00db      	lsls	r3, r3, #3
+ 8007c7e:	4413      	add	r3, r2
+ 8007c80:	4403      	add	r3, r0
+ 8007c82:	3303      	adds	r3, #3
+ 8007c84:	781b      	ldrb	r3, [r3, #0]
+ 8007c86:	461a      	mov	r2, r3
+ 8007c88:	68bb      	ldr	r3, [r7, #8]
+ 8007c8a:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007c8e:	4618      	mov	r0, r3
+ 8007c90:	7bba      	ldrb	r2, [r7, #14]
+ 8007c92:	4613      	mov	r3, r2
+ 8007c94:	009b      	lsls	r3, r3, #2
+ 8007c96:	4413      	add	r3, r2
+ 8007c98:	00db      	lsls	r3, r3, #3
+ 8007c9a:	461a      	mov	r2, r3
+ 8007c9c:	687b      	ldr	r3, [r7, #4]
+ 8007c9e:	4413      	add	r3, r2
+ 8007ca0:	ea41 0200 	orr.w	r2, r1, r0
+ 8007ca4:	605a      	str	r2, [r3, #4]
+
+        /* Configure Shadow Output Speed register for current Port and Pin */
+        Registers_Shadow[PortId].Gpio_Ospeedr |= (Pin_Configuration_Table[Index].Pin_Output_Speed << (PinId * REG_OSPEEDR_BITS));
+ 8007ca6:	7bba      	ldrb	r2, [r7, #14]
+ 8007ca8:	4613      	mov	r3, r2
+ 8007caa:	009b      	lsls	r3, r3, #2
+ 8007cac:	4413      	add	r3, r2
+ 8007cae:	00db      	lsls	r3, r3, #3
+ 8007cb0:	461a      	mov	r2, r3
+ 8007cb2:	687b      	ldr	r3, [r7, #4]
+ 8007cb4:	4413      	add	r3, r2
+ 8007cb6:	6899      	ldr	r1, [r3, #8]
+ 8007cb8:	7bfa      	ldrb	r2, [r7, #15]
+ 8007cba:	4861      	ldr	r0, [pc, #388]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007cbc:	4613      	mov	r3, r2
+ 8007cbe:	00db      	lsls	r3, r3, #3
+ 8007cc0:	4413      	add	r3, r2
+ 8007cc2:	4403      	add	r3, r0
+ 8007cc4:	3304      	adds	r3, #4
+ 8007cc6:	781b      	ldrb	r3, [r3, #0]
+ 8007cc8:	461a      	mov	r2, r3
+ 8007cca:	68bb      	ldr	r3, [r7, #8]
+ 8007ccc:	005b      	lsls	r3, r3, #1
+ 8007cce:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007cd2:	4618      	mov	r0, r3
+ 8007cd4:	7bba      	ldrb	r2, [r7, #14]
+ 8007cd6:	4613      	mov	r3, r2
+ 8007cd8:	009b      	lsls	r3, r3, #2
+ 8007cda:	4413      	add	r3, r2
+ 8007cdc:	00db      	lsls	r3, r3, #3
+ 8007cde:	461a      	mov	r2, r3
+ 8007ce0:	687b      	ldr	r3, [r7, #4]
+ 8007ce2:	4413      	add	r3, r2
+ 8007ce4:	ea41 0200 	orr.w	r2, r1, r0
+ 8007ce8:	609a      	str	r2, [r3, #8]
+
+        /* Configure Shadow GPIO Pullup/Pulldown register for current Port and Pin */
+        Registers_Shadow[PortId].Gpio_Pupdr |= (Pin_Configuration_Table[Index].Pin_Resitances_Connection << (PinId * REG_PUPDR_BITS));
+ 8007cea:	7bba      	ldrb	r2, [r7, #14]
+ 8007cec:	4613      	mov	r3, r2
+ 8007cee:	009b      	lsls	r3, r3, #2
+ 8007cf0:	4413      	add	r3, r2
+ 8007cf2:	00db      	lsls	r3, r3, #3
+ 8007cf4:	461a      	mov	r2, r3
+ 8007cf6:	687b      	ldr	r3, [r7, #4]
+ 8007cf8:	4413      	add	r3, r2
+ 8007cfa:	68d9      	ldr	r1, [r3, #12]
+ 8007cfc:	7bfa      	ldrb	r2, [r7, #15]
+ 8007cfe:	4850      	ldr	r0, [pc, #320]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007d00:	4613      	mov	r3, r2
+ 8007d02:	00db      	lsls	r3, r3, #3
+ 8007d04:	4413      	add	r3, r2
+ 8007d06:	4403      	add	r3, r0
+ 8007d08:	3305      	adds	r3, #5
+ 8007d0a:	781b      	ldrb	r3, [r3, #0]
+ 8007d0c:	461a      	mov	r2, r3
+ 8007d0e:	68bb      	ldr	r3, [r7, #8]
+ 8007d10:	005b      	lsls	r3, r3, #1
+ 8007d12:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007d16:	4618      	mov	r0, r3
+ 8007d18:	7bba      	ldrb	r2, [r7, #14]
+ 8007d1a:	4613      	mov	r3, r2
+ 8007d1c:	009b      	lsls	r3, r3, #2
+ 8007d1e:	4413      	add	r3, r2
+ 8007d20:	00db      	lsls	r3, r3, #3
+ 8007d22:	461a      	mov	r2, r3
+ 8007d24:	687b      	ldr	r3, [r7, #4]
+ 8007d26:	4413      	add	r3, r2
+ 8007d28:	ea41 0200 	orr.w	r2, r1, r0
+ 8007d2c:	60da      	str	r2, [r3, #12]
+
+        /* Configure Shadow GPIO PortLock register for current Port and Pin */
+        Registers_Shadow[PortId].Gpio_Lckr |= (Pin_Configuration_Table[Index].Pin_Configuration_Lock_Status << PinId);
+ 8007d2e:	7bba      	ldrb	r2, [r7, #14]
+ 8007d30:	4613      	mov	r3, r2
+ 8007d32:	009b      	lsls	r3, r3, #2
+ 8007d34:	4413      	add	r3, r2
+ 8007d36:	00db      	lsls	r3, r3, #3
+ 8007d38:	461a      	mov	r2, r3
+ 8007d3a:	687b      	ldr	r3, [r7, #4]
+ 8007d3c:	4413      	add	r3, r2
+ 8007d3e:	69d9      	ldr	r1, [r3, #28]
+ 8007d40:	7bfa      	ldrb	r2, [r7, #15]
+ 8007d42:	483f      	ldr	r0, [pc, #252]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007d44:	4613      	mov	r3, r2
+ 8007d46:	00db      	lsls	r3, r3, #3
+ 8007d48:	4413      	add	r3, r2
+ 8007d4a:	4403      	add	r3, r0
+ 8007d4c:	3307      	adds	r3, #7
+ 8007d4e:	781b      	ldrb	r3, [r3, #0]
+ 8007d50:	461a      	mov	r2, r3
+ 8007d52:	68bb      	ldr	r3, [r7, #8]
+ 8007d54:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007d58:	4618      	mov	r0, r3
+ 8007d5a:	7bba      	ldrb	r2, [r7, #14]
+ 8007d5c:	4613      	mov	r3, r2
+ 8007d5e:	009b      	lsls	r3, r3, #2
+ 8007d60:	4413      	add	r3, r2
+ 8007d62:	00db      	lsls	r3, r3, #3
+ 8007d64:	461a      	mov	r2, r3
+ 8007d66:	687b      	ldr	r3, [r7, #4]
+ 8007d68:	4413      	add	r3, r2
+ 8007d6a:	ea41 0200 	orr.w	r2, r1, r0
+ 8007d6e:	61da      	str	r2, [r3, #28]
+        
+        /* Check current pin between Pin0 to Pin7 */
+        if(PinId <= Pin_7)
+ 8007d70:	68bb      	ldr	r3, [r7, #8]
+ 8007d72:	2b07      	cmp	r3, #7
+ 8007d74:	d81b      	bhi.n	8007dae <Build_Configuration+0x1c6>
+        {
+            /* Configure Shadow GPIO Alternatefunction Low register */   
+            Registers_Shadow[PortId].Gpio_Afrl |= (Pin_Configuration_Table[Index].Pin_Alternate_Function << (PinId * REG_AFRL_BITS));
+ 8007d76:	7bba      	ldrb	r2, [r7, #14]
+ 8007d78:	4613      	mov	r3, r2
+ 8007d7a:	009b      	lsls	r3, r3, #2
+ 8007d7c:	4413      	add	r3, r2
+ 8007d7e:	00db      	lsls	r3, r3, #3
+ 8007d80:	461a      	mov	r2, r3
+ 8007d82:	687b      	ldr	r3, [r7, #4]
+ 8007d84:	4413      	add	r3, r2
+ 8007d86:	6a19      	ldr	r1, [r3, #32]
+ 8007d88:	2300      	movs	r3, #0
+ 8007d8a:	461a      	mov	r2, r3
+ 8007d8c:	68bb      	ldr	r3, [r7, #8]
+ 8007d8e:	009b      	lsls	r3, r3, #2
+ 8007d90:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007d94:	4618      	mov	r0, r3
+ 8007d96:	7bba      	ldrb	r2, [r7, #14]
+ 8007d98:	4613      	mov	r3, r2
+ 8007d9a:	009b      	lsls	r3, r3, #2
+ 8007d9c:	4413      	add	r3, r2
+ 8007d9e:	00db      	lsls	r3, r3, #3
+ 8007da0:	461a      	mov	r2, r3
+ 8007da2:	687b      	ldr	r3, [r7, #4]
+ 8007da4:	4413      	add	r3, r2
+ 8007da6:	ea41 0200 	orr.w	r2, r1, r0
+ 8007daa:	621a      	str	r2, [r3, #32]
+ 8007dac:	e01a      	b.n	8007de4 <Build_Configuration+0x1fc>
+        }
+        else
+        {
+            /* Configure Shadow GPIO Alternatefunction High register */ 
+            Registers_Shadow[PortId].Gpio_Afrh |= (Pin_Configuration_Table[Index].Pin_Alternate_Function << (PinId - 8  * REG_AFRH_BITS));
+ 8007dae:	7bba      	ldrb	r2, [r7, #14]
+ 8007db0:	4613      	mov	r3, r2
+ 8007db2:	009b      	lsls	r3, r3, #2
+ 8007db4:	4413      	add	r3, r2
+ 8007db6:	00db      	lsls	r3, r3, #3
+ 8007db8:	461a      	mov	r2, r3
+ 8007dba:	687b      	ldr	r3, [r7, #4]
+ 8007dbc:	4413      	add	r3, r2
+ 8007dbe:	6a59      	ldr	r1, [r3, #36]	@ 0x24
+ 8007dc0:	2300      	movs	r3, #0
+ 8007dc2:	461a      	mov	r2, r3
+ 8007dc4:	68bb      	ldr	r3, [r7, #8]
+ 8007dc6:	3b20      	subs	r3, #32
+ 8007dc8:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007dcc:	4618      	mov	r0, r3
+ 8007dce:	7bba      	ldrb	r2, [r7, #14]
+ 8007dd0:	4613      	mov	r3, r2
+ 8007dd2:	009b      	lsls	r3, r3, #2
+ 8007dd4:	4413      	add	r3, r2
+ 8007dd6:	00db      	lsls	r3, r3, #3
+ 8007dd8:	461a      	mov	r2, r3
+ 8007dda:	687b      	ldr	r3, [r7, #4]
+ 8007ddc:	4413      	add	r3, r2
+ 8007dde:	ea41 0200 	orr.w	r2, r1, r0
+ 8007de2:	625a      	str	r2, [r3, #36]	@ 0x24
+        }
+
+        /* Configure Shadow GPIO Output Direction register for current Port and Pin */ 
+        Registers_Shadow[PortId].Gpio_Odr |= (Pin_Configuration_Table[Index].Pin_Output_Status_Setup << PinId);
+ 8007de4:	7bba      	ldrb	r2, [r7, #14]
+ 8007de6:	4613      	mov	r3, r2
+ 8007de8:	009b      	lsls	r3, r3, #2
+ 8007dea:	4413      	add	r3, r2
+ 8007dec:	00db      	lsls	r3, r3, #3
+ 8007dee:	461a      	mov	r2, r3
+ 8007df0:	687b      	ldr	r3, [r7, #4]
+ 8007df2:	4413      	add	r3, r2
+ 8007df4:	6959      	ldr	r1, [r3, #20]
+ 8007df6:	7bfa      	ldrb	r2, [r7, #15]
+ 8007df8:	4811      	ldr	r0, [pc, #68]	@ (8007e40 <Build_Configuration+0x258>)
+ 8007dfa:	4613      	mov	r3, r2
+ 8007dfc:	00db      	lsls	r3, r3, #3
+ 8007dfe:	4413      	add	r3, r2
+ 8007e00:	4403      	add	r3, r0
+ 8007e02:	3306      	adds	r3, #6
+ 8007e04:	781b      	ldrb	r3, [r3, #0]
+ 8007e06:	461a      	mov	r2, r3
+ 8007e08:	68bb      	ldr	r3, [r7, #8]
+ 8007e0a:	fa02 f303 	lsl.w	r3, r2, r3
+ 8007e0e:	4618      	mov	r0, r3
+ 8007e10:	7bba      	ldrb	r2, [r7, #14]
+ 8007e12:	4613      	mov	r3, r2
+ 8007e14:	009b      	lsls	r3, r3, #2
+ 8007e16:	4413      	add	r3, r2
+ 8007e18:	00db      	lsls	r3, r3, #3
+ 8007e1a:	461a      	mov	r2, r3
+ 8007e1c:	687b      	ldr	r3, [r7, #4]
+ 8007e1e:	4413      	add	r3, r2
+ 8007e20:	ea41 0200 	orr.w	r2, r1, r0
+ 8007e24:	615a      	str	r2, [r3, #20]
+    for(Index = INITIALIZE_ZERO; Index < PIN_CFG; Index++)
+ 8007e26:	7bfb      	ldrb	r3, [r7, #15]
+ 8007e28:	3301      	adds	r3, #1
+ 8007e2a:	73fb      	strb	r3, [r7, #15]
+ 8007e2c:	7bfb      	ldrb	r3, [r7, #15]
+ 8007e2e:	2b00      	cmp	r3, #0
+ 8007e30:	f43f aee1 	beq.w	8007bf6 <Build_Configuration+0xe>
+    }
+}
+ 8007e34:	bf00      	nop
+ 8007e36:	bf00      	nop
+ 8007e38:	3714      	adds	r7, #20
+ 8007e3a:	46bd      	mov	sp, r7
+ 8007e3c:	bc80      	pop	{r7}
+ 8007e3e:	4770      	bx	lr
+ 8007e40:	08000200 	.word	0x08000200
+ 8007e44:	20002000 	.word	0x20002000
+
+08007e48 <Write_Registers_Configuration>:
+ | Reentrunt:                                                                              |
+ | Size :                                                                                  |
+ | Excution Time : TBD                                                                     |
+ |_________________________________________________________________________________________*/
+DataType_Request_Status Write_Registers_Configuration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION], DataType_Gpio_Registers Registers_Table[MAX_PORT_CONFIGURATION])
+{
+ 8007e48:	b480      	push	{r7}
+ 8007e4a:	b085      	sub	sp, #20
+ 8007e4c:	af00      	add	r7, sp, #0
+ 8007e4e:	6078      	str	r0, [r7, #4]
+ 8007e50:	6039      	str	r1, [r7, #0]
+    /* Set return status Succssed if no error occuord */
+    DataType_Request_Status Return_Status = Success;
+ 8007e52:	2301      	movs	r3, #1
+ 8007e54:	73fb      	strb	r3, [r7, #15]
+
+    /* Declare variable to store current Port number */
+    DataType_u8 PortId;
+
+    /* Loop on all controller existed ports */
+    for(PortId = INITIALIZE_ZERO; PortId < NUM_OF_PORTS; PortId++)
+ 8007e56:	2300      	movs	r3, #0
+ 8007e58:	73bb      	strb	r3, [r7, #14]
+ 8007e5a:	e070      	b.n	8007f3e <Write_Registers_Configuration+0xf6>
+    {
+        /* Check if the Port is used set the configured registers value */
+        if(Port_Usage_Table[PortId] == Used)
+ 8007e5c:	7bbb      	ldrb	r3, [r7, #14]
+ 8007e5e:	4a81      	ldr	r2, [pc, #516]	@ (8008064 <Write_Registers_Configuration+0x21c>)
+ 8007e60:	5cd3      	ldrb	r3, [r2, r3]
+ 8007e62:	2b01      	cmp	r3, #1
+ 8007e64:	d168      	bne.n	8007f38 <Write_Registers_Configuration+0xf0>
+        {
+            /* Set GPIO Mode Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Moder   = Registers_Shadow[PortId].Gpio_Moder;
+ 8007e66:	7bba      	ldrb	r2, [r7, #14]
+ 8007e68:	4613      	mov	r3, r2
+ 8007e6a:	009b      	lsls	r3, r3, #2
+ 8007e6c:	4413      	add	r3, r2
+ 8007e6e:	00db      	lsls	r3, r3, #3
+ 8007e70:	461a      	mov	r2, r3
+ 8007e72:	687b      	ldr	r3, [r7, #4]
+ 8007e74:	441a      	add	r2, r3
+ 8007e76:	7bbb      	ldrb	r3, [r7, #14]
+ 8007e78:	009b      	lsls	r3, r3, #2
+ 8007e7a:	6839      	ldr	r1, [r7, #0]
+ 8007e7c:	440b      	add	r3, r1
+ 8007e7e:	681b      	ldr	r3, [r3, #0]
+ 8007e80:	6812      	ldr	r2, [r2, #0]
+ 8007e82:	601a      	str	r2, [r3, #0]
+
+            /* Set GPIO Output Type Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Otyper  = Registers_Shadow[PortId].Gpio_Otyper;
+ 8007e84:	7bba      	ldrb	r2, [r7, #14]
+ 8007e86:	4613      	mov	r3, r2
+ 8007e88:	009b      	lsls	r3, r3, #2
+ 8007e8a:	4413      	add	r3, r2
+ 8007e8c:	00db      	lsls	r3, r3, #3
+ 8007e8e:	461a      	mov	r2, r3
+ 8007e90:	687b      	ldr	r3, [r7, #4]
+ 8007e92:	441a      	add	r2, r3
+ 8007e94:	7bbb      	ldrb	r3, [r7, #14]
+ 8007e96:	009b      	lsls	r3, r3, #2
+ 8007e98:	6839      	ldr	r1, [r7, #0]
+ 8007e9a:	440b      	add	r3, r1
+ 8007e9c:	681b      	ldr	r3, [r3, #0]
+ 8007e9e:	6852      	ldr	r2, [r2, #4]
+ 8007ea0:	605a      	str	r2, [r3, #4]
+
+            /* Set GPIO Output Speed Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Ospeedr = Registers_Shadow[PortId].Gpio_Ospeedr;
+ 8007ea2:	7bba      	ldrb	r2, [r7, #14]
+ 8007ea4:	4613      	mov	r3, r2
+ 8007ea6:	009b      	lsls	r3, r3, #2
+ 8007ea8:	4413      	add	r3, r2
+ 8007eaa:	00db      	lsls	r3, r3, #3
+ 8007eac:	461a      	mov	r2, r3
+ 8007eae:	687b      	ldr	r3, [r7, #4]
+ 8007eb0:	441a      	add	r2, r3
+ 8007eb2:	7bbb      	ldrb	r3, [r7, #14]
+ 8007eb4:	009b      	lsls	r3, r3, #2
+ 8007eb6:	6839      	ldr	r1, [r7, #0]
+ 8007eb8:	440b      	add	r3, r1
+ 8007eba:	681b      	ldr	r3, [r3, #0]
+ 8007ebc:	6892      	ldr	r2, [r2, #8]
+ 8007ebe:	609a      	str	r2, [r3, #8]
+
+            /* Set GPIO Pullup/PullDown Resistance Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Pupdr   = Registers_Shadow[PortId].Gpio_Pupdr;
+ 8007ec0:	7bba      	ldrb	r2, [r7, #14]
+ 8007ec2:	4613      	mov	r3, r2
+ 8007ec4:	009b      	lsls	r3, r3, #2
+ 8007ec6:	4413      	add	r3, r2
+ 8007ec8:	00db      	lsls	r3, r3, #3
+ 8007eca:	461a      	mov	r2, r3
+ 8007ecc:	687b      	ldr	r3, [r7, #4]
+ 8007ece:	441a      	add	r2, r3
+ 8007ed0:	7bbb      	ldrb	r3, [r7, #14]
+ 8007ed2:	009b      	lsls	r3, r3, #2
+ 8007ed4:	6839      	ldr	r1, [r7, #0]
+ 8007ed6:	440b      	add	r3, r1
+ 8007ed8:	681b      	ldr	r3, [r3, #0]
+ 8007eda:	68d2      	ldr	r2, [r2, #12]
+ 8007edc:	60da      	str	r2, [r3, #12]
+
+            /* Set GPIO Output Direction Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Odr     = Registers_Shadow[PortId].Gpio_Odr;
+ 8007ede:	7bba      	ldrb	r2, [r7, #14]
+ 8007ee0:	4613      	mov	r3, r2
+ 8007ee2:	009b      	lsls	r3, r3, #2
+ 8007ee4:	4413      	add	r3, r2
+ 8007ee6:	00db      	lsls	r3, r3, #3
+ 8007ee8:	461a      	mov	r2, r3
+ 8007eea:	687b      	ldr	r3, [r7, #4]
+ 8007eec:	441a      	add	r2, r3
+ 8007eee:	7bbb      	ldrb	r3, [r7, #14]
+ 8007ef0:	009b      	lsls	r3, r3, #2
+ 8007ef2:	6839      	ldr	r1, [r7, #0]
+ 8007ef4:	440b      	add	r3, r1
+ 8007ef6:	681b      	ldr	r3, [r3, #0]
+ 8007ef8:	6952      	ldr	r2, [r2, #20]
+ 8007efa:	615a      	str	r2, [r3, #20]
+
+            /* Set GPIO AlternateFunction Low Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Afrl    = Registers_Shadow[PortId].Gpio_Afrl;
+ 8007efc:	7bba      	ldrb	r2, [r7, #14]
+ 8007efe:	4613      	mov	r3, r2
+ 8007f00:	009b      	lsls	r3, r3, #2
+ 8007f02:	4413      	add	r3, r2
+ 8007f04:	00db      	lsls	r3, r3, #3
+ 8007f06:	461a      	mov	r2, r3
+ 8007f08:	687b      	ldr	r3, [r7, #4]
+ 8007f0a:	441a      	add	r2, r3
+ 8007f0c:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f0e:	009b      	lsls	r3, r3, #2
+ 8007f10:	6839      	ldr	r1, [r7, #0]
+ 8007f12:	440b      	add	r3, r1
+ 8007f14:	681b      	ldr	r3, [r3, #0]
+ 8007f16:	6a12      	ldr	r2, [r2, #32]
+ 8007f18:	621a      	str	r2, [r3, #32]
+
+            /* Set GPIO AlternateFunction High Register with the Shadow value */
+            Registers_Table[PortId]->Gpio_Afrh    = Registers_Shadow[PortId].Gpio_Afrh;
+ 8007f1a:	7bba      	ldrb	r2, [r7, #14]
+ 8007f1c:	4613      	mov	r3, r2
+ 8007f1e:	009b      	lsls	r3, r3, #2
+ 8007f20:	4413      	add	r3, r2
+ 8007f22:	00db      	lsls	r3, r3, #3
+ 8007f24:	461a      	mov	r2, r3
+ 8007f26:	687b      	ldr	r3, [r7, #4]
+ 8007f28:	441a      	add	r2, r3
+ 8007f2a:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f2c:	009b      	lsls	r3, r3, #2
+ 8007f2e:	6839      	ldr	r1, [r7, #0]
+ 8007f30:	440b      	add	r3, r1
+ 8007f32:	681b      	ldr	r3, [r3, #0]
+ 8007f34:	6a52      	ldr	r2, [r2, #36]	@ 0x24
+ 8007f36:	625a      	str	r2, [r3, #36]	@ 0x24
+    for(PortId = INITIALIZE_ZERO; PortId < NUM_OF_PORTS; PortId++)
+ 8007f38:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f3a:	3301      	adds	r3, #1
+ 8007f3c:	73bb      	strb	r3, [r7, #14]
+ 8007f3e:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f40:	2b05      	cmp	r3, #5
+ 8007f42:	d98b      	bls.n	8007e5c <Write_Registers_Configuration+0x14>
+            /* If Port Not used keep the reset values in the Registers */
+        }
+    }
+
+    /* Loop on all used port to check the registers values are correctly set in the Hardware */
+    for(PortId = INITIALIZE_ZERO; PortId < NUM_OF_PORTS; PortId++)
+ 8007f44:	2300      	movs	r3, #0
+ 8007f46:	73bb      	strb	r3, [r7, #14]
+ 8007f48:	e081      	b.n	800804e <Write_Registers_Configuration+0x206>
+    {
+        /* Check if the current Port is used */
+        if(Port_Usage_Table[PortId] == Used)
+ 8007f4a:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f4c:	4a45      	ldr	r2, [pc, #276]	@ (8008064 <Write_Registers_Configuration+0x21c>)
+ 8007f4e:	5cd3      	ldrb	r3, [r2, r3]
+ 8007f50:	2b01      	cmp	r3, #1
+ 8007f52:	d179      	bne.n	8008048 <Write_Registers_Configuration+0x200>
+        {
+            /* If the written value is not equal to the configured value */
+            if(Registers_Table[PortId]->Gpio_Moder != Registers_Shadow[PortId].Gpio_Moder)
+ 8007f54:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f56:	009b      	lsls	r3, r3, #2
+ 8007f58:	683a      	ldr	r2, [r7, #0]
+ 8007f5a:	4413      	add	r3, r2
+ 8007f5c:	681b      	ldr	r3, [r3, #0]
+ 8007f5e:	6819      	ldr	r1, [r3, #0]
+ 8007f60:	7bba      	ldrb	r2, [r7, #14]
+ 8007f62:	4613      	mov	r3, r2
+ 8007f64:	009b      	lsls	r3, r3, #2
+ 8007f66:	4413      	add	r3, r2
+ 8007f68:	00db      	lsls	r3, r3, #3
+ 8007f6a:	461a      	mov	r2, r3
+ 8007f6c:	687b      	ldr	r3, [r7, #4]
+ 8007f6e:	4413      	add	r3, r2
+ 8007f70:	681b      	ldr	r3, [r3, #0]
+ 8007f72:	4299      	cmp	r1, r3
+ 8007f74:	d002      	beq.n	8007f7c <Write_Registers_Configuration+0x134>
+            {
+                /* Set return status with Error and Exit loop */
+                Return_Status = Error;
+ 8007f76:	2307      	movs	r3, #7
+ 8007f78:	73fb      	strb	r3, [r7, #15]
+                break;
+ 8007f7a:	e06c      	b.n	8008056 <Write_Registers_Configuration+0x20e>
+            }
+    
+            else if(Registers_Table[PortId]->Gpio_Otyper  != Registers_Shadow[PortId].Gpio_Otyper)
+ 8007f7c:	7bbb      	ldrb	r3, [r7, #14]
+ 8007f7e:	009b      	lsls	r3, r3, #2
+ 8007f80:	683a      	ldr	r2, [r7, #0]
+ 8007f82:	4413      	add	r3, r2
+ 8007f84:	681b      	ldr	r3, [r3, #0]
+ 8007f86:	6859      	ldr	r1, [r3, #4]
+ 8007f88:	7bba      	ldrb	r2, [r7, #14]
+ 8007f8a:	4613      	mov	r3, r2
+ 8007f8c:	009b      	lsls	r3, r3, #2
+ 8007f8e:	4413      	add	r3, r2
+ 8007f90:	00db      	lsls	r3, r3, #3
+ 8007f92:	461a      	mov	r2, r3
+ 8007f94:	687b      	ldr	r3, [r7, #4]
+ 8007f96:	4413      	add	r3, r2
+ 8007f98:	685b      	ldr	r3, [r3, #4]
+ 8007f9a:	4299      	cmp	r1, r3
+ 8007f9c:	d002      	beq.n	8007fa4 <Write_Registers_Configuration+0x15c>
+            {
+                /* Set return status with Error and Exit loop */
+                Return_Status = Error;
+ 8007f9e:	2307      	movs	r3, #7
+ 8007fa0:	73fb      	strb	r3, [r7, #15]
+                break;
+ 8007fa2:	e058      	b.n	8008056 <Write_Registers_Configuration+0x20e>
+            }
+    
+            else if(Registers_Table[PortId]->Gpio_Ospeedr  != Registers_Shadow[PortId].Gpio_Ospeedr)
+ 8007fa4:	7bbb      	ldrb	r3, [r7, #14]
+ 8007fa6:	009b      	lsls	r3, r3, #2
+ 8007fa8:	683a      	ldr	r2, [r7, #0]
+ 8007faa:	4413      	add	r3, r2
+ 8007fac:	681b      	ldr	r3, [r3, #0]
+ 8007fae:	6899      	ldr	r1, [r3, #8]
+ 8007fb0:	7bba      	ldrb	r2, [r7, #14]
+ 8007fb2:	4613      	mov	r3, r2
+ 8007fb4:	009b      	lsls	r3, r3, #2
+ 8007fb6:	4413      	add	r3, r2
+ 8007fb8:	00db      	lsls	r3, r3, #3
+ 8007fba:	461a      	mov	r2, r3
+ 8007fbc:	687b      	ldr	r3, [r7, #4]
+ 8007fbe:	4413      	add	r3, r2
+ 8007fc0:	689b      	ldr	r3, [r3, #8]
+ 8007fc2:	4299      	cmp	r1, r3
+ 8007fc4:	d002      	beq.n	8007fcc <Write_Registers_Configuration+0x184>
+            {
+                /* Set return status with Error and Exit loop */
+                Return_Status = Error;
+ 8007fc6:	2307      	movs	r3, #7
+ 8007fc8:	73fb      	strb	r3, [r7, #15]
+                break;
+ 8007fca:	e044      	b.n	8008056 <Write_Registers_Configuration+0x20e>
+            }
+    
+            else if(Registers_Table[PortId]->Gpio_Pupdr  != Registers_Shadow[PortId].Gpio_Pupdr)
+ 8007fcc:	7bbb      	ldrb	r3, [r7, #14]
+ 8007fce:	009b      	lsls	r3, r3, #2
+ 8007fd0:	683a      	ldr	r2, [r7, #0]
+ 8007fd2:	4413      	add	r3, r2
+ 8007fd4:	681b      	ldr	r3, [r3, #0]
+ 8007fd6:	68d9      	ldr	r1, [r3, #12]
+ 8007fd8:	7bba      	ldrb	r2, [r7, #14]
+ 8007fda:	4613      	mov	r3, r2
+ 8007fdc:	009b      	lsls	r3, r3, #2
+ 8007fde:	4413      	add	r3, r2
+ 8007fe0:	00db      	lsls	r3, r3, #3
+ 8007fe2:	461a      	mov	r2, r3
+ 8007fe4:	687b      	ldr	r3, [r7, #4]
+ 8007fe6:	4413      	add	r3, r2
+ 8007fe8:	68db      	ldr	r3, [r3, #12]
+ 8007fea:	4299      	cmp	r1, r3
+ 8007fec:	d002      	beq.n	8007ff4 <Write_Registers_Configuration+0x1ac>
+            {
+                /* Set return status with Error and Exit loop */
+                Return_Status = Error;
+ 8007fee:	2307      	movs	r3, #7
+ 8007ff0:	73fb      	strb	r3, [r7, #15]
+                break;
+ 8007ff2:	e030      	b.n	8008056 <Write_Registers_Configuration+0x20e>
+            }
+    
+            else if(Registers_Table[PortId]->Gpio_Afrl  != Registers_Shadow[PortId].Gpio_Afrl)
+ 8007ff4:	7bbb      	ldrb	r3, [r7, #14]
+ 8007ff6:	009b      	lsls	r3, r3, #2
+ 8007ff8:	683a      	ldr	r2, [r7, #0]
+ 8007ffa:	4413      	add	r3, r2
+ 8007ffc:	681b      	ldr	r3, [r3, #0]
+ 8007ffe:	6a19      	ldr	r1, [r3, #32]
+ 8008000:	7bba      	ldrb	r2, [r7, #14]
+ 8008002:	4613      	mov	r3, r2
+ 8008004:	009b      	lsls	r3, r3, #2
+ 8008006:	4413      	add	r3, r2
+ 8008008:	00db      	lsls	r3, r3, #3
+ 800800a:	461a      	mov	r2, r3
+ 800800c:	687b      	ldr	r3, [r7, #4]
+ 800800e:	4413      	add	r3, r2
+ 8008010:	6a1b      	ldr	r3, [r3, #32]
+ 8008012:	4299      	cmp	r1, r3
+ 8008014:	d002      	beq.n	800801c <Write_Registers_Configuration+0x1d4>
+            {
+                /* Set return status with Error and Exit loop */
+                Return_Status = Error;
+ 8008016:	2307      	movs	r3, #7
+ 8008018:	73fb      	strb	r3, [r7, #15]
+                break;
+ 800801a:	e01c      	b.n	8008056 <Write_Registers_Configuration+0x20e>
+            }
+    
+            else if(Registers_Table[PortId]->Gpio_Afrh  != Registers_Shadow[PortId].Gpio_Afrh)
+ 800801c:	7bbb      	ldrb	r3, [r7, #14]
+ 800801e:	009b      	lsls	r3, r3, #2
+ 8008020:	683a      	ldr	r2, [r7, #0]
+ 8008022:	4413      	add	r3, r2
+ 8008024:	681b      	ldr	r3, [r3, #0]
+ 8008026:	6a59      	ldr	r1, [r3, #36]	@ 0x24
+ 8008028:	7bba      	ldrb	r2, [r7, #14]
+ 800802a:	4613      	mov	r3, r2
+ 800802c:	009b      	lsls	r3, r3, #2
+ 800802e:	4413      	add	r3, r2
+ 8008030:	00db      	lsls	r3, r3, #3
+ 8008032:	461a      	mov	r2, r3
+ 8008034:	687b      	ldr	r3, [r7, #4]
+ 8008036:	4413      	add	r3, r2
+ 8008038:	6a5b      	ldr	r3, [r3, #36]	@ 0x24
+ 800803a:	4299      	cmp	r1, r3
+ 800803c:	d002      	beq.n	8008044 <Write_Registers_Configuration+0x1fc>
+            {
+                /* Set return status with Error and Exit loop */
+                Return_Status = Error;
+ 800803e:	2307      	movs	r3, #7
+ 8008040:	73fb      	strb	r3, [r7, #15]
+                break;
+ 8008042:	e008      	b.n	8008056 <Write_Registers_Configuration+0x20e>
+            }
+    
+            else
+            {
+                /* Set return status Succssed */
+                Return_Status = Success;
+ 8008044:	2301      	movs	r3, #1
+ 8008046:	73fb      	strb	r3, [r7, #15]
+    for(PortId = INITIALIZE_ZERO; PortId < NUM_OF_PORTS; PortId++)
+ 8008048:	7bbb      	ldrb	r3, [r7, #14]
+ 800804a:	3301      	adds	r3, #1
+ 800804c:	73bb      	strb	r3, [r7, #14]
+ 800804e:	7bbb      	ldrb	r3, [r7, #14]
+ 8008050:	2b05      	cmp	r3, #5
+ 8008052:	f67f af7a 	bls.w	8007f4a <Write_Registers_Configuration+0x102>
+        {
+            /* The Port is not used Do nothing */
+        }
+    }
+
+    return Return_Status;
+ 8008056:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 8008058:	4618      	mov	r0, r3
+ 800805a:	3714      	adds	r7, #20
+ 800805c:	46bd      	mov	sp, r7
+ 800805e:	bc80      	pop	{r7}
+ 8008060:	4770      	bx	lr
+ 8008062:	bf00      	nop
+ 8008064:	20002000 	.word	0x20002000
+
+08008068 <Port_Lock_Init>:
+ | Reentrunt:                                                                              |
+ | Size :                                                                                  |
+ | Excution Time : TBD                                                                     |
+ |_________________________________________________________________________________________*/
+DataType_Request_Status Port_Lock_Init(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION], DataType_Gpio_Registers Registers_Table[MAX_PORT_CONFIGURATION])
+{
+ 8008068:	b480      	push	{r7}
+ 800806a:	b087      	sub	sp, #28
+ 800806c:	af00      	add	r7, sp, #0
+ 800806e:	6078      	str	r0, [r7, #4]
+ 8008070:	6039      	str	r1, [r7, #0]
+    DataType_u8 Index;
+    DataType_u8 PortId;
+    DataType_u32 Dummy_Value = INITIALIZE_ZERO;
+ 8008072:	2300      	movs	r3, #0
+ 8008074:	613b      	str	r3, [r7, #16]
+    DataType_Request_Status Return_Status = Busy;
+ 8008076:	2303      	movs	r3, #3
+ 8008078:	75bb      	strb	r3, [r7, #22]
+
+    for(Index = INITIALIZE_ZERO; Index < PORT_CFG; Index++)
+ 800807a:	2300      	movs	r3, #0
+ 800807c:	75fb      	strb	r3, [r7, #23]
+ 800807e:	e064      	b.n	800814a <Port_Lock_Init+0xe2>
+    {
+        if(Port_Lock_Configuration_Table[Index].Port_Configuration_Lock_Key == Active)
+ 8008080:	2300      	movs	r3, #0
+ 8008082:	2b01      	cmp	r3, #1
+ 8008084:	d15e      	bne.n	8008144 <Port_Lock_Init+0xdc>
+        {
+            DataType_u32 Configuration_Lock_Register = 0;
+ 8008086:	2300      	movs	r3, #0
+ 8008088:	60fb      	str	r3, [r7, #12]
+            PortId = Port_Lock_Configuration_Table[Index].Port_Id;
+ 800808a:	2300      	movs	r3, #0
+ 800808c:	72fb      	strb	r3, [r7, #11]
+
+            Registers_Table[PortId]->Gpio_Lckr = Registers_Shadow[PortId].Gpio_Lckr | (REG_LOCK_KEY_ACTIVE_MASK);
+ 800808e:	7afa      	ldrb	r2, [r7, #11]
+ 8008090:	4613      	mov	r3, r2
+ 8008092:	009b      	lsls	r3, r3, #2
+ 8008094:	4413      	add	r3, r2
+ 8008096:	00db      	lsls	r3, r3, #3
+ 8008098:	461a      	mov	r2, r3
+ 800809a:	687b      	ldr	r3, [r7, #4]
+ 800809c:	4413      	add	r3, r2
+ 800809e:	69da      	ldr	r2, [r3, #28]
+ 80080a0:	7afb      	ldrb	r3, [r7, #11]
+ 80080a2:	009b      	lsls	r3, r3, #2
+ 80080a4:	6839      	ldr	r1, [r7, #0]
+ 80080a6:	440b      	add	r3, r1
+ 80080a8:	681b      	ldr	r3, [r3, #0]
+ 80080aa:	f442 3280 	orr.w	r2, r2, #65536	@ 0x10000
+ 80080ae:	61da      	str	r2, [r3, #28]
+
+            Registers_Table[PortId]->Gpio_Lckr = Registers_Shadow[PortId].Gpio_Lckr & (REG_LOCK_KEY_NOTACTIVE_MASK);
+ 80080b0:	7afa      	ldrb	r2, [r7, #11]
+ 80080b2:	4613      	mov	r3, r2
+ 80080b4:	009b      	lsls	r3, r3, #2
+ 80080b6:	4413      	add	r3, r2
+ 80080b8:	00db      	lsls	r3, r3, #3
+ 80080ba:	461a      	mov	r2, r3
+ 80080bc:	687b      	ldr	r3, [r7, #4]
+ 80080be:	4413      	add	r3, r2
+ 80080c0:	69da      	ldr	r2, [r3, #28]
+ 80080c2:	7afb      	ldrb	r3, [r7, #11]
+ 80080c4:	009b      	lsls	r3, r3, #2
+ 80080c6:	6839      	ldr	r1, [r7, #0]
+ 80080c8:	440b      	add	r3, r1
+ 80080ca:	681b      	ldr	r3, [r3, #0]
+ 80080cc:	f422 3280 	bic.w	r2, r2, #65536	@ 0x10000
+ 80080d0:	61da      	str	r2, [r3, #28]
+
+            Registers_Table[PortId]->Gpio_Lckr = Registers_Shadow[PortId].Gpio_Lckr | (REG_LOCK_KEY_ACTIVE_MASK);
+ 80080d2:	7afa      	ldrb	r2, [r7, #11]
+ 80080d4:	4613      	mov	r3, r2
+ 80080d6:	009b      	lsls	r3, r3, #2
+ 80080d8:	4413      	add	r3, r2
+ 80080da:	00db      	lsls	r3, r3, #3
+ 80080dc:	461a      	mov	r2, r3
+ 80080de:	687b      	ldr	r3, [r7, #4]
+ 80080e0:	4413      	add	r3, r2
+ 80080e2:	69da      	ldr	r2, [r3, #28]
+ 80080e4:	7afb      	ldrb	r3, [r7, #11]
+ 80080e6:	009b      	lsls	r3, r3, #2
+ 80080e8:	6839      	ldr	r1, [r7, #0]
+ 80080ea:	440b      	add	r3, r1
+ 80080ec:	681b      	ldr	r3, [r3, #0]
+ 80080ee:	f442 3280 	orr.w	r2, r2, #65536	@ 0x10000
+ 80080f2:	61da      	str	r2, [r3, #28]
+
+            Configuration_Lock_Register = Registers_Table[PortId]->Gpio_Lckr;
+ 80080f4:	7afb      	ldrb	r3, [r7, #11]
+ 80080f6:	009b      	lsls	r3, r3, #2
+ 80080f8:	683a      	ldr	r2, [r7, #0]
+ 80080fa:	4413      	add	r3, r2
+ 80080fc:	681b      	ldr	r3, [r3, #0]
+ 80080fe:	69db      	ldr	r3, [r3, #28]
+ 8008100:	60fb      	str	r3, [r7, #12]
+
+            Configuration_Lock_Register = ((Registers_Table[PortId]->Gpio_Lckr & REG_LCKR_LCKK_MASK) >> REG_LCKR_LCKK_BIT);
+ 8008102:	7afb      	ldrb	r3, [r7, #11]
+ 8008104:	009b      	lsls	r3, r3, #2
+ 8008106:	683a      	ldr	r2, [r7, #0]
+ 8008108:	4413      	add	r3, r2
+ 800810a:	681b      	ldr	r3, [r3, #0]
+ 800810c:	69db      	ldr	r3, [r3, #28]
+ 800810e:	0c1b      	lsrs	r3, r3, #16
+ 8008110:	f003 0301 	and.w	r3, r3, #1
+ 8008114:	60fb      	str	r3, [r7, #12]
+
+            if( ((Configuration_Lock_Register & REG_LCKR_LCKK_MASK) >> REG_LCKR_LCKK_BIT) == Active)
+ 8008116:	68fb      	ldr	r3, [r7, #12]
+ 8008118:	f403 3380 	and.w	r3, r3, #65536	@ 0x10000
+ 800811c:	2b00      	cmp	r3, #0
+ 800811e:	d008      	beq.n	8008132 <Port_Lock_Init+0xca>
+            {
+                Port_Lock_Key_Status_Table[Index].Port_Key_Status = Key_Locked;
+ 8008120:	7dfb      	ldrb	r3, [r7, #23]
+ 8008122:	4a0e      	ldr	r2, [pc, #56]	@ (800815c <Port_Lock_Init+0xf4>)
+ 8008124:	005b      	lsls	r3, r3, #1
+ 8008126:	4413      	add	r3, r2
+ 8008128:	2201      	movs	r2, #1
+ 800812a:	705a      	strb	r2, [r3, #1]
+                Return_Status = Success;
+ 800812c:	2301      	movs	r3, #1
+ 800812e:	75bb      	strb	r3, [r7, #22]
+ 8008130:	e008      	b.n	8008144 <Port_Lock_Init+0xdc>
+            }
+            else
+            {
+                Port_Lock_Key_Status_Table[Index].Port_Key_Status = Key_Error;
+ 8008132:	7dfb      	ldrb	r3, [r7, #23]
+ 8008134:	4a09      	ldr	r2, [pc, #36]	@ (800815c <Port_Lock_Init+0xf4>)
+ 8008136:	005b      	lsls	r3, r3, #1
+ 8008138:	4413      	add	r3, r2
+ 800813a:	2202      	movs	r2, #2
+ 800813c:	705a      	strb	r2, [r3, #1]
+                Return_Status = Error;
+ 800813e:	2307      	movs	r3, #7
+ 8008140:	75bb      	strb	r3, [r7, #22]
+                break;
+ 8008142:	e005      	b.n	8008150 <Port_Lock_Init+0xe8>
+    for(Index = INITIALIZE_ZERO; Index < PORT_CFG; Index++)
+ 8008144:	7dfb      	ldrb	r3, [r7, #23]
+ 8008146:	3301      	adds	r3, #1
+ 8008148:	75fb      	strb	r3, [r7, #23]
+ 800814a:	7dfb      	ldrb	r3, [r7, #23]
+ 800814c:	2b00      	cmp	r3, #0
+ 800814e:	d097      	beq.n	8008080 <Port_Lock_Init+0x18>
+            /* Do Nothing */
+        }
+
+    }
+
+    return Return_Status;
+ 8008150:	7dbb      	ldrb	r3, [r7, #22]
+}
+ 8008152:	4618      	mov	r0, r3
+ 8008154:	371c      	adds	r7, #28
+ 8008156:	46bd      	mov	sp, r7
+ 8008158:	bc80      	pop	{r7}
+ 800815a:	4770      	bx	lr
+ 800815c:	20000000 	.word	0x20000000
+
+08008160 <GPIO_DeInitialization>:
+
+DataType_Request_Status GPIO_DeInitialization()
+{
+ 8008160:	b480      	push	{r7}
+ 8008162:	af00      	add	r7, sp, #0
+
+}
+ 8008164:	bf00      	nop
+ 8008166:	4618      	mov	r0, r3
+ 8008168:	46bd      	mov	sp, r7
+ 800816a:	bc80      	pop	{r7}
+ 800816c:	4770      	bx	lr
+
+0800816e <GPIO_Enter_SafeState>:
+
+DataType_Request_Status GPIO_Enter_SafeState()
+{
+ 800816e:	b480      	push	{r7}
+ 8008170:	af00      	add	r7, sp, #0
+
+}
+ 8008172:	bf00      	nop
+ 8008174:	4618      	mov	r0, r3
+ 8008176:	46bd      	mov	sp, r7
+ 8008178:	bc80      	pop	{r7}
+ 800817a:	4770      	bx	lr
+
+0800817c <GPIO_Set_Module_State>:
+
+DataType_Validity Is_State_Valid(DataType_u32 State);
+
+
+DataType_Request_Status GPIO_Set_Module_State(DataType_u32 State)
+{
+ 800817c:	b580      	push	{r7, lr}
+ 800817e:	b084      	sub	sp, #16
+ 8008180:	af00      	add	r7, sp, #0
+ 8008182:	6078      	str	r0, [r7, #4]
+    DataType_Request_Status Return_Status = Unkown;
+ 8008184:	2300      	movs	r3, #0
+ 8008186:	73fb      	strb	r3, [r7, #15]
+
+    if (Is_State_Valid(State) != Valid)
+ 8008188:	6878      	ldr	r0, [r7, #4]
+ 800818a:	f000 f9b9 	bl	8008500 <Is_State_Valid>
+ 800818e:	4603      	mov	r3, r0
+ 8008190:	2b01      	cmp	r3, #1
+ 8008192:	d002      	beq.n	800819a <GPIO_Set_Module_State+0x1e>
+    {
+        Return_Status = Invalid_Parameter;
+ 8008194:	2305      	movs	r3, #5
+ 8008196:	73fb      	strb	r3, [r7, #15]
+ 8008198:	e004      	b.n	80081a4 <GPIO_Set_Module_State+0x28>
+    }
+    else
+    {
+        GPIO_PROTECT_SECTION();
+        GPIO_Module_State = State;
+ 800819a:	4a05      	ldr	r2, [pc, #20]	@ (80081b0 <GPIO_Set_Module_State+0x34>)
+ 800819c:	687b      	ldr	r3, [r7, #4]
+ 800819e:	6013      	str	r3, [r2, #0]
+        GPIO_UNPROTECT_SECTION();
+
+        Return_Status = Success;
+ 80081a0:	2301      	movs	r3, #1
+ 80081a2:	73fb      	strb	r3, [r7, #15]
+    }
+
+    return Return_Status;
+ 80081a4:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 80081a6:	4618      	mov	r0, r3
+ 80081a8:	3710      	adds	r7, #16
+ 80081aa:	46bd      	mov	sp, r7
+ 80081ac:	bd80      	pop	{r7, pc}
+ 80081ae:	bf00      	nop
+ 80081b0:	20002008 	.word	0x20002008
+
+080081b4 <GPIO_Get_Module_State>:
+
+DataType_Request_Status GPIO_Get_Module_State(DataType_u32Ptr State)
+{
+ 80081b4:	b480      	push	{r7}
+ 80081b6:	b085      	sub	sp, #20
+ 80081b8:	af00      	add	r7, sp, #0
+ 80081ba:	6078      	str	r0, [r7, #4]
+    DataType_Request_Status Return_Status = Unkown;
+ 80081bc:	2300      	movs	r3, #0
+ 80081be:	73fb      	strb	r3, [r7, #15]
+
+    if (State == NULL_PTR)
+ 80081c0:	687b      	ldr	r3, [r7, #4]
+ 80081c2:	2b00      	cmp	r3, #0
+ 80081c4:	d102      	bne.n	80081cc <GPIO_Get_Module_State+0x18>
+    {
+        Return_Status = Null_Pointer;
+ 80081c6:	2306      	movs	r3, #6
+ 80081c8:	73fb      	strb	r3, [r7, #15]
+ 80081ca:	e005      	b.n	80081d8 <GPIO_Get_Module_State+0x24>
+    }
+    else
+    {
+        GPIO_PROTECT_SECTION();
+        *State = GPIO_Module_State;
+ 80081cc:	4b05      	ldr	r3, [pc, #20]	@ (80081e4 <GPIO_Get_Module_State+0x30>)
+ 80081ce:	681a      	ldr	r2, [r3, #0]
+ 80081d0:	687b      	ldr	r3, [r7, #4]
+ 80081d2:	601a      	str	r2, [r3, #0]
+        GPIO_UNPROTECT_SECTION();
+
+        Return_Status = Success;
+ 80081d4:	2301      	movs	r3, #1
+ 80081d6:	73fb      	strb	r3, [r7, #15]
+    }
+
+    return Return_Status;
+ 80081d8:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 80081da:	4618      	mov	r0, r3
+ 80081dc:	3714      	adds	r7, #20
+ 80081de:	46bd      	mov	sp, r7
+ 80081e0:	bc80      	pop	{r7}
+ 80081e2:	4770      	bx	lr
+ 80081e4:	20002008 	.word	0x20002008
+
+080081e8 <GPIO_Write_Pin>:
+
+DataType_Request_Status GPIO_Write_Pin(DataType_u16 SignalId, DataType_Output_Level SignalValue)
+{
+ 80081e8:	b480      	push	{r7}
+ 80081ea:	b085      	sub	sp, #20
+ 80081ec:	af00      	add	r7, sp, #0
+ 80081ee:	4603      	mov	r3, r0
+ 80081f0:	460a      	mov	r2, r1
+ 80081f2:	80fb      	strh	r3, [r7, #6]
+ 80081f4:	4613      	mov	r3, r2
+ 80081f6:	717b      	strb	r3, [r7, #5]
+    DataType_Request_Status Return_Status = Unkown;
+ 80081f8:	2300      	movs	r3, #0
+ 80081fa:	73fb      	strb	r3, [r7, #15]
+
+    if(GPIO_Module_State != STATE_READY)
+ 80081fc:	4b28      	ldr	r3, [pc, #160]	@ (80082a0 <GPIO_Write_Pin+0xb8>)
+ 80081fe:	681b      	ldr	r3, [r3, #0]
+ 8008200:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 8008204:	d002      	beq.n	800820c <GPIO_Write_Pin+0x24>
+    {
+        Return_Status = Invalid;
+ 8008206:	2304      	movs	r3, #4
+ 8008208:	73fb      	strb	r3, [r7, #15]
+ 800820a:	e042      	b.n	8008292 <GPIO_Write_Pin+0xaa>
+    }
+    else
+    {
+        if(SignalId >= PIN_CFG)
+ 800820c:	88fb      	ldrh	r3, [r7, #6]
+ 800820e:	2b00      	cmp	r3, #0
+ 8008210:	d002      	beq.n	8008218 <GPIO_Write_Pin+0x30>
+        {
+            Return_Status = Invalid_Parameter;
+ 8008212:	2305      	movs	r3, #5
+ 8008214:	73fb      	strb	r3, [r7, #15]
+ 8008216:	e03c      	b.n	8008292 <GPIO_Write_Pin+0xaa>
+        }
+        else
+        {
+            DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
+ 8008218:	88fa      	ldrh	r2, [r7, #6]
+ 800821a:	4922      	ldr	r1, [pc, #136]	@ (80082a4 <GPIO_Write_Pin+0xbc>)
+ 800821c:	4613      	mov	r3, r2
+ 800821e:	00db      	lsls	r3, r3, #3
+ 8008220:	4413      	add	r3, r2
+ 8008222:	440b      	add	r3, r1
+ 8008224:	781b      	ldrb	r3, [r3, #0]
+ 8008226:	73bb      	strb	r3, [r7, #14]
+            DataType_Pin_Number PinId = Pin_Configuration_Table[SignalId].Pin_Id;
+ 8008228:	88fa      	ldrh	r2, [r7, #6]
+ 800822a:	491e      	ldr	r1, [pc, #120]	@ (80082a4 <GPIO_Write_Pin+0xbc>)
+ 800822c:	4613      	mov	r3, r2
+ 800822e:	00db      	lsls	r3, r3, #3
+ 8008230:	4413      	add	r3, r2
+ 8008232:	440b      	add	r3, r1
+ 8008234:	3301      	adds	r3, #1
+ 8008236:	781b      	ldrb	r3, [r3, #0]
+ 8008238:	737b      	strb	r3, [r7, #13]
+
+            if(SignalValue == High)
+ 800823a:	797b      	ldrb	r3, [r7, #5]
+ 800823c:	2b01      	cmp	r3, #1
+ 800823e:	d110      	bne.n	8008262 <GPIO_Write_Pin+0x7a>
+            {
+                GPIO_ENTER_CRITICAL_SECTION();
+    
+                Registers_Table[PortId]->Gpio_Odr |= (IO_PIN_MASK << PinId);
+ 8008240:	7bbb      	ldrb	r3, [r7, #14]
+ 8008242:	4a19      	ldr	r2, [pc, #100]	@ (80082a8 <GPIO_Write_Pin+0xc0>)
+ 8008244:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 8008248:	6959      	ldr	r1, [r3, #20]
+ 800824a:	7b7b      	ldrb	r3, [r7, #13]
+ 800824c:	2201      	movs	r2, #1
+ 800824e:	409a      	lsls	r2, r3
+ 8008250:	7bbb      	ldrb	r3, [r7, #14]
+ 8008252:	4815      	ldr	r0, [pc, #84]	@ (80082a8 <GPIO_Write_Pin+0xc0>)
+ 8008254:	f850 3023 	ldr.w	r3, [r0, r3, lsl #2]
+ 8008258:	430a      	orrs	r2, r1
+ 800825a:	615a      	str	r2, [r3, #20]
+                Return_Status = Success;
+ 800825c:	2301      	movs	r3, #1
+ 800825e:	73fb      	strb	r3, [r7, #15]
+ 8008260:	e017      	b.n	8008292 <GPIO_Write_Pin+0xaa>
+            
+                GPIO_EXIT_CRITICAL_SECTION();
+            }
+
+            else if(SignalValue == Low)
+ 8008262:	797b      	ldrb	r3, [r7, #5]
+ 8008264:	2b00      	cmp	r3, #0
+ 8008266:	d112      	bne.n	800828e <GPIO_Write_Pin+0xa6>
+            {
+                GPIO_ENTER_CRITICAL_SECTION();
+    
+                Registers_Table[PortId]->Gpio_Odr &= ~(IO_PIN_MASK << PinId);
+ 8008268:	7bbb      	ldrb	r3, [r7, #14]
+ 800826a:	4a0f      	ldr	r2, [pc, #60]	@ (80082a8 <GPIO_Write_Pin+0xc0>)
+ 800826c:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 8008270:	6959      	ldr	r1, [r3, #20]
+ 8008272:	7b7b      	ldrb	r3, [r7, #13]
+ 8008274:	2201      	movs	r2, #1
+ 8008276:	fa02 f303 	lsl.w	r3, r2, r3
+ 800827a:	43da      	mvns	r2, r3
+ 800827c:	7bbb      	ldrb	r3, [r7, #14]
+ 800827e:	480a      	ldr	r0, [pc, #40]	@ (80082a8 <GPIO_Write_Pin+0xc0>)
+ 8008280:	f850 3023 	ldr.w	r3, [r0, r3, lsl #2]
+ 8008284:	400a      	ands	r2, r1
+ 8008286:	615a      	str	r2, [r3, #20]
+                Return_Status = Success;
+ 8008288:	2301      	movs	r3, #1
+ 800828a:	73fb      	strb	r3, [r7, #15]
+ 800828c:	e001      	b.n	8008292 <GPIO_Write_Pin+0xaa>
+            
+                GPIO_EXIT_CRITICAL_SECTION();
+            }
+            else
+            {
+                Return_Status = Invalid_Parameter;
+ 800828e:	2305      	movs	r3, #5
+ 8008290:	73fb      	strb	r3, [r7, #15]
+            }
+        }
+        
+    }
+    return Return_Status;
+ 8008292:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 8008294:	4618      	mov	r0, r3
+ 8008296:	3714      	adds	r7, #20
+ 8008298:	46bd      	mov	sp, r7
+ 800829a:	bc80      	pop	{r7}
+ 800829c:	4770      	bx	lr
+ 800829e:	bf00      	nop
+ 80082a0:	20002008 	.word	0x20002008
+ 80082a4:	08000200 	.word	0x08000200
+ 80082a8:	08000210 	.word	0x08000210
+
+080082ac <GPIO_Read_Pin>:
+
+DataType_Request_Status GPIO_Read_Pin(DataType_u16 SignalId , DataType_Output_Level* SignalValue)
+{
+ 80082ac:	b480      	push	{r7}
+ 80082ae:	b085      	sub	sp, #20
+ 80082b0:	af00      	add	r7, sp, #0
+ 80082b2:	4603      	mov	r3, r0
+ 80082b4:	6039      	str	r1, [r7, #0]
+ 80082b6:	80fb      	strh	r3, [r7, #6]
+    DataType_Request_Status Return_Status = Unkown;
+ 80082b8:	2300      	movs	r3, #0
+ 80082ba:	73fb      	strb	r3, [r7, #15]
+
+    if(GPIO_Module_State != STATE_READY)
+ 80082bc:	4b20      	ldr	r3, [pc, #128]	@ (8008340 <GPIO_Read_Pin+0x94>)
+ 80082be:	681b      	ldr	r3, [r3, #0]
+ 80082c0:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 80082c4:	d002      	beq.n	80082cc <GPIO_Read_Pin+0x20>
+    {
+        Return_Status = Invalid;
+ 80082c6:	2304      	movs	r3, #4
+ 80082c8:	73fb      	strb	r3, [r7, #15]
+ 80082ca:	e033      	b.n	8008334 <GPIO_Read_Pin+0x88>
+    }
+    else
+    {
+        if(SignalValue == NULL_PTR)
+ 80082cc:	683b      	ldr	r3, [r7, #0]
+ 80082ce:	2b00      	cmp	r3, #0
+ 80082d0:	d102      	bne.n	80082d8 <GPIO_Read_Pin+0x2c>
+        {
+            Return_Status = Null_Pointer;
+ 80082d2:	2306      	movs	r3, #6
+ 80082d4:	73fb      	strb	r3, [r7, #15]
+ 80082d6:	e02d      	b.n	8008334 <GPIO_Read_Pin+0x88>
+        }
+        else if(SignalId >= PIN_CFG)
+ 80082d8:	88fb      	ldrh	r3, [r7, #6]
+ 80082da:	2b00      	cmp	r3, #0
+ 80082dc:	d002      	beq.n	80082e4 <GPIO_Read_Pin+0x38>
+        {
+            Return_Status = Invalid_Parameter;
+ 80082de:	2305      	movs	r3, #5
+ 80082e0:	73fb      	strb	r3, [r7, #15]
+ 80082e2:	e027      	b.n	8008334 <GPIO_Read_Pin+0x88>
+        }
+        else
+        {
+            DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
+ 80082e4:	88fa      	ldrh	r2, [r7, #6]
+ 80082e6:	4917      	ldr	r1, [pc, #92]	@ (8008344 <GPIO_Read_Pin+0x98>)
+ 80082e8:	4613      	mov	r3, r2
+ 80082ea:	00db      	lsls	r3, r3, #3
+ 80082ec:	4413      	add	r3, r2
+ 80082ee:	440b      	add	r3, r1
+ 80082f0:	781b      	ldrb	r3, [r3, #0]
+ 80082f2:	73bb      	strb	r3, [r7, #14]
+            DataType_Pin_Number PinId = Pin_Configuration_Table[SignalId].Pin_Id;
+ 80082f4:	88fa      	ldrh	r2, [r7, #6]
+ 80082f6:	4913      	ldr	r1, [pc, #76]	@ (8008344 <GPIO_Read_Pin+0x98>)
+ 80082f8:	4613      	mov	r3, r2
+ 80082fa:	00db      	lsls	r3, r3, #3
+ 80082fc:	4413      	add	r3, r2
+ 80082fe:	440b      	add	r3, r1
+ 8008300:	3301      	adds	r3, #1
+ 8008302:	781b      	ldrb	r3, [r3, #0]
+ 8008304:	737b      	strb	r3, [r7, #13]
+            DataType_Register_Size32 Register_Reading = 0;
+ 8008306:	2300      	movs	r3, #0
+ 8008308:	60bb      	str	r3, [r7, #8]
+
+            Register_Reading = Registers_Table[PortId]->Gpio_Idr;
+ 800830a:	7bbb      	ldrb	r3, [r7, #14]
+ 800830c:	4a0e      	ldr	r2, [pc, #56]	@ (8008348 <GPIO_Read_Pin+0x9c>)
+ 800830e:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 8008312:	691b      	ldr	r3, [r3, #16]
+ 8008314:	60bb      	str	r3, [r7, #8]
+            *SignalValue = (Register_Reading & (IO_PIN_MASK << PinId)) ? High : Low;
+ 8008316:	7b7b      	ldrb	r3, [r7, #13]
+ 8008318:	2201      	movs	r2, #1
+ 800831a:	409a      	lsls	r2, r3
+ 800831c:	68bb      	ldr	r3, [r7, #8]
+ 800831e:	4013      	ands	r3, r2
+ 8008320:	2b00      	cmp	r3, #0
+ 8008322:	bf14      	ite	ne
+ 8008324:	2301      	movne	r3, #1
+ 8008326:	2300      	moveq	r3, #0
+ 8008328:	b2db      	uxtb	r3, r3
+ 800832a:	461a      	mov	r2, r3
+ 800832c:	683b      	ldr	r3, [r7, #0]
+ 800832e:	701a      	strb	r2, [r3, #0]
+            Return_Status = Success;
+ 8008330:	2301      	movs	r3, #1
+ 8008332:	73fb      	strb	r3, [r7, #15]
+        }
+        
+    }
+    return Return_Status;
+ 8008334:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 8008336:	4618      	mov	r0, r3
+ 8008338:	3714      	adds	r7, #20
+ 800833a:	46bd      	mov	sp, r7
+ 800833c:	bc80      	pop	{r7}
+ 800833e:	4770      	bx	lr
+ 8008340:	20002008 	.word	0x20002008
+ 8008344:	08000200 	.word	0x08000200
+ 8008348:	08000210 	.word	0x08000210
+
+0800834c <GPIO_Toggel_Pin>:
+
+DataType_Request_Status GPIO_Toggel_Pin(DataType_u16 SignalId)
+{
+ 800834c:	b480      	push	{r7}
+ 800834e:	b085      	sub	sp, #20
+ 8008350:	af00      	add	r7, sp, #0
+ 8008352:	4603      	mov	r3, r0
+ 8008354:	80fb      	strh	r3, [r7, #6]
+    DataType_Request_Status Return_Status = Unkown;
+ 8008356:	2300      	movs	r3, #0
+ 8008358:	73fb      	strb	r3, [r7, #15]
+
+    if(GPIO_Module_State != STATE_READY)
+ 800835a:	4b1a      	ldr	r3, [pc, #104]	@ (80083c4 <GPIO_Toggel_Pin+0x78>)
+ 800835c:	681b      	ldr	r3, [r3, #0]
+ 800835e:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 8008362:	d002      	beq.n	800836a <GPIO_Toggel_Pin+0x1e>
+    {
+        Return_Status = Invalid;
+ 8008364:	2304      	movs	r3, #4
+ 8008366:	73fb      	strb	r3, [r7, #15]
+ 8008368:	e026      	b.n	80083b8 <GPIO_Toggel_Pin+0x6c>
+    }
+    else
+    {
+        if(SignalId >= PIN_CFG)
+ 800836a:	88fb      	ldrh	r3, [r7, #6]
+ 800836c:	2b00      	cmp	r3, #0
+ 800836e:	d002      	beq.n	8008376 <GPIO_Toggel_Pin+0x2a>
+        {
+            Return_Status = Invalid_Parameter;
+ 8008370:	2305      	movs	r3, #5
+ 8008372:	73fb      	strb	r3, [r7, #15]
+ 8008374:	e020      	b.n	80083b8 <GPIO_Toggel_Pin+0x6c>
+        }
+        else
+        {
+            DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
+ 8008376:	88fa      	ldrh	r2, [r7, #6]
+ 8008378:	4913      	ldr	r1, [pc, #76]	@ (80083c8 <GPIO_Toggel_Pin+0x7c>)
+ 800837a:	4613      	mov	r3, r2
+ 800837c:	00db      	lsls	r3, r3, #3
+ 800837e:	4413      	add	r3, r2
+ 8008380:	440b      	add	r3, r1
+ 8008382:	781b      	ldrb	r3, [r3, #0]
+ 8008384:	73bb      	strb	r3, [r7, #14]
+            DataType_Pin_Number PinId = Pin_Configuration_Table[SignalId].Pin_Id;
+ 8008386:	88fa      	ldrh	r2, [r7, #6]
+ 8008388:	490f      	ldr	r1, [pc, #60]	@ (80083c8 <GPIO_Toggel_Pin+0x7c>)
+ 800838a:	4613      	mov	r3, r2
+ 800838c:	00db      	lsls	r3, r3, #3
+ 800838e:	4413      	add	r3, r2
+ 8008390:	440b      	add	r3, r1
+ 8008392:	3301      	adds	r3, #1
+ 8008394:	781b      	ldrb	r3, [r3, #0]
+ 8008396:	737b      	strb	r3, [r7, #13]
+
+            GPIO_ENTER_CRITICAL_SECTION();
+
+            Registers_Table[PortId]->Gpio_Odr ^= (IO_PIN_MASK << PinId);
+ 8008398:	7bbb      	ldrb	r3, [r7, #14]
+ 800839a:	4a0c      	ldr	r2, [pc, #48]	@ (80083cc <GPIO_Toggel_Pin+0x80>)
+ 800839c:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 80083a0:	6959      	ldr	r1, [r3, #20]
+ 80083a2:	7b7b      	ldrb	r3, [r7, #13]
+ 80083a4:	2201      	movs	r2, #1
+ 80083a6:	409a      	lsls	r2, r3
+ 80083a8:	7bbb      	ldrb	r3, [r7, #14]
+ 80083aa:	4808      	ldr	r0, [pc, #32]	@ (80083cc <GPIO_Toggel_Pin+0x80>)
+ 80083ac:	f850 3023 	ldr.w	r3, [r0, r3, lsl #2]
+ 80083b0:	404a      	eors	r2, r1
+ 80083b2:	615a      	str	r2, [r3, #20]
+            Return_Status = Success;
+ 80083b4:	2301      	movs	r3, #1
+ 80083b6:	73fb      	strb	r3, [r7, #15]
+        
+            GPIO_EXIT_CRITICAL_SECTION();
+        }
+        
+    }
+    return Return_Status;
+ 80083b8:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 80083ba:	4618      	mov	r0, r3
+ 80083bc:	3714      	adds	r7, #20
+ 80083be:	46bd      	mov	sp, r7
+ 80083c0:	bc80      	pop	{r7}
+ 80083c2:	4770      	bx	lr
+ 80083c4:	20002008 	.word	0x20002008
+ 80083c8:	08000200 	.word	0x08000200
+ 80083cc:	08000210 	.word	0x08000210
+
+080083d0 <GPIO_Set_Pin>:
+
+DataType_Request_Status GPIO_Set_Pin(DataType_u16 SignalId, DataType_Output_Level SignalValue)
+{
+ 80083d0:	b480      	push	{r7}
+ 80083d2:	b085      	sub	sp, #20
+ 80083d4:	af00      	add	r7, sp, #0
+ 80083d6:	4603      	mov	r3, r0
+ 80083d8:	460a      	mov	r2, r1
+ 80083da:	80fb      	strh	r3, [r7, #6]
+ 80083dc:	4613      	mov	r3, r2
+ 80083de:	717b      	strb	r3, [r7, #5]
+    DataType_Request_Status Return_Status = Unkown;
+ 80083e0:	2300      	movs	r3, #0
+ 80083e2:	73fb      	strb	r3, [r7, #15]
+    
+    if(GPIO_Module_State != STATE_READY )
+ 80083e4:	4b1d      	ldr	r3, [pc, #116]	@ (800845c <GPIO_Set_Pin+0x8c>)
+ 80083e6:	681b      	ldr	r3, [r3, #0]
+ 80083e8:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 80083ec:	d002      	beq.n	80083f4 <GPIO_Set_Pin+0x24>
+    {
+        Return_Status = Invalid;
+ 80083ee:	2304      	movs	r3, #4
+ 80083f0:	73fb      	strb	r3, [r7, #15]
+ 80083f2:	e02c      	b.n	800844e <GPIO_Set_Pin+0x7e>
+    }
+    else
+    {
+        if(SignalId >= PIN_CFG)
+ 80083f4:	88fb      	ldrh	r3, [r7, #6]
+ 80083f6:	2b00      	cmp	r3, #0
+ 80083f8:	d002      	beq.n	8008400 <GPIO_Set_Pin+0x30>
+        {
+            Return_Status = Invalid_Parameter;
+ 80083fa:	2305      	movs	r3, #5
+ 80083fc:	73fb      	strb	r3, [r7, #15]
+ 80083fe:	e026      	b.n	800844e <GPIO_Set_Pin+0x7e>
+        }
+        else
+        {
+            DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
+ 8008400:	88fa      	ldrh	r2, [r7, #6]
+ 8008402:	4917      	ldr	r1, [pc, #92]	@ (8008460 <GPIO_Set_Pin+0x90>)
+ 8008404:	4613      	mov	r3, r2
+ 8008406:	00db      	lsls	r3, r3, #3
+ 8008408:	4413      	add	r3, r2
+ 800840a:	440b      	add	r3, r1
+ 800840c:	781b      	ldrb	r3, [r3, #0]
+ 800840e:	73bb      	strb	r3, [r7, #14]
+            DataType_Pin_Number PinId = Pin_Configuration_Table[SignalId].Pin_Id;
+ 8008410:	88fa      	ldrh	r2, [r7, #6]
+ 8008412:	4913      	ldr	r1, [pc, #76]	@ (8008460 <GPIO_Set_Pin+0x90>)
+ 8008414:	4613      	mov	r3, r2
+ 8008416:	00db      	lsls	r3, r3, #3
+ 8008418:	4413      	add	r3, r2
+ 800841a:	440b      	add	r3, r1
+ 800841c:	3301      	adds	r3, #1
+ 800841e:	781b      	ldrb	r3, [r3, #0]
+ 8008420:	737b      	strb	r3, [r7, #13]
+    
+            if(SignalValue == High)
+ 8008422:	797b      	ldrb	r3, [r7, #5]
+ 8008424:	2b01      	cmp	r3, #1
+ 8008426:	d110      	bne.n	800844a <GPIO_Set_Pin+0x7a>
+            {
+                Registers_Table[PortId]->Gpio_Bsrr |= (IO_PIN_MASK << PinId);
+ 8008428:	7bbb      	ldrb	r3, [r7, #14]
+ 800842a:	4a0e      	ldr	r2, [pc, #56]	@ (8008464 <GPIO_Set_Pin+0x94>)
+ 800842c:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 8008430:	6999      	ldr	r1, [r3, #24]
+ 8008432:	7b7b      	ldrb	r3, [r7, #13]
+ 8008434:	2201      	movs	r2, #1
+ 8008436:	409a      	lsls	r2, r3
+ 8008438:	7bbb      	ldrb	r3, [r7, #14]
+ 800843a:	480a      	ldr	r0, [pc, #40]	@ (8008464 <GPIO_Set_Pin+0x94>)
+ 800843c:	f850 3023 	ldr.w	r3, [r0, r3, lsl #2]
+ 8008440:	430a      	orrs	r2, r1
+ 8008442:	619a      	str	r2, [r3, #24]
+                Return_Status = Success;
+ 8008444:	2301      	movs	r3, #1
+ 8008446:	73fb      	strb	r3, [r7, #15]
+ 8008448:	e001      	b.n	800844e <GPIO_Set_Pin+0x7e>
+            }
+            else
+            {
+                Return_Status = Invalid_Parameter;
+ 800844a:	2305      	movs	r3, #5
+ 800844c:	73fb      	strb	r3, [r7, #15]
+            }
+        }
+    }
+
+    return Return_Status;
+ 800844e:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 8008450:	4618      	mov	r0, r3
+ 8008452:	3714      	adds	r7, #20
+ 8008454:	46bd      	mov	sp, r7
+ 8008456:	bc80      	pop	{r7}
+ 8008458:	4770      	bx	lr
+ 800845a:	bf00      	nop
+ 800845c:	20002008 	.word	0x20002008
+ 8008460:	08000200 	.word	0x08000200
+ 8008464:	08000210 	.word	0x08000210
+
+08008468 <GPIO_Reset_Pin>:
+
+DataType_Request_Status GPIO_Reset_Pin(DataType_u16 SignalId, DataType_Output_Level SignalValue)
+{
+ 8008468:	b480      	push	{r7}
+ 800846a:	b085      	sub	sp, #20
+ 800846c:	af00      	add	r7, sp, #0
+ 800846e:	4603      	mov	r3, r0
+ 8008470:	460a      	mov	r2, r1
+ 8008472:	80fb      	strh	r3, [r7, #6]
+ 8008474:	4613      	mov	r3, r2
+ 8008476:	717b      	strb	r3, [r7, #5]
+    DataType_Request_Status Return_Status = Unkown;
+ 8008478:	2300      	movs	r3, #0
+ 800847a:	73fb      	strb	r3, [r7, #15]
+    
+    if(GPIO_Module_State != STATE_READY )
+ 800847c:	4b1d      	ldr	r3, [pc, #116]	@ (80084f4 <GPIO_Reset_Pin+0x8c>)
+ 800847e:	681b      	ldr	r3, [r3, #0]
+ 8008480:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 8008484:	d002      	beq.n	800848c <GPIO_Reset_Pin+0x24>
+    {
+        Return_Status = Invalid;
+ 8008486:	2304      	movs	r3, #4
+ 8008488:	73fb      	strb	r3, [r7, #15]
+ 800848a:	e02d      	b.n	80084e8 <GPIO_Reset_Pin+0x80>
+    }
+    else
+    {
+        if(SignalId >= PIN_CFG)
+ 800848c:	88fb      	ldrh	r3, [r7, #6]
+ 800848e:	2b00      	cmp	r3, #0
+ 8008490:	d002      	beq.n	8008498 <GPIO_Reset_Pin+0x30>
+        {
+            Return_Status = Invalid_Parameter;
+ 8008492:	2305      	movs	r3, #5
+ 8008494:	73fb      	strb	r3, [r7, #15]
+ 8008496:	e027      	b.n	80084e8 <GPIO_Reset_Pin+0x80>
+        }
+        else
+        {
+            DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
+ 8008498:	88fa      	ldrh	r2, [r7, #6]
+ 800849a:	4917      	ldr	r1, [pc, #92]	@ (80084f8 <GPIO_Reset_Pin+0x90>)
+ 800849c:	4613      	mov	r3, r2
+ 800849e:	00db      	lsls	r3, r3, #3
+ 80084a0:	4413      	add	r3, r2
+ 80084a2:	440b      	add	r3, r1
+ 80084a4:	781b      	ldrb	r3, [r3, #0]
+ 80084a6:	73bb      	strb	r3, [r7, #14]
+            DataType_Pin_Number PinId  = Pin_Configuration_Table[SignalId].Pin_Id;
+ 80084a8:	88fa      	ldrh	r2, [r7, #6]
+ 80084aa:	4913      	ldr	r1, [pc, #76]	@ (80084f8 <GPIO_Reset_Pin+0x90>)
+ 80084ac:	4613      	mov	r3, r2
+ 80084ae:	00db      	lsls	r3, r3, #3
+ 80084b0:	4413      	add	r3, r2
+ 80084b2:	440b      	add	r3, r1
+ 80084b4:	3301      	adds	r3, #1
+ 80084b6:	781b      	ldrb	r3, [r3, #0]
+ 80084b8:	737b      	strb	r3, [r7, #13]
+    
+            if(SignalValue == Low)
+ 80084ba:	797b      	ldrb	r3, [r7, #5]
+ 80084bc:	2b00      	cmp	r3, #0
+ 80084be:	d111      	bne.n	80084e4 <GPIO_Reset_Pin+0x7c>
+            {
+                Registers_Table[PortId]->Gpio_Bsrr |= (IO_PIN_MASK << (PinId + REG_BSRR_RESET_BITS_OFFSET));
+ 80084c0:	7bbb      	ldrb	r3, [r7, #14]
+ 80084c2:	4a0e      	ldr	r2, [pc, #56]	@ (80084fc <GPIO_Reset_Pin+0x94>)
+ 80084c4:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 80084c8:	6999      	ldr	r1, [r3, #24]
+ 80084ca:	7b7b      	ldrb	r3, [r7, #13]
+ 80084cc:	3310      	adds	r3, #16
+ 80084ce:	2201      	movs	r2, #1
+ 80084d0:	409a      	lsls	r2, r3
+ 80084d2:	7bbb      	ldrb	r3, [r7, #14]
+ 80084d4:	4809      	ldr	r0, [pc, #36]	@ (80084fc <GPIO_Reset_Pin+0x94>)
+ 80084d6:	f850 3023 	ldr.w	r3, [r0, r3, lsl #2]
+ 80084da:	430a      	orrs	r2, r1
+ 80084dc:	619a      	str	r2, [r3, #24]
+                Return_Status = Success;
+ 80084de:	2301      	movs	r3, #1
+ 80084e0:	73fb      	strb	r3, [r7, #15]
+ 80084e2:	e001      	b.n	80084e8 <GPIO_Reset_Pin+0x80>
+            }
+            else
+            {
+                Return_Status = Invalid_Parameter;
+ 80084e4:	2305      	movs	r3, #5
+ 80084e6:	73fb      	strb	r3, [r7, #15]
+            }
+        }
+    }
+    return Return_Status;
+ 80084e8:	7bfb      	ldrb	r3, [r7, #15]
+}
+ 80084ea:	4618      	mov	r0, r3
+ 80084ec:	3714      	adds	r7, #20
+ 80084ee:	46bd      	mov	sp, r7
+ 80084f0:	bc80      	pop	{r7}
+ 80084f2:	4770      	bx	lr
+ 80084f4:	20002008 	.word	0x20002008
+ 80084f8:	08000200 	.word	0x08000200
+ 80084fc:	08000210 	.word	0x08000210
+
+08008500 <Is_State_Valid>:
+
+
+
+DataType_Validity Is_State_Valid(DataType_u32 State)
+{
+ 8008500:	b480      	push	{r7}
+ 8008502:	b085      	sub	sp, #20
+ 8008504:	af00      	add	r7, sp, #0
+ 8008506:	6078      	str	r0, [r7, #4]
+    DataType_Validity Return_Status = InValid;
+ 8008508:	2300      	movs	r3, #0
+ 800850a:	73fb      	strb	r3, [r7, #15]
+    switch(State)
+ 800850c:	687b      	ldr	r3, [r7, #4]
+ 800850e:	f1b3 3f99 	cmp.w	r3, #2576980377	@ 0x99999999
+ 8008512:	d042      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008514:	687b      	ldr	r3, [r7, #4]
+ 8008516:	f1b3 3f99 	cmp.w	r3, #2576980377	@ 0x99999999
+ 800851a:	d841      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800851c:	687b      	ldr	r3, [r7, #4]
+ 800851e:	f1b3 3f88 	cmp.w	r3, #2290649224	@ 0x88888888
+ 8008522:	d03a      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008524:	687b      	ldr	r3, [r7, #4]
+ 8008526:	f1b3 3f88 	cmp.w	r3, #2290649224	@ 0x88888888
+ 800852a:	d839      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800852c:	687b      	ldr	r3, [r7, #4]
+ 800852e:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 8008532:	d032      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008534:	687b      	ldr	r3, [r7, #4]
+ 8008536:	f1b3 3f77 	cmp.w	r3, #2004318071	@ 0x77777777
+ 800853a:	d831      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800853c:	687b      	ldr	r3, [r7, #4]
+ 800853e:	f1b3 3f66 	cmp.w	r3, #1717986918	@ 0x66666666
+ 8008542:	d02a      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008544:	687b      	ldr	r3, [r7, #4]
+ 8008546:	f1b3 3f66 	cmp.w	r3, #1717986918	@ 0x66666666
+ 800854a:	d829      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800854c:	687b      	ldr	r3, [r7, #4]
+ 800854e:	f1b3 3f55 	cmp.w	r3, #1431655765	@ 0x55555555
+ 8008552:	d022      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008554:	687b      	ldr	r3, [r7, #4]
+ 8008556:	f1b3 3f55 	cmp.w	r3, #1431655765	@ 0x55555555
+ 800855a:	d821      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800855c:	687b      	ldr	r3, [r7, #4]
+ 800855e:	f1b3 3f44 	cmp.w	r3, #1145324612	@ 0x44444444
+ 8008562:	d01a      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008564:	687b      	ldr	r3, [r7, #4]
+ 8008566:	f1b3 3f44 	cmp.w	r3, #1145324612	@ 0x44444444
+ 800856a:	d819      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800856c:	687b      	ldr	r3, [r7, #4]
+ 800856e:	f1b3 3f33 	cmp.w	r3, #858993459	@ 0x33333333
+ 8008572:	d012      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008574:	687b      	ldr	r3, [r7, #4]
+ 8008576:	f1b3 3f33 	cmp.w	r3, #858993459	@ 0x33333333
+ 800857a:	d811      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800857c:	687b      	ldr	r3, [r7, #4]
+ 800857e:	f1b3 3f22 	cmp.w	r3, #572662306	@ 0x22222222
+ 8008582:	d00a      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008584:	687b      	ldr	r3, [r7, #4]
+ 8008586:	f1b3 3f22 	cmp.w	r3, #572662306	@ 0x22222222
+ 800858a:	d809      	bhi.n	80085a0 <Is_State_Valid+0xa0>
+ 800858c:	687b      	ldr	r3, [r7, #4]
+ 800858e:	2b00      	cmp	r3, #0
+ 8008590:	d003      	beq.n	800859a <Is_State_Valid+0x9a>
+ 8008592:	687b      	ldr	r3, [r7, #4]
+ 8008594:	f1b3 3f11 	cmp.w	r3, #286331153	@ 0x11111111
+ 8008598:	d102      	bne.n	80085a0 <Is_State_Valid+0xa0>
+        case STATE_SLEEP:
+        case STATE_READY:
+        case STATE_BUSY:
+        case STATE_ERROR:
+        {
+            Return_Status = Valid;
+ 800859a:	2301      	movs	r3, #1
+ 800859c:	73fb      	strb	r3, [r7, #15]
+            break;
+ 800859e:	bf00      	nop
+        }
+        default:
+        { /* Do nothing */}
+    }
+    
+    return Return_Status;
+ 80085a0:	7bfb      	ldrb	r3, [r7, #15]
+ 80085a2:	4618      	mov	r0, r3
+ 80085a4:	3714      	adds	r7, #20
+ 80085a6:	46bd      	mov	sp, r7
+ 80085a8:	bc80      	pop	{r7}
+ 80085aa:	4770      	bx	lr
+
+080085ac <RESET_HANDLER>:
+/**********************************************************************************
+  *  Assmbly instruction: Reset Handler everything 
+  *  needs to be initialized before main write it here
+***********************************************************************************/
+RESET_HANDLER:
+    ldr r0, =__DATA_ADDRESS_BEGIN            /* Load .data start address memory section into register r0 */
+ 80085ac:	480f      	ldr	r0, [pc, #60]	@ (80085ec <DEFAULT_HANDLER+0x4>)
+    ldr r1, =__DATA_ADDRESS_END              /* Load .data end address memory section into register r1 */
+ 80085ae:	4910      	ldr	r1, [pc, #64]	@ (80085f0 <DEFAULT_HANDLER+0x8>)
+    ldr r2, =__DATA_LOAD_ADDRESS_BEGIN       /* Load .data_load start address memory section into register r2 */
+ 80085b0:	4a10      	ldr	r2, [pc, #64]	@ (80085f4 <DEFAULT_HANDLER+0xc>)
+
+080085b2 <MEM_DATA_COPY_LOOP>:
+
+MEM_DATA_COPY_LOOP:
+    cmp   r0, r1
+ 80085b2:	4288      	cmp	r0, r1
+    bcs   LOOP1_DONE
+ 80085b4:	d204      	bcs.n	80085c0 <LOOP1_DONE>
+ 
+    ldr   r3, [r2], #4 
+ 80085b6:	f852 3b04 	ldr.w	r3, [r2], #4
+    str   r3, [r0], #4
+ 80085ba:	f840 3b04 	str.w	r3, [r0], #4
+    b     MEM_DATA_COPY_LOOP
+ 80085be:	e7f8      	b.n	80085b2 <MEM_DATA_COPY_LOOP>
+
+080085c0 <LOOP1_DONE>:
+ 
+LOOP1_DONE:
+    ldr r0, =__RAMFUNC_ADDRESS_BEGIN            /* Load .ramfunc start address memory section into register r0 */
+ 80085c0:	480d      	ldr	r0, [pc, #52]	@ (80085f8 <DEFAULT_HANDLER+0x10>)
+    ldr r1, =__RAMFUNC_ADDRESS_END              /* Load .ramfunc end address memory section into register r1 */
+ 80085c2:	490e      	ldr	r1, [pc, #56]	@ (80085fc <DEFAULT_HANDLER+0x14>)
+    ldr r2, =__RAMFUNC_LOAD_ADDRESS_BEGIN       /* Load .ramfunc_load start address memory section into register r2 */
+ 80085c4:	4a0e      	ldr	r2, [pc, #56]	@ (8008600 <DEFAULT_HANDLER+0x18>)
+
+080085c6 <MEM_RAMFUNC_COPY_LOOP>:
+
+MEM_RAMFUNC_COPY_LOOP:
+    cmp   r0, r1
+ 80085c6:	4288      	cmp	r0, r1
+    bcs   LOOP2_DONE
+ 80085c8:	d204      	bcs.n	80085d4 <LOOP2_DONE>
+  
+    ldr   r3, [r2], #4
+ 80085ca:	f852 3b04 	ldr.w	r3, [r2], #4
+    str   r3, [r0], #4
+ 80085ce:	f840 3b04 	str.w	r3, [r0], #4
+    b     MEM_RAMFUNC_COPY_LOOP
+ 80085d2:	e7f8      	b.n	80085c6 <MEM_RAMFUNC_COPY_LOOP>
+
+080085d4 <LOOP2_DONE>:
+
+LOOP2_DONE:
+    ldr r0, =__BSS_ADDRESS_BEGIN            /* Load .ramfunc start address memory section into register r0 */
+ 80085d4:	480b      	ldr	r0, [pc, #44]	@ (8008604 <DEFAULT_HANDLER+0x1c>)
+    ldr r1, =__BSS_ADDRESS_END              /* Load .ramfunc end address memory section into register r1 */
+ 80085d6:	490c      	ldr	r1, [pc, #48]	@ (8008608 <DEFAULT_HANDLER+0x20>)
+    movs r2, #0
+ 80085d8:	2200      	movs	r2, #0
+
+080085da <MEM_BSS_CLEAR_LOOP>:
+
+MEM_BSS_CLEAR_LOOP:
+    cmp r0,r1
+ 80085da:	4288      	cmp	r0, r1
+    bcs LOOP3_DONE
+ 80085dc:	d202      	bcs.n	80085e4 <LOOP3_DONE>
+
+    str r2, [r0], #4
+ 80085de:	f840 2b04 	str.w	r2, [r0], #4
+    b MEM_BSS_CLEAR_LOOP
+ 80085e2:	e7fa      	b.n	80085da <MEM_BSS_CLEAR_LOOP>
+
+080085e4 <LOOP3_DONE>:
+
+LOOP3_DONE:
+
+bl main
+ 80085e4:	f7ff fa8e 	bl	8007b04 <main>
+
+080085e8 <DEFAULT_HANDLER>:
+
+DEFAULT_HANDLER:
+    b DEFAULT_HANDLER
+ 80085e8:	f7ff bffe 	b.w	80085e8 <DEFAULT_HANDLER>
+    ldr r0, =__DATA_ADDRESS_BEGIN            /* Load .data start address memory section into register r0 */
+ 80085ec:	20000000 	.word	0x20000000
+    ldr r1, =__DATA_ADDRESS_END              /* Load .data end address memory section into register r1 */
+ 80085f0:	2000000c 	.word	0x2000000c
+    ldr r2, =__DATA_LOAD_ADDRESS_BEGIN       /* Load .data_load start address memory section into register r2 */
+ 80085f4:	0800860c 	.word	0x0800860c
+    ldr r0, =__RAMFUNC_ADDRESS_BEGIN            /* Load .ramfunc start address memory section into register r0 */
+ 80085f8:	20006000 	.word	0x20006000
+    ldr r1, =__RAMFUNC_ADDRESS_END              /* Load .ramfunc end address memory section into register r1 */
+ 80085fc:	20006000 	.word	0x20006000
+    ldr r2, =__RAMFUNC_LOAD_ADDRESS_BEGIN       /* Load .ramfunc_load start address memory section into register r2 */
+ 8008600:	08006200 	.word	0x08006200
+    ldr r0, =__BSS_ADDRESS_BEGIN            /* Load .ramfunc start address memory section into register r0 */
+ 8008604:	20002000 	.word	0x20002000
+    ldr r1, =__BSS_ADDRESS_END              /* Load .ramfunc end address memory section into register r1 */
+ 8008608:	2000200c 	.word	0x2000200c

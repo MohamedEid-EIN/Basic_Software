@@ -1,0 +1,55 @@
+{
+  /* ---------- Editor behavior ---------- */
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "editor.renderWhitespace": "boundary",
+  "editor.renderControlCharacters": false,
+  "editor.trimAutoWhitespace": true,
+  "editor.wordWrap": "off",
+  "editor.minimap.enabled": false,
+
+  /* ---------- File handling ---------- */
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoGuessEncoding": false,
+
+  /* ---------- Search / indexing ---------- */
+  "search.useIgnoreFiles": true,
+  "search.exclude": {
+    "**/build": true,
+    "**/.git": true
+  },
+
+  /* ---------- C / C++ formatting ---------- */
+  "C_Cpp.formatting": "Disabled",
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.intelliSenseEngine": "Default",
+  "C_Cpp.errorSquiggles": "Enabled",
+
+  /* ---------- Makefile safety ---------- */
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4
+  },
+
+  /* ---------- Terminal ---------- */
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.cursorBlinking": true,
+
+  /* ---------- Explorer ---------- */
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  /* ---------- Git (optional) ---------- */
+  "git.enableSmartCommit": false,
+  "git.confirmSync": false,
+
+  /* ---------- Misc ---------- */
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": false,
+  "breadcrumbs.enabled": true
+}

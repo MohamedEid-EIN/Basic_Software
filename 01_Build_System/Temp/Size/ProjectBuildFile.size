@@ -1,0 +1,19 @@
+Temp/Elf/ProjectBuildFile.elf  :
+section            size        addr
+.VectorTable          8   134217728
+.rodata              42   134218240
+.text              3084   134248960
+.data                12   536870912
+.bss                 12   536879104
+.debug_info        3243           0
+.debug_abbrev       726           0
+.debug_aranges       96           0
+.debug_line        2312           0
+.debug_str         3069           0
+.comment             38           0
+.ARM.attributes      44           0
+.debug_frame        748           0
+.debug_line_str     219           0
+Total             13653
+
+

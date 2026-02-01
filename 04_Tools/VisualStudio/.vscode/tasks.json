@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "",
+      "type": "shell",
+      "command": "",
+      "args": [],
+
+      "options": {
+        "cwd": "",
+        "env": {}
+      },
+
+      "group": {
+        "kind": "",
+        "isDefault": false
+      },
+
+      "problemMatcher": [],
+
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+
+      "runOptions": {
+        "runOn": "default"
+      },
+
+      "dependsOn": [],
+      "dependsOrder": "sequence"
+    }
+  ]
+}

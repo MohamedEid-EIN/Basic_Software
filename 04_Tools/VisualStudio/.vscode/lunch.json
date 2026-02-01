@@ -1,0 +1,54 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "",
+      "type": "cortex-debug",
+      "request": "launch",
+
+      "cwd": "",
+      "executable": "",
+      "armToolchainPath": "",
+      "gdbPath": "",
+
+      "servertype": "",
+      "serverpath": "",
+      "serverArgs": [],
+
+      "device": "",
+      "interface": "",
+      "targetId": "",
+
+      "runToEntryPoint": "",
+      "svdFile": "",
+
+      "configFiles": [],
+      "searchDir": [],
+
+      "preLaunchCommands": [],
+      "postLaunchCommands": [],
+      "postRestartCommands": [],
+
+      "preResetCommands": [],
+      "postResetCommands": [],
+
+      "overrideLaunchCommands": [],
+      "overrideAttachCommands": [],
+      "overrideRestartCommands": [],
+
+      "breakAfterReset": false,
+      "runToMain": false,
+
+      "showDevDebugOutput": "",
+      "showDevDebugTimestamps": false,
+
+      "rtos": "",
+      "graphConfig": [],
+
+      "liveWatch": {
+        "enabled": false,
+        "samplesPerSecond": 0
+      }
+    }
+  ]
+}

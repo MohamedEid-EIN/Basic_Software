@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "name": "ARM Cortex-M4 (GCC)",
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb",
+                "-ffreestanding"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/06_Software",
+                "${workspaceFolder}/06_Software/03_Libraries",
+				"${workspaceFolder}/06_Software/03_Libraries/STD_TYPES",
+				"${workspaceFolder}/06_Software/03_Libraries/STD_TYPES/Include",
+				"${workspaceFolder}/06_Software/03_Libraries/STD_TYPES/Cfg",
+                "${workspaceFolder}/06_Software/03_Libraries/**",
+				"${workspaceFolder}/06_Software/07_MCAL",
+				"${workspaceFolder}/06_Software/07_MCAL/GPIO",
+				"${workspaceFolder}/06_Software/07_MCAL/GPIO/Cfg",
+				"${workspaceFolder}/06_Software/07_MCAL/GPIO/Header",
+				"${workspaceFolder}/06_Software/07_MCAL/GPIO/Header/Include",
+				"${workspaceFolder}/06_Software/07_MCAL**"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${workspaceFolder}/06_Software"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}

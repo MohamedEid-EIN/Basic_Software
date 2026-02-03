@@ -7,10 +7,10 @@
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 * copies of the Software, and to permit persons to whom the Software is
 * furnished to do so, subject to the following conditions:
-* 
+*
 * The above copyright notice and this permission notice shall be included in all
 * copies or substantial portions of the Software.
-* 
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,7 +19,7 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
 *
-* - Description : 
+* - Description :
 * - Author      : Mohamed Eid
 * - File Name   : GPIO.c
 * - File Type   : Source file
@@ -30,32 +30,6 @@
 ********************************************************************************************/
 #include "GPIO.h"
 
-volatile DataType_Port_Lock_Status Port_Lock_Key_Status_Table[NUM_OF_PORTS] = 
-{
-    {PortA, Key_UnLocked},
-    {PortB, Key_UnLocked},
-    {PortC, Key_UnLocked},
-    {PortD, Key_UnLocked},
-    {PortE, Key_UnLocked},
-    {PortH, Key_UnLocked}
-
-};
-
-DataType_Gpio_Registers Registers_Table[NUM_OF_PORTS] =
-{
-    PORTA_BASE_ADDRESS,
-    PORTB_BASE_ADDRESS,
-    PORTC_BASE_ADDRESS,
-    PORTD_BASE_ADDRESS,
-    PORTE_BASE_ADDRESS,
-    PORTH_BASE_ADDRESS
-};
-
-static DataType_Usage Port_Usage_Table[NUM_OF_PORTS] = {Unused};
-
-static volatile DataType_u32 GPIO_Module_State = STATE_UNDEFINDED; 
-
-DataType_Request_Status GPIO_Set_Module_State(DataType_u32 State);
 /*________________________________________________________________________________________________________________________________________________________
  | Function Name : Gpio_Intitialization                                                                                                                   |
  | Description : Used to Initialize IO register                                                                                                           |
@@ -72,9 +46,9 @@ DataType_Request_Status Gpio_Intitialization(void)
     /* initialize return status  = Error */
     DataType_Request_Status Return_Status = Error;
 
-    /* Initialize Module state = UnInitialized */
-    GPIO_Module_State = STATE_UNINTIALIZED;
-    
+    /* Initialize Module state = UNINITIALIZED */
+    GPIO_Module_State = LIB_UTILS_STATE_UNINITIALIZED;
+
     /* Check the validity of Pins and Ports configuration */
     if (PORT_CFG < MIN_PORT_CONFIGURATION || PORT_CFG > MAX_PORT_CONFIGURATION ||
         PIN_CFG  < MIN_PIN_CONFIGURATION  || PIN_CFG  > MAX_PIN_CONFIGURATION)
@@ -90,7 +64,7 @@ DataType_Request_Status Gpio_Intitialization(void)
 
         /* Build configurations in the shadow registers map */
         Build_Configuration(Registers_Shadow);
-        
+
         /* Set all the IO regosters values and store operation status */
         Return_Status = Write_Registers_Configuration(Registers_Shadow, Registers_Table);
 
@@ -120,7 +94,7 @@ DataType_Request_Status Gpio_Intitialization(void)
     }
 
     /* Set Module state variable IO is Ready */
-    GPIO_Set_Module_State(STATE_READY);
+    GPIO_SetModuleState(LIB_UTILS_STATE_READY);
 
     return Return_Status;
 }
@@ -167,20 +141,20 @@ void Build_Configuration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURAT
 
         /* Configure Shadow GPIO PortLock register for current Port and Pin */
         Registers_Shadow[PortId].Gpio_Lckr |= (Pin_Configuration_Table[Index].Pin_Configuration_Lock_Status << PinId);
-        
+
         /* Check current pin between Pin0 to Pin7 */
         if(PinId <= Pin_7)
         {
-            /* Configure Shadow GPIO Alternatefunction Low register */   
+            /* Configure Shadow GPIO Alternatefunction Low register */
             Registers_Shadow[PortId].Gpio_Afrl |= (Pin_Configuration_Table[Index].Pin_Alternate_Function << (PinId * REG_AFRL_BITS));
         }
         else
         {
-            /* Configure Shadow GPIO Alternatefunction High register */ 
+            /* Configure Shadow GPIO Alternatefunction High register */
             Registers_Shadow[PortId].Gpio_Afrh |= (Pin_Configuration_Table[Index].Pin_Alternate_Function << (PinId - 8  * REG_AFRH_BITS));
         }
 
-        /* Configure Shadow GPIO Output Direction register for current Port and Pin */ 
+        /* Configure Shadow GPIO Output Direction register for current Port and Pin */
         Registers_Shadow[PortId].Gpio_Odr |= (Pin_Configuration_Table[Index].Pin_Output_Status_Setup << PinId);
     }
 }
@@ -251,42 +225,42 @@ DataType_Request_Status Write_Registers_Configuration(DataType_Registers Registe
                 Return_Status = Error;
                 break;
             }
-    
+
             else if(Registers_Table[PortId]->Gpio_Otyper  != Registers_Shadow[PortId].Gpio_Otyper)
             {
                 /* Set return status with Error and Exit loop */
                 Return_Status = Error;
                 break;
             }
-    
+
             else if(Registers_Table[PortId]->Gpio_Ospeedr  != Registers_Shadow[PortId].Gpio_Ospeedr)
             {
                 /* Set return status with Error and Exit loop */
                 Return_Status = Error;
                 break;
             }
-    
+
             else if(Registers_Table[PortId]->Gpio_Pupdr  != Registers_Shadow[PortId].Gpio_Pupdr)
             {
                 /* Set return status with Error and Exit loop */
                 Return_Status = Error;
                 break;
             }
-    
+
             else if(Registers_Table[PortId]->Gpio_Afrl  != Registers_Shadow[PortId].Gpio_Afrl)
             {
                 /* Set return status with Error and Exit loop */
                 Return_Status = Error;
                 break;
             }
-    
+
             else if(Registers_Table[PortId]->Gpio_Afrh  != Registers_Shadow[PortId].Gpio_Afrh)
             {
                 /* Set return status with Error and Exit loop */
                 Return_Status = Error;
                 break;
             }
-    
+
             else
             {
                 /* Set return status Succssed */
@@ -360,24 +334,11 @@ DataType_Request_Status Port_Lock_Init(DataType_Registers Registers_Shadow[MAX_P
     return Return_Status;
 }
 
-DataType_Request_Status GPIO_DeInitialization()
-{
-
-}
-
-DataType_Request_Status GPIO_Enter_SafeState()
-{
-
-}
-
-DataType_Validity Is_State_Valid(DataType_u32 State);
-
-
-DataType_Request_Status GPIO_Set_Module_State(DataType_u32 State)
+DataType_Request_Status GPIO_SetModuleState(DataType_u32 State)
 {
     DataType_Request_Status Return_Status = Unkown;
 
-    if (Is_State_Valid(State) != Valid)
+    if (LIB_UTILS_IsValidState(State) != Valid)
     {
         Return_Status = Invalid_Parameter;
     }
@@ -435,20 +396,20 @@ DataType_Request_Status GPIO_Write_Pin(DataType_u16 SignalId, DataType_Output_Le
             if(SignalValue == High)
             {
                 GPIO_ENTER_CRITICAL_SECTION();
-    
+
                 Registers_Table[PortId]->Gpio_Odr |= (IO_PIN_MASK << PinId);
                 Return_Status = Success;
-            
+
                 GPIO_EXIT_CRITICAL_SECTION();
             }
 
             else if(SignalValue == Low)
             {
                 GPIO_ENTER_CRITICAL_SECTION();
-    
+
                 Registers_Table[PortId]->Gpio_Odr &= ~(IO_PIN_MASK << PinId);
                 Return_Status = Success;
-            
+
                 GPIO_EXIT_CRITICAL_SECTION();
             }
             else
@@ -456,7 +417,7 @@ DataType_Request_Status GPIO_Write_Pin(DataType_u16 SignalId, DataType_Output_Le
                 Return_Status = Invalid_Parameter;
             }
         }
-        
+
     }
     return Return_Status;
 }
@@ -489,7 +450,7 @@ DataType_Request_Status GPIO_Read_Pin(DataType_u16 SignalId , DataType_Output_Le
             *SignalValue = (Register_Reading & (IO_PIN_MASK << PinId)) ? High : Low;
             Return_Status = Success;
         }
-        
+
     }
     return Return_Status;
 }
@@ -517,10 +478,10 @@ DataType_Request_Status GPIO_Toggel_Pin(DataType_u16 SignalId)
 
             Registers_Table[PortId]->Gpio_Odr ^= (IO_PIN_MASK << PinId);
             Return_Status = Success;
-        
+
             GPIO_EXIT_CRITICAL_SECTION();
         }
-        
+
     }
     return Return_Status;
 }
@@ -528,7 +489,7 @@ DataType_Request_Status GPIO_Toggel_Pin(DataType_u16 SignalId)
 DataType_Request_Status GPIO_Set_Pin(DataType_u16 SignalId, DataType_Output_Level SignalValue)
 {
     DataType_Request_Status Return_Status = Unkown;
-    
+
     if(GPIO_Module_State != STATE_READY )
     {
         Return_Status = Invalid;
@@ -543,7 +504,7 @@ DataType_Request_Status GPIO_Set_Pin(DataType_u16 SignalId, DataType_Output_Leve
         {
             DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
             DataType_Pin_Number PinId = Pin_Configuration_Table[SignalId].Pin_Id;
-    
+
             if(SignalValue == High)
             {
                 Registers_Table[PortId]->Gpio_Bsrr |= (IO_PIN_MASK << PinId);
@@ -562,7 +523,7 @@ DataType_Request_Status GPIO_Set_Pin(DataType_u16 SignalId, DataType_Output_Leve
 DataType_Request_Status GPIO_Reset_Pin(DataType_u16 SignalId, DataType_Output_Level SignalValue)
 {
     DataType_Request_Status Return_Status = Unkown;
-    
+
     if(GPIO_Module_State != STATE_READY )
     {
         Return_Status = Invalid;
@@ -577,7 +538,7 @@ DataType_Request_Status GPIO_Reset_Pin(DataType_u16 SignalId, DataType_Output_Le
         {
             DataType_Port_Group PortId = Pin_Configuration_Table[SignalId].Port_Id;
             DataType_Pin_Number PinId  = Pin_Configuration_Table[SignalId].Pin_Id;
-    
+
             if(SignalValue == Low)
             {
                 Registers_Table[PortId]->Gpio_Bsrr |= (IO_PIN_MASK << (PinId + REG_BSRR_RESET_BITS_OFFSET));
@@ -589,33 +550,5 @@ DataType_Request_Status GPIO_Reset_Pin(DataType_u16 SignalId, DataType_Output_Le
             }
         }
     }
-    return Return_Status;
-}
-
-
-
-DataType_Validity Is_State_Valid(DataType_u32 State)
-{
-    DataType_Validity Return_Status = InValid;
-    switch(State)
-    {
-        case STATE_UNDEFINDED:
-        case STATE_UNINTIALIZED:
-        case STATE_INITIALIZED:
-        case STATE_DEINITIALIZED:
-        case STATE_LOW_POWER:
-        case STATE_SAFE:
-        case STATE_SLEEP:
-        case STATE_READY:
-        case STATE_BUSY:
-        case STATE_ERROR:
-        {
-            Return_Status = Valid;
-            break;
-        }
-        default:
-        { /* Do nothing */}
-    }
-    
     return Return_Status;
 }

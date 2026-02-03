@@ -51,5 +51,6 @@
   /* ---------- Misc ---------- */
   "workbench.startupEditor": "none",
   "workbench.editor.enablePreview": false,
-  "breadcrumbs.enabled": true
+  "breadcrumbs.enabled": true,
+  "window.commandCenter": true
 }

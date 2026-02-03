@@ -1,0 +1,28 @@
+{
+  "buttons": [
+    {
+      "name": "Build",
+      "task": "Project: Build all",
+      "icon": "🔨",
+      "tooltip": "Build the project"
+    },
+    {
+      "name": "Clean",
+      "task": "Project: clean",
+      "icon": "🧹",
+      "tooltip": "Clean build artifacts"
+    },
+    {
+      "name": "Rebuild",
+      "task": "Project: rebuild",
+      "icon": "🔁",
+      "tooltip": "Clean and rebuild the project"
+    },
+    {
+      "name": "Clear",
+      "task": "Project: clear",
+      "icon": "🧽",
+      "tooltip": "Clear terminal"
+    }
+  ]
+}

@@ -29,10 +29,11 @@ endif
 APP_DIR        = $(SOFTWARE_ROOT)/01_Application
 APP_SRC_DIR    = $(APP_DIR)/Source
 
-# -------- Libraries (Common / Std_Types) --------
+# ------------ Libraries ----------------
 LIB_DIR            = $(SOFTWARE_ROOT)/03_Libraries
-COMMON_DIR         = $(LIB_DIR)/Common
-STD_TYPES_DIR      = $(COMMON_DIR)/STD_TYPES
+UTILS_DIR          = $(LIB_DIR)/UTILS
+UTILS_INC_DIR      = $(UTILS_DIR)/Include
+STD_TYPES_DIR      = $(LIB_DIR)/STD_TYPES
 STD_TYPES_INC_DIR  = $(STD_TYPES_DIR)/Include
 STD_TYPES_CFG_DIR  = $(STD_TYPES_DIR)/Cfg
 
@@ -64,6 +65,7 @@ SRC_DIRS = \
 ###############################################
 INC_DIRS = \
 	$(APP_INC_DIR) \
+	$(UTILS_INC_DIR) \
 	$(STD_TYPES_INC_DIR) \
 	$(STD_TYPES_CFG_DIR) \
 	$(GPIO_HDR_DIR) \

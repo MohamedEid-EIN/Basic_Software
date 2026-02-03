@@ -28,11 +28,11 @@
 * - Version : History
 * - 1.00.00 : File Creation
 ********************************************************************************************/
+#ifndef TYPESDEF_H
+#define TYPESDEF_H
 
 #include "DataTypes_Cfg.h"
 
-#ifndef TYPESDEF_H
-#define TYPESDEF_H
 
 /***********************************************************************************
  * Generic data types macros used for specifc memory placing                    *
@@ -55,18 +55,6 @@
 
 
 #define INITIALIZE_ZERO 0U
-
-#define STATE_UNDEFINDED      (DataType_u32)0x00000000U
-#define STATE_UNINTIALIZED    (DataType_u32)0x11111111U
-#define STATE_INITIALIZED     (DataType_u32)0x22222222U
-#define STATE_DEINITIALIZED   (DataType_u32)0x33333333U
-#define STATE_LOW_POWER       (DataType_u32)0x44444444U
-#define STATE_SAFE            (DataType_u32)0x55555555U
-#define STATE_SLEEP           (DataType_u32)0x66666666U
-#define STATE_READY           (DataType_u32)0x77777777U
-#define STATE_BUSY            (DataType_u32)0x88888888U
-#define STATE_ERROR           (DataType_u32)0x99999999U
-
 /**********************************************************************************
  * utilites MACROS
  **********************************************************************************/

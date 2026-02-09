@@ -31,7 +31,7 @@
 
   /* ---------- Makefile safety ---------- */
   "[makefile]": {
-    "editor.insertSpaces": false,
+    "editor.insertSpaces": true,
     "editor.detectIndentation": false,
     "editor.tabSize": 4
   },
@@ -52,5 +52,6 @@
   "workbench.startupEditor": "none",
   "workbench.editor.enablePreview": false,
   "breadcrumbs.enabled": true,
-  "window.commandCenter": true
+"window.commandCenter": true,
+"C_Cpp.dimInactiveRegions": false
 }

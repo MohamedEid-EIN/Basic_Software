@@ -50,22 +50,42 @@
 |   - Mapping between SignalId and actual Port/Pin is defined in GPIO_Cfg.c.               |
 |   - Upper layers must never assume a direct Port/Pin relationship.                       |
 |_________________________________________________________________________________________*/
-#define GPIO_PIN_0   U32_TYPECAST(0U)
-#define GPIO_PIN_1   U32_TYPECAST(GPIO_PIN_0  + 1U)
-#define GPIO_PIN_2   U32_TYPECAST(GPIO_PIN_1  + 1U)
-#define GPIO_PIN_3   U32_TYPECAST(GPIO_PIN_2  + 1U)
-#define GPIO_PIN_4   U32_TYPECAST(GPIO_PIN_3  + 1U)
-#define GPIO_PIN_5   U32_TYPECAST(GPIO_PIN_4  + 1U)
-#define GPIO_PIN_6   U32_TYPECAST(GPIO_PIN_5  + 1U)
-#define GPIO_PIN_7   U32_TYPECAST(GPIO_PIN_6  + 1U)
-#define GPIO_PIN_8   U32_TYPECAST(GPIO_PIN_7  + 1U)
-#define GPIO_PIN_9   U32_TYPECAST(GPIO_PIN_8  + 1U)
-#define GPIO_PIN_10  U32_TYPECAST(GPIO_PIN_9  + 1U)
-#define GPIO_PIN_11  U32_TYPECAST(GPIO_PIN_10 + 1U)
-#define GPIO_PIN_12  U32_TYPECAST(GPIO_PIN_11 + 1U)
+#define GPIO_PIN_A0    U8_TYPECAST(0U)
+#define GPIO_PIN_A1    U8_TYPECAST(GPIO_PIN_A0  + 1U)
+#define GPIO_PIN_A2    U8_TYPECAST(GPIO_PIN_A1  + 1U)
+#define GPIO_PIN_A3    U8_TYPECAST(GPIO_PIN_A2  + 1U)
+#define GPIO_PIN_A4    U8_TYPECAST(GPIO_PIN_A3  + 1U)
+#define GPIO_PIN_A5    U8_TYPECAST(GPIO_PIN_A4  + 1U)
+#define GPIO_PIN_A6    U8_TYPECAST(GPIO_PIN_A5  + 1U)
+#define GPIO_PIN_A7    U8_TYPECAST(GPIO_PIN_A6  + 1U)
+#define GPIO_PIN_A8    U8_TYPECAST(GPIO_PIN_A7  + 1U)
+#define GPIO_PIN_A9    U8_TYPECAST(GPIO_PIN_A8  + 1U)
+#define GPIO_PIN_A10   U8_TYPECAST(GPIO_PIN_A9  + 1U)
+#define GPIO_PIN_A11   U8_TYPECAST(GPIO_PIN_A10 + 1U)
+#define GPIO_PIN_A12   U8_TYPECAST(GPIO_PIN_A11 + 1U)
+#define GPIO_PIN_A13   U8_TYPECAST(GPIO_PIN_A12 + 1U)
+#define GPIO_PIN_A14   U8_TYPECAST(GPIO_PIN_A13 + 1U)
+#define GPIO_PIN_A15   U8_TYPECAST(GPIO_PIN_A14 + 1U)
+
+#define GPIO_PIN_B0    U8_TYPECAST(GPIO_PIN_A15 + 1U)
+#define GPIO_PIN_B1    U8_TYPECAST(GPIO_PIN_B0  + 1U)
+#define GPIO_PIN_B2    U8_TYPECAST(GPIO_PIN_B1  + 1U)
+#define GPIO_PIN_B3    U8_TYPECAST(GPIO_PIN_B2  + 1U)
+#define GPIO_PIN_B4    U8_TYPECAST(GPIO_PIN_B3  + 1U)
+#define GPIO_PIN_B5    U8_TYPECAST(GPIO_PIN_B4  + 1U)
+#define GPIO_PIN_B6    U8_TYPECAST(GPIO_PIN_B5  + 1U)
+#define GPIO_PIN_B7    U8_TYPECAST(GPIO_PIN_B6  + 1U)
+#define GPIO_PIN_B8    U8_TYPECAST(GPIO_PIN_B7  + 1U)
+#define GPIO_PIN_B9    U8_TYPECAST(GPIO_PIN_B8  + 1U)
+#define GPIO_PIN_B10   U8_TYPECAST(GPIO_PIN_B9  + 1U)
+//#define GPIO_PIN_B11   U32_TYPECAST(GPIO_PIN_B10 + 1U)
+#define GPIO_PIN_B12   U8_TYPECAST(GPIO_PIN_B10 + 1U)
+#define GPIO_PIN_B13   U8_TYPECAST(GPIO_PIN_B12 + 1U)
+#define GPIO_PIN_B14   U8_TYPECAST(GPIO_PIN_B13 + 1U)
+#define GPIO_PIN_B15   U8_TYPECAST(GPIO_PIN_B14 + 1U)
 
 /* Total number of configured logical GPIO pins */
-#define GPIO_MAX_PIN U32_TYPECAST(GPIO_PIN_12 + 1U)
+#define GPIO_MAX_PIN_CFG  U8_TYPECAST(GPIO_PIN_B15 + 1U)
 
 /*__________________________________________________________________________________________
 | Interface Name : GPIO port identifiers                                                   |
@@ -134,7 +154,7 @@ DataType_u32 GPIO_GetModuleState(void);
 | Context       : MCU context                                                              |
 | Notes         : Affects all pins of the selected port                                    |
 |_________________________________________________________________________________________*/
-DataType_Request_Status GPIO_WritePort(DataType_u16 PortId, DataType_u16 PortValue);
+DataType_Request_Status GPIO_WritePort(DataType_u8 Index, DataType_u16 PortValue);
 
 /*__________________________________________________________________________________________
 | Function Name : GPIO_WritePin                                                            |
@@ -151,7 +171,7 @@ DataType_Request_Status GPIO_WritePort(DataType_u16 PortId, DataType_u16 PortVal
 | Context       : MCU context                                                              |
 | Notes         : Valid only for pins configured as output                                 |
 |_________________________________________________________________________________________*/
-DataType_Request_Status GPIO_WritePin(DataType_u16 PinId, DataType_Output_Level PinValue);
+DataType_Request_Status GPIO_WritePin(DataType_u8 Index, DataType_Output_Level PinValue);
 
 /*__________________________________________________________________________________________
 | Function Name : GPIO_ReadPin                                                             |
@@ -168,7 +188,7 @@ DataType_Request_Status GPIO_WritePin(DataType_u16 PinId, DataType_Output_Level 
 | Context       : MCU context                                                              |
 | Notes         : Works for both input and output pins                                     |
 |_________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ReadPin(DataType_u16 PinId, DataType_Output_Level* PinValue);
+DataType_Request_Status GPIO_ReadPin(DataType_u8 Index, DataType_Output_Level* PinValue);
 
 /*__________________________________________________________________________________________
 | Function Name : GPIO_ToggelPin                                                           |
@@ -184,7 +204,7 @@ DataType_Request_Status GPIO_ReadPin(DataType_u16 PinId, DataType_Output_Level* 
 | Context       : MCU context                                                              |
 | Notes         : Valid only for pins configured as output                                 |
 |_________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ToggelPin(DataType_u16 PinId);
+DataType_Request_Status GPIO_ToggelPin(DataType_u8 Index);
 
 /*__________________________________________________________________________________________
 | Function Name : GPIO_SetPin                                                              |
@@ -200,7 +220,7 @@ DataType_Request_Status GPIO_ToggelPin(DataType_u16 PinId);
 | Context       : MCU context                                                              |
 | Notes         : Valid only for pins configured as output                                 |
 |_________________________________________________________________________________________*/
-DataType_Request_Status GPIO_SetPin(DataType_u16 PinId);
+DataType_Request_Status GPIO_SetPin(DataType_u8 Index);
 
 /*__________________________________________________________________________________________
 | Function Name : GPIO_ResetPin                                                            |
@@ -216,6 +236,6 @@ DataType_Request_Status GPIO_SetPin(DataType_u16 PinId);
 | Context       : MCU context                                                              |
 | Notes         : Valid only for pins configured as output                                 |
 |_________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ResetPin(DataType_u16 PinId);
+DataType_Request_Status GPIO_ResetPin(DataType_u8 Index);
 
 #endif /* GPIO_INT_H */

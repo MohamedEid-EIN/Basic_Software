@@ -43,12 +43,12 @@ void LCD_Initialization(void)
     LCD_Delay_ms(2U);
 
     /* Entry Mode Set */
-   LCD_SendCommand(ChLcd_Configuration_Table[0].Display_EntryMode);
+   //LCD_SendCommand(ChLcd_Configuration_Table[0].Display_EntryMode);
 
     /* Display ON */
     LCD_SendCommand(ChLcd_Configuration_Table[0].Display_Control);
 
-LCD_SendCommand(0x80);  // DDRAM address 0
+//LCD_SendCommand(0x80);  // DDRAM address 0
 }
 
 /* ==========================================================================================

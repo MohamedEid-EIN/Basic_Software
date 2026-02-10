@@ -7,11 +7,11 @@
       "command": "make",
       "args": [
         "-f",
-        "01_Build_System/Makefile",
+        "Makefile",
         "all"
       ],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/01_Build_System"
       },
       "group": {
         "kind": "build",
@@ -29,17 +29,29 @@
         "color": "terminal.ansiGreen"
       }
     },
+
+    {
+      "label": "Show workspaceFolder",
+      "type": "shell",
+      "command": "echo WORKSPACE=${workspaceFolder}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+
     {
       "label": "Project: clean",
       "type": "shell",
       "command": "make",
       "args": [
         "-f",
-        "01_Build_System/Makefile",
+        "Makefile",
         "clean"
       ],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/01_Build_System"
       },
       "problemMatcher": [],
       "presentation": {
@@ -51,6 +63,7 @@
         "color": "terminal.ansiRed"
       }
     },
+
     {
       "label": "Project: rebuild",
       "dependsOn": [
@@ -67,7 +80,8 @@
         "color": "terminal.ansiYellow"
       }
     },
-		{
+
+    {
       "label": "Project: clear",
       "type": "shell",
       "command": "clear",

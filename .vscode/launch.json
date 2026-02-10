@@ -1,0 +1,37 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Basic_Software (OpenOCD)",
+      "type": "cortex-debug",
+      "request": "launch",
+
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/01_Build_System/Temp/Elf/ProjectBuildFile.elf",
+      "armToolchainPath": "",
+      "gdbPath": "gdb-multiarch",
+
+
+      "nmPath": "x86_64-linux-gnu-nm",
+      "objdumpPath": "x86_64-linux-gnu-objdump",
+
+      "servertype": "openocd",
+      "serverpath": "openocd",
+      "serverArgs": [],
+
+      "device": "STM32F401",
+      "interface": "swd",
+
+      "runToEntryPoint": "main",
+      "breakAfterReset": true,
+
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32f4x.cfg"
+      ],
+      "searchDir": [
+        "/usr/share/openocd/scripts"
+      ]
+    }
+  ]
+}

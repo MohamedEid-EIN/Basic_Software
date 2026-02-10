@@ -50,7 +50,7 @@
  | Usage        : Used to size port configuration tables                                 |
  | Notes        : Must match number of entries in PortLockStatus_TableCfg                |
  |______________________________________________________________________________________*/
-#define PORT_CFG_NUM  (DataType_u8)2
+#define NUMBER_PORT_CFG  (DataType_u8)2
 
 /*________________________________________________________________________________________
  | Macro Name   : PIN_CFG                                                                 |
@@ -60,30 +60,7 @@
  | Usage        : Used to size pin configuration tables                                   |
  | Notes        : Must match number of entries in PinSetUp_TableCfg                       |
  |_______________________________________________________________________________________*/
-#define PIN_CFG_NUM   (DataType_u8)14
-
-/*________________________________________________________________________________________
- | Macro Group  : GPIO_PIN_x                                                              |
- | Description  : Logical GPIO used pin index configuration                               |
- | Type         : Macro                                                                   |
- | Storage      : N/A                                                                     |
- | Usage        : Used as pin identifiers in configuration and validation logic           |
- | Notes        : Values are sequential and zero-based                                    |
- |_______________________________________________________________________________________*/
-#define GPIO_PIN_0    U32_TYPECAST(0U)
-#define GPIO_PIN_1    U32_TYPECAST(GPIO_PIN_0  + 1U)
-#define GPIO_PIN_2    U32_TYPECAST(GPIO_PIN_1  + 1U)
-#define GPIO_PIN_3    U32_TYPECAST(GPIO_PIN_2  + 1U)
-#define GPIO_PIN_4    U32_TYPECAST(GPIO_PIN_3  + 1U)
-#define GPIO_PIN_5    U32_TYPECAST(GPIO_PIN_4  + 1U)
-#define GPIO_PIN_6    U32_TYPECAST(GPIO_PIN_5  + 1U)
-#define GPIO_PIN_7    U32_TYPECAST(GPIO_PIN_6  + 1U)
-#define GPIO_PIN_8    U32_TYPECAST(GPIO_PIN_7  + 1U)
-#define GPIO_PIN_9    U32_TYPECAST(GPIO_PIN_8  + 1U)
-#define GPIO_PIN_10   U32_TYPECAST(GPIO_PIN_9  + 1U)
-#define GPIO_PIN_11   U32_TYPECAST(GPIO_PIN_10 + 1U)
-#define GPIO_PIN_12   U32_TYPECAST(GPIO_PIN_11 + 1U)
-#define GPIO_MAX_PIN  U32_TYPECAST(GPIO_PIN_12 + 1U)
+#define NUMBER_PINS_CFG   (DataType_u8)31
 
 /*__________________________________________________________________________________________
  | Data Name     : PinSetUp_TableCfg                                                        |
@@ -96,7 +73,7 @@
  | Lifetime      : Static; read-only after startup                                          |
  | Notes         : Enum-based fields provide compile-time domain validation                 |
  |_________________________________________________________________________________________*/
-extern const DataType_PinConfiguration PinSetUp_TableCfg[PIN_CFG_NUM];
+extern const DataType_PinConfiguration PinSetUp_TableCfg[NUMBER_PINS_CFG];
 
 /*__________________________________________________________________________________________
  | Data Name     : PortLockStatus_TableCfg                                                  |
@@ -109,6 +86,6 @@ extern const DataType_PinConfiguration PinSetUp_TableCfg[PIN_CFG_NUM];
  | Lifetime      : Static; valid for entire program execution                               |
  | Notes         : Read-only configuration provided by integrator                           |
  |_________________________________________________________________________________________*/
-extern const DataType_PortLockKey PortLock_TableCfg[PORT_CFG_NUM];
+extern const DataType_PortLockKey PortLock_TableCfg[NUMBER_PORT_CFG];
 
 #endif /* GPIO_CFG_H */

@@ -49,7 +49,7 @@
  | Data Name    : GPIO_Module_State                                                         |
  | Description  : Holds the current state of the GPIO module                                |
  | Type         : DataType_u32                                                              |
- | Size         : 4 Bytes                                                                  |
+ | Size         : 4 Bytes                                                                   |
  | Storage      : RAM                                                                       |
  | Usage        : Used to control GPIO service availability                                 |
  |_________________________________________________________________________________________*/
@@ -59,8 +59,8 @@ static volatile DataType_u32 GPIO_Module_State = LIB_UTILS_STATE_UNDEFINED;
  | Data Name    : PortLockStatus_Table                                                      |
  | Description  : Runtime table tracking GPIO port lock status                              |
  | Type         : Array of DataType_PortLockStatus                                          |
- | Element Size : 4 Bytes (u32-based structure)                                            |
- | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                         |
+ | Element Size : 4 Bytes (u32-based structure)                                             |
+ | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                          |
  | Storage      : RAM                                                                       |
  | Usage        : Monitor whether a port is locked or unlocked                              |
  |_________________________________________________________________________________________*/
@@ -78,8 +78,8 @@ static DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM] =
  | Data Name    : Registers_Table                                                           |
  | Description  : Maps logical port indices to GPIO register base addresses                 |
  | Type         : Array of DataType_GpioRegisters                                           |
- | Element Size : 4 Bytes (register base address)                                          |
- | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                         |
+ | Element Size : 4 Bytes (register base address)                                           |
+ | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                          |
  | Storage      : RAM                                                                       |
  | Usage        : Used for direct hardware register access                                  |
  |_________________________________________________________________________________________*/
@@ -133,8 +133,8 @@ DataType_Request_Status GPIO_Intitialization(void)
     GPIO_Module_State = LIB_UTILS_STATE_UNINITIALIZED;
 
     /* Validate number of configured ports and pins */
-    if (PORT_CFG_NUM < MIN_PORT_CONFIGURATION || PORT_CFG_NUM > MAX_PORT_CONFIGURATION ||
-        PIN_CFG_NUM  < MIN_PIN_CONFIGURATION  || PIN_CFG_NUM  > MAX_PIN_CONFIGURATION)
+    if (NUMBER_PORT_CFG < MIN_PORT_CONFIGURATION || NUMBER_PORT_CFG > MAX_PORT_CONFIGURATION ||
+        NUMBER_PINS_CFG  < MIN_PIN_CONFIGURATION  || NUMBER_PINS_CFG  > MAX_PIN_CONFIGURATION)
     {
         /* Configuration parameters are invalid */
         Return_Status = Invalid_Parameter;
@@ -204,7 +204,7 @@ void GPIO_BuildConfiguration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIG
     DataType_u32 PinId;
 
     /* Iterate over all configured pins */
-    for(Index = INITIALIZE_ZERO; Index < PIN_CFG_NUM; Index++)
+    for(Index = INITIALIZE_ZERO; Index < NUMBER_PINS_CFG; Index++)
     {
         /* Extract port and pin identifiers from configuration table */
         PortId = PinSetUp_TableCfg[Index].Port_Id;
@@ -404,10 +404,10 @@ DataType_Request_Status GPIO_PortLockInit(DataType_Registers Registers_Shadow[MA
     DataType_u8 Index;
 
     /* Initialize return status as busy */
-    DataType_Request_Status Return_Status = Busy;
+    DataType_Request_Status Return_Status = Success;
 
     /* Iterate over port lock configuration table */
-    for(Index = INITIALIZE_ZERO; Index < PORT_CFG_NUM; Index++)
+    for(Index = INITIALIZE_ZERO; Index < NUMBER_PORT_CFG; Index++)
     {
         /* Check if lock is enabled for the current port */
         if(PortLock_TableCfg[Index].Port_Configuration_Lock_Key == Active)
@@ -441,7 +441,6 @@ DataType_Request_Status GPIO_PortLockInit(DataType_Registers Registers_Shadow[MA
             {
                 /* Mark port as locked */
                 PortLockStatus_Table[Index].Port_Key_Status = Key_Locked;
-                Return_Status = Success;
             }
             else
             {
@@ -537,7 +536,7 @@ DataType_u32 GPIO_GetModuleState(void)
  | Context       : MCU context                                                                                                         |
  | Notes         : Affects all pins of the selected port                                                                               |
  |____________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_WritePort(DataType_u16 PortId, DataType_u16 PortValue)
+DataType_Request_Status GPIO_WritePort(DataType_u8 Index, DataType_u16 PortValue)
 {
     /* Initialize return status */
     DataType_Request_Status Return_Status = Unkown;
@@ -551,7 +550,7 @@ DataType_Request_Status GPIO_WritePort(DataType_u16 PortId, DataType_u16 PortVal
     else
     {
         /* Validate port identifier */
-        if(PortId >= PORT_CFG_NUM)
+        if(Index >= NUMBER_PORT_CFG)
         {
             /* Invalid port ID */
             Return_Status = Invalid_Parameter;
@@ -559,7 +558,7 @@ DataType_Request_Status GPIO_WritePort(DataType_u16 PortId, DataType_u16 PortVal
         else
         {
             /* Write value to output data register */
-            Registers_Table[PortId]->Gpio_Odr = PortValue;
+            Registers_Table[Index]->Gpio_Odr = PortValue;
 
             /* Write operation successful */
             Return_Status = Success;
@@ -585,7 +584,7 @@ DataType_Request_Status GPIO_WritePort(DataType_u16 PortId, DataType_u16 PortVal
  | Context       : MCU context                                                                                                        |
  | Notes         : Valid only for output pins                                                                                         |
  |___________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_WritePin(DataType_u16 PinId, DataType_Output_Level PinValue)
+DataType_Request_Status GPIO_WritePin(DataType_u8 Index, DataType_Output_Level PinValue)
 {
     /* Initialize return status */
     DataType_Request_Status Return_Status = Unkown;
@@ -599,7 +598,7 @@ DataType_Request_Status GPIO_WritePin(DataType_u16 PinId, DataType_Output_Level 
     else
     {
         /* Validate pin identifier */
-        if(PinId >= PIN_CFG_NUM)
+        if(Index >= NUMBER_PINS_CFG)
         {
             /* Pin ID is out of configured range */
             Return_Status = Invalid_Parameter;
@@ -607,10 +606,10 @@ DataType_Request_Status GPIO_WritePin(DataType_u16 PinId, DataType_Output_Level 
         else
         {
             /* Extract port ID from pin configuration table */
-            DataType_PortName PortId = PinSetUp_TableCfg[PinId].Port_Id;
+            DataType_PortName PortId = PinSetUp_TableCfg[Index].Port_Id;
 
             /* Extract hardware pin number from pin configuration table */
-            DataType_PinNumber PinId = PinSetUp_TableCfg[PinId].Pin_Id;
+            DataType_PinNumber PinId = PinSetUp_TableCfg[Index].Pin_Id;
 
             /* Check requested output level */
             if(PinValue == High)
@@ -656,7 +655,7 @@ DataType_Request_Status GPIO_WritePin(DataType_u16 PinId, DataType_Output_Level 
  | Context       : MCU context                                                                                                        |
  | Notes         : Works for both input and output pins                                                                               |
  |___________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ReadPin(DataType_u16 PinId , DataType_Output_Level* PinValue)
+DataType_Request_Status GPIO_ReadPin(DataType_u8 Index , DataType_Output_Level* PinValue)
 {
     /* Initialize return status */
     DataType_Request_Status Return_Status = Unkown;
@@ -676,7 +675,7 @@ DataType_Request_Status GPIO_ReadPin(DataType_u16 PinId , DataType_Output_Level*
             Return_Status = Null_Pointer;
         }
         /* Validate pin identifier */
-        else if(PinId >= PIN_CFG_NUM)
+        else if(Index >= NUMBER_PINS_CFG)
         {
             /* Pin ID is invalid */
             Return_Status = Invalid_Parameter;
@@ -684,10 +683,10 @@ DataType_Request_Status GPIO_ReadPin(DataType_u16 PinId , DataType_Output_Level*
         else
         {
             /* Extract port ID from pin configuration table */
-            DataType_PortName PortId = PinSetUp_TableCfg[PinId].Port_Id;
+            DataType_PortName PortId = PinSetUp_TableCfg[Index].Port_Id;
 
             /* Extract hardware pin number from pin configuration table */
-            DataType_PinNumber PinId = PinSetUp_TableCfg[PinId].Pin_Id;
+            DataType_PinNumber PinId = PinSetUp_TableCfg[Index].Pin_Id;
 
             /* Variable to store input register reading */
             DataType_Register_Size32 Register_Reading = INITIALIZE_ZERO;
@@ -721,7 +720,7 @@ DataType_Request_Status GPIO_ReadPin(DataType_u16 PinId , DataType_Output_Level*
  | Context       : MCU context                                                                                                        |
  | Notes         : Valid only for output pins                                                                                         |
  |___________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ToggelPin(DataType_u16 PinId)
+DataType_Request_Status GPIO_ToggelPin(DataType_u8 Index)
 {
     /* Initialize return status */
     DataType_Request_Status Return_Status = Unkown;
@@ -735,7 +734,7 @@ DataType_Request_Status GPIO_ToggelPin(DataType_u16 PinId)
     else
     {
         /* Validate pin identifier */
-        if(PinId >= PIN_CFG_NUM)
+        if(Index >= NUMBER_PINS_CFG)
         {
             /* Pin ID is invalid */
             Return_Status = Invalid_Parameter;
@@ -743,10 +742,10 @@ DataType_Request_Status GPIO_ToggelPin(DataType_u16 PinId)
         else
         {
             /* Extract port ID from pin configuration table */
-            DataType_PortName PortId = PinSetUp_TableCfg[PinId].Port_Id;
+            DataType_PortName PortId = PinSetUp_TableCfg[Index].Port_Id;
 
             /* Extract hardware pin number from pin configuration table */
-            DataType_PinNumber PinId = PinSetUp_TableCfg[PinId].Pin_Id;
+            DataType_PinNumber PinId = PinSetUp_TableCfg[Index].Pin_Id;
 
             /* Toggle pin output level */
             Registers_Table[PortId]->Gpio_Odr ^= (IO_PIN_MASK << PinId);
@@ -774,7 +773,7 @@ DataType_Request_Status GPIO_ToggelPin(DataType_u16 PinId)
  | Context       : MCU context                                                                                                        |
  | Notes         : Uses BSRR register for atomic operation                                                                            |
  |___________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_SetPin(DataType_u16 PinId)
+DataType_Request_Status GPIO_SetPin(DataType_u8 Index)
 {
     /* Initialize return status */
     DataType_Request_Status Return_Status = Unkown;
@@ -788,7 +787,7 @@ DataType_Request_Status GPIO_SetPin(DataType_u16 PinId)
     else
     {
         /* Validate pin identifier */
-        if(PinId >= PIN_CFG_NUM)
+        if(Index >= NUMBER_PINS_CFG)
         {
             /* Pin ID is invalid */
             Return_Status = Invalid_Parameter;
@@ -796,10 +795,10 @@ DataType_Request_Status GPIO_SetPin(DataType_u16 PinId)
         else
         {
             /* Extract port ID from pin configuration table */
-            DataType_PortName PortId = PinSetUp_TableCfg[PinId].Port_Id;
+            DataType_PortName PortId = PinSetUp_TableCfg[Index].Port_Id;
 
             /* Extract hardware pin number from pin configuration table */
-            DataType_PinNumber PinId = PinSetUp_TableCfg[PinId].Pin_Id;
+            DataType_PinNumber PinId = PinSetUp_TableCfg[Index].Pin_Id;
 
             /* Set pin output level using bit set/reset register */
             Registers_Table[PortId]->Gpio_Bsrr = (IO_PIN_MASK << PinId);
@@ -827,7 +826,7 @@ DataType_Request_Status GPIO_SetPin(DataType_u16 PinId)
  | Context       : MCU context                                                                                                        |
  | Notes         : Uses BSRR register for atomic operation                                                                            |
  |___________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ResetPin(DataType_u16 PinId)
+DataType_Request_Status GPIO_ResetPin(DataType_u8 Index)
 {
     /* Initialize return status */
     DataType_Request_Status Return_Status = Unkown;
@@ -841,7 +840,7 @@ DataType_Request_Status GPIO_ResetPin(DataType_u16 PinId)
     else
     {
         /* Validate pin identifier */
-        if(PinId >= PIN_CFG_NUM)
+        if(Index >= NUMBER_PINS_CFG)
         {
             /* Pin ID is invalid */
             Return_Status = Invalid_Parameter;
@@ -849,10 +848,10 @@ DataType_Request_Status GPIO_ResetPin(DataType_u16 PinId)
         else
         {
             /* Extract port ID from pin configuration table */
-            DataType_PortName PortId = PinSetUp_TableCfg[PinId].Port_Id;
+            DataType_PortName PortId = PinSetUp_TableCfg[Index].Port_Id;
 
             /* Extract hardware pin number from pin configuration table */
-            DataType_PinNumber PinId = PinSetUp_TableCfg[PinId].Pin_Id;
+            DataType_PinNumber PinId = PinSetUp_TableCfg[Index].Pin_Id;
 
             /* Reset pin output level using BSRR reset bit offset */
             Registers_Table[PortId]->Gpio_Bsrr = (IO_PIN_MASK << (PinId + REG_BSRR_RESET_BITS_OFFSET));

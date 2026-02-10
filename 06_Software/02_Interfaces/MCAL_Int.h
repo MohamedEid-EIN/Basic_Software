@@ -50,21 +50,40 @@
 | Description  : Logical GPIO signals exposed to HAL and Application layers.               |
 | Notes        : Upper layers must not use GPIO_PIN_x directly.                            |
 |_________________________________________________________________________________________*/
-#define MCAL_GPIO_SIGNAL_0      GPIO_PIN_0
-#define MCAL_GPIO_SIGNAL_1      GPIO_PIN_1
-#define MCAL_GPIO_SIGNAL_2      GPIO_PIN_2
-#define MCAL_GPIO_SIGNAL_3      GPIO_PIN_3
-#define MCAL_GPIO_SIGNAL_4      GPIO_PIN_4
-#define MCAL_GPIO_SIGNAL_5      GPIO_PIN_5
-#define MCAL_GPIO_SIGNAL_6      GPIO_PIN_6
-#define MCAL_GPIO_SIGNAL_7      GPIO_PIN_7
-#define MCAL_GPIO_SIGNAL_8      GPIO_PIN_8
-#define MCAL_GPIO_SIGNAL_9      GPIO_PIN_9
-#define MCAL_GPIO_SIGNAL_10     GPIO_PIN_10
-#define MCAL_GPIO_SIGNAL_11     GPIO_PIN_11
-#define MCAL_GPIO_SIGNAL_12     GPIO_PIN_12
+#define MCAL_GPIO_SIGNAL_0      GPIO_PIN_A0
+#define MCAL_GPIO_SIGNAL_1      GPIO_PIN_A1
+#define MCAL_GPIO_SIGNAL_2      GPIO_PIN_A2
+#define MCAL_GPIO_SIGNAL_3      GPIO_PIN_A3
+#define MCAL_GPIO_SIGNAL_4      GPIO_PIN_A4
+#define MCAL_GPIO_SIGNAL_5      GPIO_PIN_A5
+#define MCAL_GPIO_SIGNAL_6      GPIO_PIN_A6
+#define MCAL_GPIO_SIGNAL_7      GPIO_PIN_A7
+#define MCAL_GPIO_SIGNAL_8      GPIO_PIN_A8
+#define MCAL_GPIO_SIGNAL_9      GPIO_PIN_A9
+#define MCAL_GPIO_SIGNAL_10     GPIO_PIN_A10
+#define MCAL_GPIO_SIGNAL_11     GPIO_PIN_A11
+#define MCAL_GPIO_SIGNAL_12     GPIO_PIN_A12
+//#define MCAL_GPIO_SIGNAL_13     GPIO_PIN_A13
+//#define MCAL_GPIO_SIGNAL_14     GPIO_PIN_A14
+#define MCAL_GPIO_SIGNAL_15     GPIO_PIN_A15
+#define MCAL_GPIO_SIGNAL_16     GPIO_PIN_B0
+#define MCAL_GPIO_SIGNAL_17     GPIO_PIN_B1
+#define MCAL_GPIO_SIGNAL_18     GPIO_PIN_B2
+#define MCAL_GPIO_SIGNAL_19     GPIO_PIN_B3
+#define MCAL_GPIO_SIGNAL_20     GPIO_PIN_B4
+#define MCAL_GPIO_SIGNAL_21     GPIO_PIN_B5
+#define MCAL_GPIO_SIGNAL_22     GPIO_PIN_B6
+#define MCAL_GPIO_SIGNAL_23     GPIO_PIN_B7
+#define MCAL_GPIO_SIGNAL_24     GPIO_PIN_B8
+#define MCAL_GPIO_SIGNAL_25     GPIO_PIN_B9
+#define MCAL_GPIO_SIGNAL_26     GPIO_PIN_B10
+//#define MCAL_GPIO_SIGNAL_27     GPIO_PIN_B11
+#define MCAL_GPIO_SIGNAL_28     GPIO_PIN_B12
+#define MCAL_GPIO_SIGNAL_29     GPIO_PIN_B13
+#define MCAL_GPIO_SIGNAL_30     GPIO_PIN_B14
+#define MCAL_GPIO_SIGNAL_31     GPIO_PIN_B15
 
-#define MCAL_GPIO_MAX_SIGNAL   (DataType_u32)(GPIO_PIN_12 + 1U)
+#define MCAL_GPIO_MAX_SIGNAL   (DataType_u32)(MCAL_GPIO_SIGNAL_31 + 1U)
 
 /*__________________________________________________________________________________________
 | MCAL GPIO Port Definitions                                                               |
@@ -73,12 +92,12 @@
 |_________________________________________________________________________________________*/
 #define MCAL_GPIO_GROUPSIGNAL_A     GPIO_PORTA
 #define MCAL_GPIO_GROUPSIGNAL_B     GPIO_PORTB
-#define MCAL_GPIO_GROUPSIGNAL_C     GPIO_PORTC
-#define MCAL_GPIO_GROUPSIGNAL_D     GPIO_PORTD
-#define MCAL_GPIO_GROUPSIGNAL_E     GPIO_PORTE
-#define MCAL_GPIO_GROUPSIGNAL_H     GPIO_PORTH
+//#define MCAL_GPIO_GROUPSIGNAL_C     GPIO_PORTC
+//#define MCAL_GPIO_GROUPSIGNAL_D     GPIO_PORTD
+//#define MCAL_GPIO_GROUPSIGNAL_E     GPIO_PORTE
+//#define MCAL_GPIO_GROUPSIGNAL_H     GPIO_PORTH
 
-#define MCAL_GPIO_MAX_GROUPSIGNAL   (DataType_u32)(MCAL_GPIO_GROUPSIGNAL_H + 1U)
+#define MCAL_GPIO_MAX_GROUPSIGNAL   (DataType_u32)(MCAL_GPIO_GROUPSIGNAL_B + 1U)
 
 
 /*_________________________________________________________________________________________
@@ -130,7 +149,7 @@
 | Preconditions: GPIO module state must be READY                                           |
 | Usage        : Runtime service for grouped output control                                |
 |_________________________________________________________________________________________*/
-#define MCAL_GPIO_WritePort(SignalId, SignalValue) GPIO_WritePort((SignalId), (SignalValue))
+#define MCAL_GPIO_WritePort(SignalGroupId, SignalGroupValue) GPIO_WritePort((SignalGroupId), (SignalGroupValue))
 
 /*_________________________________________________________________________________________
 | Service Name : MCAL_GPIO_WritePin                                                        |

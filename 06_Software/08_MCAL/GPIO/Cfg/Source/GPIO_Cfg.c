@@ -51,23 +51,41 @@
  | Lifetime       : Static (valid for entire system lifetime)                              |
  | Notes          : Each entry represents one GPIO pin configuration                       |
  |_________________________________________________________________________________________*/
-const DataType_PinConfiguration PinSetUp_TableCfg[PIN_CFG_NUM] =
+const DataType_PinConfiguration PinSetUp_TableCfg[NUMBER_PINS_CFG] =
 {
 /*    Port  | Pin    | Mode                     | Output Type        | Speed      | Pull/Resistor           | Initial Level       | Lock Status            |    Alternate Function */
-    { PortA, Pin_0,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortA, Pin_1,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortA, Pin_2,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortA, Pin_13, Alternate_Function_Mode,    Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortA, Pin_14, Alternate_Function_Mode,    Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_0,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_1,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_2,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_3,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_4,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_5,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_6,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_7,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_8,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_9,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_10,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_11,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_12,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_13,  Alternate_Function_Mode,    Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_14,  Alternate_Function_Mode,    Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortA, Pin_15,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
 
-    { PortB, Pin_0,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_1,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_2,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_3,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_4,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_5,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_6,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
-    { PortB, Pin_7,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 }
+    { PortB, Pin_0,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_1,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_2,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_3,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_4,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_5,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_6,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_7,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_8,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_9,   Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_10,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_12,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_13,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_14,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 },
+    { PortB, Pin_15,  Output_Mode,                Output_Push_Pull,    Low_Speed,   Resistance_NotConnected,       Low,             Configuration_UnLocked,   Alternate_Function_0 }
 };
 
 /*__________________________________________________________________________________________
@@ -81,7 +99,7 @@ const DataType_PinConfiguration PinSetUp_TableCfg[PIN_CFG_NUM] =
  | Lifetime       : Static (valid for entire system lifetime)                              |
  | Notes          : Determines whether port configuration can be modified at runtime       |
  |_________________________________________________________________________________________*/
-const DataType_PortLockKey PortLock_TableCfg[PORT_CFG_NUM] =
+const DataType_PortLockKey PortLock_TableCfg[NUMBER_PORT_CFG] =
 {
 /*   Port   | Lock */
     { PortA,  UnActive },

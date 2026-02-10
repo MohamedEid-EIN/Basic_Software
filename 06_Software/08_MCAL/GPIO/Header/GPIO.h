@@ -90,7 +90,7 @@
  | Description  : Maximum and minimum allowed configuration counts                          |
  | Usage        : Validation of configuration tables                                        |
  |_________________________________________________________________________________________*/
-#define MAX_PIN_CONFIGURATION        (DataType_u8)16
+#define MAX_PIN_CONFIGURATION        (DataType_u8)31
 #define MAX_PORT_CONFIGURATION       (DataType_u8)6
 #define MIN_PIN_CONFIGURATION        (DataType_u8)1
 #define MIN_PORT_CONFIGURATION       (DataType_u8)1

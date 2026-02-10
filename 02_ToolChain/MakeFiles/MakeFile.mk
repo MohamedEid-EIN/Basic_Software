@@ -123,10 +123,10 @@ LINKER_DIR      = $(PLATFORM_DIR)/Linker
 ###############################################
 SRC_DIRS = \
 	$(APP_SRC_DIR) \
-	$(GPIO_SRC_DIR) \
 	$(GPIO_CFG_SRC_DIR) \
+	$(GPIO_SRC_DIR) \
 	$(CLOCK_SRC_DIR) \
-    $(CHLCD_SRC_DIR) \
+	$(CHLCD_SRC_DIR) \
 	$(STARTUP_DIR)
 
 ###############################################

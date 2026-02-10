@@ -47,23 +47,14 @@ int main(void)
     /* 5. Main loop */
     while (1)
     {
-        for(Index = 0; Index < 29u; Index++)
-        {
-        Delay_ms(5);
-        MCAL_GPIO_WritePin(SIGNALS[Index], High);
-        Delay_ms(5);
 
-        }
+        MCAL_GPIO_WritePort(0, 0xFFFF);
+        MCAL_GPIO_WritePort(1, 0xFFFF);
 
-		for(Index = 0; Index < 29u; Index++)
-        {
-        Delay_ms(5);
-        MCAL_GPIO_WritePin(SIGNALS[Index], Low);
-        Delay_ms(5);
-
-        }
-        /* Nothing to do */
-        /* Nothing to do */
+        Delay_ms(100);
+        MCAL_GPIO_WritePort(0, 0);
+        MCAL_GPIO_WritePort(1, 0);
+        Delay_ms(100);
     }
 }
 

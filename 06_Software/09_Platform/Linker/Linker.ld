@@ -7,10 +7,10 @@
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 * copies of the Software, and to permit persons to whom the Software is
 * furnished to do so, subject to the following conditions:
-* 
+*
 * The above copyright notice and this permission notice shall be included in all
 * copies or substantial portions of the Software.
-* 
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,11 +30,19 @@
 * - Version : History
 * - 1.00.00 : Linker file Creation
 ********************************************************************************************/
-__MEMORY_FLASH_ADDRESS_ORIGIN              = 0x08000000 ;       
-__MEMORY_FLASH_LENGTH                      = 0x40000 ;     /* 256_KB */
+__STM32F401_MEMORY_FLASH_ADDRESS_ORIGIN              = 0x08000000 ;
+__STM32F401_MEMORY_FLASH_LENGTH                      = 0x40000 ;     /* 256_KB */
 
-__MEMORY_SRAM_ADDRESS_ORIGIN               = 0x20000000 ;
-__MEMORY_SRAM_LENGTH                       = 0x10000 ;     /* 64_KB */
+__STM32F401_MEMORY_SRAM_ADDRESS_ORIGIN               = 0x20000000 ;
+__STM32F401_MEMORY_SRAM_LENGTH                       = 0x10000 ;     /* 64_KB */
+
+__STM32F411_MEMORY_FLASH_ADDRESS_ORIGIN              = 0x08000000 ;
+__STM32F411_MEMORY_FLASH_LENGTH                      = 0x80000 ;     /* 512_KB */
+
+__STM32F411_MEMORY_SRAM_ADDRESS_ORIGIN               = 0x20000000 ;
+__STM32F411_MEMORY_SRAM_LENGTH                       = 0x20000 ;     /* 128_KB */
+
+
 
 __MEM_SECTION_JUMPTABLE_START_ADDRESS      = 0x08000000;   /* 512_B */
 __MEM_SECTION_JUMPTABLE_END_ADDRESS        = 0x08000200;
@@ -74,12 +82,12 @@ __MEM_SECTION_HEAP_END_ADDRESS             = 0x20009000;
 
 __MEM_SECTION_STACK_START_ADDRESS          = 0x20009000;  /* 28_KB */ /* Stack lower address */
 __MEM_SECTION_STACK_END_ADDRESS            = 0x20010000;              /* Stack Higher address Top of the stack */
-__STACK_POINTER_START_ADDRESS_VALUE        = 0x20010000;
+__STACK_POINTER_START_ADDRESS_VALUE        = 0x20020000;
 
 MEMORY
 {
-    FLASH (rx) : ORIGIN = __MEMORY_FLASH_ADDRESS_ORIGIN, LENGTH = __MEMORY_FLASH_LENGTH
-    SRAM (rw) : ORIGIN = __MEMORY_SRAM_ADDRESS_ORIGIN, LENGTH = __MEMORY_SRAM_LENGTH
+    FLASH (rx) : ORIGIN = __STM32F411_MEMORY_FLASH_ADDRESS_ORIGIN, LENGTH = __STM32F411_MEMORY_FLASH_LENGTH
+    SRAM (rw) : ORIGIN = __STM32F411_MEMORY_SRAM_ADDRESS_ORIGIN, LENGTH = __STM32F411_MEMORY_SRAM_LENGTH
 }
 
 /***********************************************
@@ -99,7 +107,7 @@ SECTIONS
        Calculation: Calculated size  512_B
                     (1 SP + 1 Reset + 14 Core exception + 86 NVIC Irq = 102 interrupt Entry with 4 bytes size each.
                     Address end 408_B + Align it to 512_B --> 0x00000198 => 0x00000200) */
-    
+
     .VectorTable __MEM_SECTION_JUMPTABLE_START_ADDRESS :
     {
         PROVIDE(__JUMP_TABLE_ADDRESS_BEGIN = .);                /* Create linker symbol to store calculated start address */
@@ -117,7 +125,7 @@ SECTIONS
        Calculation: Estimated fixed safe size 16_KB */
 
     .rodata __MEM_SECTION_CONSTANT_START_ADDRESS :
-    {     
+    {
         __CONSTANT_ADDRESS_BEGIN = .;                           /* Create linker symbol to store calculated start address */
         KEEP(*(.rodata))                                        /* Force linker to include the specifed input section into the final output even if it's unused */
         __CONSTANT_ADDRESS_END = .;                             /* Create linker symbol to store calculated end address */
@@ -133,7 +141,7 @@ SECTIONS
        Calculation: Estimated fixed safe size 8_KB */
 
     .data_load __MEM_SECTION_DATA_LOAD_START_ADDRESS :
-    {     
+    {
         __DATA_LOAD_ADDRESS_BEGIN = .;                          /* Create linker symbol to store calculated start address */
         KEEP(*(.data_load))                                     /* Force linker to include the specifed input section into the final output even if it's unused */
         __DATA_LOAD_ADDRESS_END = .;                            /* Create linker symbol to store calculated end address */
@@ -149,7 +157,7 @@ SECTIONS
        Calculation: Estimated size 2_KB */
 
     .ramfunc_load __MEM_SECTION_RAMFUNC_LOAD_START_ADDRESS :
-    {     
+    {
         __RAMFUNC_LOAD_ADDRESS_BEGIN = .;                       /* Create linker symbol to store calculated start address */
         KEEP(*(.ramfunc_load))                                  /* Force linker to include the specifed input section into the final output even if it's unused */
         __RAMFUNC_LOAD_ADDRESS_END = .;                         /* Create linker symbol to store calculated end address */
@@ -165,7 +173,7 @@ SECTIONS
        Calculation: Estimated size 2_KB */
 
     .init __MEM_SECTION_INIT_START_ADDRESS :
-    {     
+    {
         __INIT_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.init))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __INIT_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -182,7 +190,7 @@ SECTIONS
        Calculation: Estimated size 2_KB */
 
     .finit __MEM_SECTION_FINIT_START_ADDRESS :
-    {     
+    {
         __FINIT_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.finit))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __FINIT_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -198,7 +206,7 @@ SECTIONS
        Calculation: Estimated size 512_KB */
 
     .text __MEM_SECTION_CODE_START_ADDRESS :
-    {     
+    {
         __CODE_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.text))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __CODE_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -214,7 +222,7 @@ SECTIONS
        Calculation: Estimated size 8_KB */
 
     .data __MEM_SECTION_DATA_START_ADDRESS :
-    {     
+    {
         __DATA_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.data))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __DATA_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -232,7 +240,7 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
        Calculation: Estimated size 16_KB */
 
     .bss __MEM_SECTION_BSS_START_ADDRESS :
-    {     
+    {
         __BSS_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.bss))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __BSS_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -248,7 +256,7 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
        Calculation: Estimated size 2_KB */
 
     .ramfunc __MEM_SECTION_RAMFUNC_START_ADDRESS :
-    {     
+    {
         __RAMFUNC_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.ramfunc))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __RAMFUNC_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -264,7 +272,7 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
        Calculation: Estimated size 2_KB */
 
     .noinit __MEM_SECTION_NOINIT_START_ADDRESS :
-    {     
+    {
         __NOINIT_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.noinit))                                             /* Force linker to include the specifed input section into the final output even if it's unused */
         __NOINIT_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -280,7 +288,7 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
        Calculation: Estimated size 8_KB */
 
     .heap __MEM_SECTION_HEAP_START_ADDRESS :
-    {     
+    {
         __HEAP_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.heap))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __HEAP_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
@@ -296,7 +304,7 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
        Calculation: Estimated size 100KB */
 
     .stack __MEM_SECTION_STACK_START_ADDRESS :
-    {     
+    {
         __STACK_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
         KEEP(*(.stack))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
         __STACK_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */

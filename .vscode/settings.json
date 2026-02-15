@@ -52,6 +52,16 @@
   "workbench.startupEditor": "none",
   "workbench.editor.enablePreview": false,
   "breadcrumbs.enabled": true,
-"window.commandCenter": true,
-"C_Cpp.dimInactiveRegions": false
+  "window.commandCenter": true,
+  "C_Cpp.dimInactiveRegions": false,
+
+  /* ---------- TestMate configuration ---------- */
+  "testMate.cpp.test.advancedExecutables": [
+    {
+      "pattern": "08_Tests/01_Unit_Test/GPIO/test_gpio",
+      "cwd": "08_Tests/01_Unit_Test/GPIO",
+      "framework": "gtest"
+    }
+  ],
+"testMate.cpp.log.logpanel": true
 }

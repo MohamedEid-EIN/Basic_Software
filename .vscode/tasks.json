@@ -94,6 +94,24 @@
         "clear": true
       },
       "problemMatcher": []
+    },
+
+    {
+      "label": "Build GPIO Tests",
+      "type": "shell",
+      "command": "make",
+      "options": {
+        "cwd": "${workspaceFolder}/08_Tests/01_Unit_Test/GPIO"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
     }
   ]
 }

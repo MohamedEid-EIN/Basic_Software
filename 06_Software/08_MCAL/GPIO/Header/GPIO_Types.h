@@ -373,6 +373,6 @@ typedef struct
  | Notes          : - Volatile enforces hardware access semantics                           |
  |                : - const prevents pointer reassignment                                   |
  |_________________________________________________________________________________________*/
-typedef volatile DataType_Registers * const DataType_GpioRegisters;
+typedef volatile DataType_Registers * DataType_GpioRegisters;
 
 #endif /* GPIO_TYPES_H */

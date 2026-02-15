@@ -5,26 +5,19 @@
       "name": "Basic_Software (OpenOCD)",
       "type": "cortex-debug",
       "request": "launch",
-
       "cwd": "${workspaceFolder}",
       "executable": "${workspaceFolder}/01_Build_System/Temp/Elf/ProjectBuildFile.elf",
       "armToolchainPath": "",
       "gdbPath": "gdb-multiarch",
-
-
       "nmPath": "x86_64-linux-gnu-nm",
       "objdumpPath": "x86_64-linux-gnu-objdump",
-
       "servertype": "openocd",
       "serverpath": "openocd",
       "serverArgs": [],
-
       "device": "STM32F401",
       "interface": "swd",
-
       "runToEntryPoint": "main",
       "breakAfterReset": true,
-
       "configFiles": [
         "interface/stlink.cfg",
         "target/stm32f4x.cfg"
@@ -32,6 +25,28 @@
       "searchDir": [
         "/usr/share/openocd/scripts"
       ]
+    },
+
+    {
+      "name": "GPIO Unit Tests (Linux)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/08_Tests/01_Unit_Test/GPIO/test_gpio",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/08_Tests/01_Unit_Test/GPIO",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Build GPIO Tests"
     }
   ]
 }

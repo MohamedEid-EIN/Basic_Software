@@ -40,20 +40,30 @@ int main(void)
     RCC_AHB1ENR |= (1 << 0) | (1 << 1);
    (void)RCC_AHB1ENR;
     MCAL_GPIO_Init();
-
-
+int x;
 
 
     /* 5. Main loop */
     while (1)
     {
 
-        MCAL_GPIO_WritePort(0, 0xFFFF);
-        MCAL_GPIO_WritePort(1, 0xFFFF);
+ //      MCAL_GPIO_WritePort(0, 0xFFFF);
+   //     MCAL_GPIO_WritePort(1, 0xFFFF);
+DataType_Output_Level PinValue = 0;
 
-        Delay_ms(100);
-        MCAL_GPIO_WritePort(0, 0);
-        MCAL_GPIO_WritePort(1, 0);
+    MCAL_GPIO_ReadPin(0, &PinValue);
+            Delay_ms(100);
+
+
+       if(PinValue == High)
+       {
+        MCAL_GPIO_SetPin(1);
+       }
+       else
+       {
+            MCAL_GPIO_ResetPin(1);
+       }
+   //     MCAL_GPIO_WritePort(1, 0);
         Delay_ms(100);
     }
 }

@@ -39,32 +39,31 @@
 
 #include "GPIO.h"          /* GPIO public interfaces */
 #include "GPIO_Cfg.h"      /* GPIO static configuration */
-#include "CLOCK_Int.h"     /* Clock module interface */
 #include "UTILS_Int.h"     /* Utility macros and helpers */
 
 /**********************************************************************************************************************************************************************************
  * Data Declaration Section
 **********************************************************************************************************************************************************************************/
 /*__________________________________________________________________________________________
- | Data Name    : GPIO_Module_State                                                         |
- | Description  : Holds the current state of the GPIO module                                |
- | Type         : DataType_u32                                                              |
- | Size         : 4 Bytes                                                                   |
- | Storage      : RAM                                                                       |
- | Usage        : Used to control GPIO service availability                                 |
- |_________________________________________________________________________________________*/
-static volatile DataType_u32 GPIO_Module_State = LIB_UTILS_STATE_UNDEFINED;
+| Data Name    : GPIO_Module_State                                                         |
+| Description  : Holds the current state of the GPIO module                                |
+| Type         : DataType_u32                                                              |
+| Size         : 4 Bytes                                                                   |
+| Storage      : RAM                                                                       |
+| Usage        : Used to control GPIO service availability                                 |
+|_________________________________________________________________________________________*/
+volatile DataType_u32 GPIO_Module_State = LIB_UTILS_STATE_UNDEFINED;
 
 /*__________________________________________________________________________________________
- | Data Name    : PortLockStatus_Table                                                      |
- | Description  : Runtime table tracking GPIO port lock status                              |
- | Type         : Array of DataType_PortLockStatus                                          |
- | Element Size : 4 Bytes (u32-based structure)                                             |
- | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                          |
- | Storage      : RAM                                                                       |
- | Usage        : Monitor whether a port is locked or unlocked                              |
- |_________________________________________________________________________________________*/
-static DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM] =
+| Data Name    : PortLockStatus_Table                                                      |
+| Description  : Runtime table tracking GPIO port lock status                              |
+| Type         : Array of DataType_PortLockStatus                                          |
+| Element Size : 4 Bytes (u32-based structure)                                             |
+| Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                          |
+| Storage      : RAM                                                                       |
+| Usage        : Monitor whether a port is locked or unlocked                              |
+|_________________________________________________________________________________________*/
+DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM] =
 {
     {PortA, Key_UnLocked},
     {PortB, Key_UnLocked},
@@ -75,15 +74,15 @@ static DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM] =
 };
 
 /*__________________________________________________________________________________________
- | Data Name    : Registers_Table                                                           |
- | Description  : Maps logical port indices to GPIO register base addresses                 |
- | Type         : Array of DataType_GpioRegisters                                           |
- | Element Size : 4 Bytes (register base address)                                           |
- | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                          |
- | Storage      : RAM                                                                       |
- | Usage        : Used for direct hardware register access                                  |
- |_________________________________________________________________________________________*/
-static DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM] =
+| Data Name    : Registers_Table                                                           |
+| Description  : Maps logical port indices to GPIO register base addresses                 |
+| Type         : Array of DataType_GpioRegisters                                           |
+| Element Size : 4 Bytes (register base address)                                           |
+| Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                          |
+| Storage      : RAM                                                                       |
+| Usage        : Used for direct hardware register access                                  |
+|_________________________________________________________________________________________*/
+ DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM] =
 {
     PORTA_BASE_ADDRESS,
     PORTB_BASE_ADDRESS,
@@ -94,15 +93,15 @@ static DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM] =
 };
 
 /*__________________________________________________________________________________________
- | Data Name    : PortUsage_Table                                                          |
- | Description  : Tracks whether each GPIO port is used by configuration                   |
- | Type         : Array of DataType_Usage                                                  |
- | Element Size : 4 Bytes (u32 enum)                                                       |
- | Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                         |
- | Storage      : RAM                                                                      |
- | Usage        : Skip unused ports during configuration                                   |
- |_________________________________________________________________________________________*/
-static DataType_Usage PortUsage_Table[HW_SUPPORTED_PORTS_NUM] = {Unused};
+| Data Name    : PortUsage_Table                                                          |
+| Description  : Tracks whether each GPIO port is used by configuration                   |
+| Type         : Array of DataType_Usage                                                  |
+| Element Size : 4 Bytes (u32 enum)                                                       |
+| Array Size   : HW_SUPPORTED_PORTS_NUM × 4 Bytes                                         |
+| Storage      : RAM                                                                      |
+| Usage        : Skip unused ports during configuration                                   |
+|_________________________________________________________________________________________*/
+DataType_Usage PortUsage_Table[HW_SUPPORTED_PORTS_NUM] = {Unused};
 
 /**********************************************************************************************************************************************************************************
  * Function Definitions Section
@@ -237,7 +236,7 @@ void GPIO_BuildConfiguration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIG
         else
         {
             /* Configure AFRH register */
-            Registers_Shadow[PortId].Gpio_Afrh |= (PinSetUp_TableCfg[Index].Pin_Alternate_Function << ((PinId - 8U) * REG_AFRH_BITS));
+            Registers_Shadow[PortId].Gpio_Afrh |= (PinSetUp_TableCfg[Index].Pin_Alternate_Function << ((PinId - REG_AFRH_PINS_OFFSET) * REG_AFRH_BITS));
         }
 
         /* Configure initial output level */

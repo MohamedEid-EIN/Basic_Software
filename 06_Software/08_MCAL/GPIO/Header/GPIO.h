@@ -81,7 +81,7 @@
 #define REG_BSRR_RESET_BITS_OFFSET   (DataType_u32)16U
 #define REG_AFRL_BITS                (DataType_u32)4U
 #define REG_AFRH_BITS                (DataType_u32)4U
-#define Reg_AFRH_PINS_OFFSET         (DataType_u32)8U
+#define REG_AFRH_PINS_OFFSET         (DataType_u32)8U
 #define REG_LCKR_LCKK_BIT            (DataType_u32)16U
 #define REG_LCKR_LCKK_MASK           (DataType_u32)0x00010000U
 
@@ -90,7 +90,7 @@
  | Description  : Maximum and minimum allowed configuration counts                          |
  | Usage        : Validation of configuration tables                                        |
  |_________________________________________________________________________________________*/
-#define MAX_PIN_CONFIGURATION        (DataType_u8)31
+#define MAX_PIN_CONFIGURATION        (DataType_u8)96
 #define MAX_PORT_CONFIGURATION       (DataType_u8)6
 #define MIN_PIN_CONFIGURATION        (DataType_u8)1
 #define MIN_PORT_CONFIGURATION       (DataType_u8)1
@@ -134,7 +134,7 @@
  | Size         : NUM_OF_PORTS entries                                                      |
  | Usage        : Tracks lock status of each GPIO port                                      |
  |_________________________________________________________________________________________*/
-static DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM];
+extern DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM];
 
 /*__________________________________________________________________________________________
  | Data Name    : Registers_Table                                                           |
@@ -143,7 +143,7 @@ static DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM];
  | Storage      : RAM                                                                       |
  | Usage        : Internal hardware register access                                         |
  |_________________________________________________________________________________________*/
-static DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM];
+extern DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM];
 
 /*__________________________________________________________________________________________
  | Data Name    : Port_Usage_Table                                                          |
@@ -152,7 +152,7 @@ static DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM];
  | Storage      : RAM                                                                       |
  | Usage        : Prevents duplicate or invalid port usage                                  |
  |_________________________________________________________________________________________*/
-static DataType_Usage PortUsage_Table[HW_SUPPORTED_PORTS_NUM];
+extern DataType_Usage PortUsage_Table[HW_SUPPORTED_PORTS_NUM];
 
 /*__________________________________________________________________________________________
  | Data Name    : GPIO_Module_State                                                         |
@@ -161,7 +161,7 @@ static DataType_Usage PortUsage_Table[HW_SUPPORTED_PORTS_NUM];
  | Storage      : RAM                                                                       |
  | Usage        : Controls GPIO module lifecycle                                            |
  |_________________________________________________________________________________________*/
-static volatile DataType_u32 GPIO_Module_State;
+extern volatile DataType_u32 GPIO_Module_State;
 
 /**********************************************************************************************************************************
  * Section: Function Prototype Definition

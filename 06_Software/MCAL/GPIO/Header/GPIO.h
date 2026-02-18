@@ -174,15 +174,14 @@ extern volatile DataType_u32 GPIO_Module_State;
  | Description   : Writes shadow GPIO register values into hardware registers              |
  | Sync/Async    : Synchronous                                                             |
  | Reentrancy    : Non-Reentrant                                                           |
- | Parameters    : Input : Registers_Shadow, Registers_Table                               |
+ | Parameters    : Input : Registers_Shadow                                                |
  | Return        : DataType_Request_Status                                                 |
  | Preconditions : GPIO must be initialized                                                |
  | Usage         : Internal initialization helper                                          |
  | Context       : Callable from MCU context                                               |
  |________________________________________________________________________________________*/
 DataType_Request_Status GPIO_ConfigureRegisters(
-    DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION],
-    DataType_GpioRegisters Registers_Table[MAX_PORT_CONFIGURATION]);
+    DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION]);
 
 /*_________________________________________________________________________________________
  | Function Name : GPIO_PortLockInit                                                       |
@@ -191,15 +190,14 @@ DataType_Request_Status GPIO_ConfigureRegisters(
  | Description   : Executes GPIO port lock sequence                                        |
  | Sync/Async    : Synchronous                                                             |
  | Reentrancy    : Non-Reentrant                                                           |
- | Parameters    : Input : Registers_Shadow, Registers_Table                               |
+ | Parameters    : Input : Registers_Shadow                                                |
  | Return        : DataType_Request_Status                                                 |
  | Preconditions : GPIO registers must be configured                                       |
  | Usage         : Internal initialization helper                                          |
  | Context       : Callable from MCU context                                               |
  |________________________________________________________________________________________*/
 DataType_Request_Status GPIO_PortLockInit(
-    DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION],
-    DataType_GpioRegisters Registers_Table[MAX_PORT_CONFIGURATION]);
+    DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION]);
 
 /*__________________________________________________________________________________________
  | Function Name : GPIO_BuildConfiguration                                                  |

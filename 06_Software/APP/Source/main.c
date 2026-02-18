@@ -11,8 +11,7 @@ typedef volatile unsigned long vuint32_t;
 #include <stdint.h>
 
 //#include "CLOCK_Int.h"
-#include "MCAL_Int.h"
-#include "CHLCD_Int.h"
+#include "MCAL_API.h"
 
 #define RCC_AHB1ENR   (*(volatile unsigned int*)0x40023830)
 
@@ -36,12 +35,9 @@ void *memset(void *dest, int value, size_t len);
  * ------------------------------------------------------------ */
 int main(void)
 {
-    DataType_u8 Index = 0;
     RCC_AHB1ENR |= (1 << 0) | (1 << 1);
    (void)RCC_AHB1ENR;
     MCAL_GPIO_Init();
-int x;
-
 
     /* 5. Main loop */
     while (1)

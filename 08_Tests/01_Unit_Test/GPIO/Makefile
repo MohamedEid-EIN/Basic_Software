@@ -63,7 +63,7 @@ CPP_SRCS = \
 all: build
 
 build: clean
-	$(CC)  $(CFLAGS)   $(INCLUDES) -c $(C_SRCS)
+	$(COMPILER)  $(CFLAGS)   $(INCLUDES) -c $(C_SRCS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $(CPP_SRCS)
 	$(CXX) *.o -o $(TARGET) $(LIBS)
 
@@ -75,7 +75,7 @@ run: build
 # ===============================
 
 coverage: clean
-	$(CC)  $(CFLAGS)   $(COVERAGE_FLAGS) $(INCLUDES) -c $(C_SRCS)
+	$(COMPILER)  $(CFLAGS)   $(COVERAGE_FLAGS) $(INCLUDES) -c $(C_SRCS)
 	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) $(INCLUDES) -c $(CPP_SRCS)
 	$(CXX) *.o -o $(TARGET) $(LIBS) $(COVERAGE_LIBS)
 	./$(TARGET)
@@ -114,7 +114,7 @@ analyze: clean
 	scan-build \
 	--keep-going \
 	-o clang-report \
-	--use-cc=$(CC) \
+	--use-cc=$(COMPILER) \
 	--use-c++=$(CXX) \
 	make build || true
 	@if [ -z "$$(ls -A clang-report)" ]; then \

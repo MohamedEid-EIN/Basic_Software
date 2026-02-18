@@ -147,7 +147,7 @@ DataType_Request_Status GPIO_Intitialization(void)
         GPIO_BuildConfiguration(Registers_Shadow);
 
         /* Write shadow register values to actual hardware registers */
-        Return_Status = GPIO_ConfigureRegisters(Registers_Shadow, Registers_Table);
+        Return_Status = GPIO_ConfigureRegisters(Registers_Shadow);
 
         /* Check hardware write operation result */
         if(Return_Status != Success)
@@ -158,7 +158,7 @@ DataType_Request_Status GPIO_Intitialization(void)
         else
         {
             /* Initialize GPIO port lock feature */
-            Return_Status = GPIO_PortLockInit(Registers_Shadow, Registers_Table);
+            Return_Status = GPIO_PortLockInit(Registers_Shadow);
 
             /* Check lock initialization result */
             if(Return_Status != Success)
@@ -258,7 +258,7 @@ void GPIO_BuildConfiguration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIG
 | Context       : MCU context                                                                                                       |
 | Notes         : Writes only ports marked as Used                                                                                  |
 |__________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ConfigureRegisters(DataType_Registers Registers_Shadow[HW_SUPPORTED_PORTS_NUM], DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM])
+DataType_Request_Status GPIO_ConfigureRegisters(DataType_Registers Registers_Shadow[HW_SUPPORTED_PORTS_NUM])
 {
     /* Initialize return status assuming success */
     DataType_Request_Status Return_Status = Success;
@@ -397,7 +397,7 @@ DataType_Request_Status GPIO_ConfigureRegisters(DataType_Registers Registers_Sha
  | Context       : MCU context                                                                                                      |
  | Notes         : Uses STM32 GPIO lock sequence                                                                                    |
  |_________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_PortLockInit(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION], DataType_GpioRegisters Registers_Table[MAX_PORT_CONFIGURATION])
+DataType_Request_Status GPIO_PortLockInit(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION])
 {
     /* Loop index for configured ports */
     DataType_u8 Index;

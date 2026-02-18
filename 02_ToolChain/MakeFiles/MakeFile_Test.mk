@@ -1,13 +1,26 @@
 # ===============================
-# Unit Test Build (GPIO)
+# Unit Test Build (MODULE Aware)
 # ===============================
 
+ROOT       := $(PROJECT_ROOT)
+BUILD_ROOT := $(BUILD_ROOT)
+REPORT_DIR := $(BUILD_ROOT)/Temp/Test_Reports
+MODULE     ?= GPIO
+REPORT_DIR := $(BUILD_ROOT)/Temp/Test_Reports
+XSL_FILE   := $(PROJECT_ROOT)/02_ToolChain/MakeFiles/gtest_report.xsl
+
+# ===============================
 # Compilers
+# ===============================
+
 CC  = gcc
 CXX = g++
 
+# ===============================
 # Target
-TARGET = test_gpio
+# ===============================
+
+TARGET = test_$(MODULE)
 
 # ===============================
 # Flags
@@ -16,7 +29,6 @@ TARGET = test_gpio
 BASE_CFLAGS   = -Wall -Wextra -g
 BASE_CXXFLAGS = -std=c++17 -Wall -Wextra -g
 
-# Enable UNIT_TEST macro for fault injection hooks
 DEFINES = -DUNIT_TEST
 
 CFLAGS   = $(BASE_CFLAGS)   $(DEFINES)
@@ -36,25 +48,26 @@ COVERAGE_LIBS  = -lgcov
 # Include Paths
 # ===============================
 
-INCLUDES  = -I../../../06_Software/03_Libraries/STD_TYPES/Cfg
-INCLUDES += -I../../../06_Software/03_Libraries/STD_TYPES/Include
-INCLUDES += -I../../../06_Software/03_Libraries/UTILS/Include
-INCLUDES += -I../../../06_Software/08_MCAL/GPIO/Cfg/Header
-INCLUDES += -I../../../06_Software/08_MCAL/GPIO/Header
-INCLUDES += -I../../../06_Software/08_MCAL/GPIO/Header/Include
-INCLUDES += -IMocks
+INCLUDES  = -I$(ROOT)/06_Software/LIB/STD_TYPES/Cfg
+INCLUDES += -I$(ROOT)/06_Software/LIB/STD_TYPES/Include
+INCLUDES += -I$(ROOT)/06_Software/LIB/UTILS/Include
+INCLUDES += -I$(ROOT)/06_Software/MCAL/$(MODULE)/Cfg/Header
+INCLUDES += -I$(ROOT)/06_Software/MCAL/$(MODULE)/Header
+INCLUDES += -I$(ROOT)/06_Software/MCAL/$(MODULE)/Header/Include
+INCLUDES += -I$(TEST_ROOT)/Mocks
+INCLUDES += -I$(TEST_ROOT)/Include
 
 # ===============================
 # Source Files
 # ===============================
 
 C_SRCS = \
-	../../../06_Software/08_MCAL/GPIO/Source/GPIO.c \
-	../../../06_Software/08_MCAL/GPIO/Cfg/Source/GPIO_Cfg.c \
-	Mocks/GPIO_Mock.c
+	$(ROOT)/06_Software/MCAL/$(MODULE)/Source/$(MODULE).c \
+	$(ROOT)/06_Software/MCAL/$(MODULE)/Cfg/Source/$(MODULE)_Cfg.c \
+	$(TEST_ROOT)/Mocks/$(MODULE)_Mock.c
 
 CPP_SRCS = \
-	Test/UnitTest_GPIO.cpp
+	$(TEST_ROOT)/Test/UnitTest_$(MODULE).cpp
 
 # ===============================
 # Default Build
@@ -68,8 +81,17 @@ build: clean
 	$(CXX) *.o -o $(TARGET) $(LIBS)
 
 run: build
-	./$(TARGET)
-
+	mkdir -p $(REPORT_DIR)
+	./$(TARGET) --gtest_output=xml:$(REPORT_DIR)/$(TARGET).xml
+	xsltproc $(XSL_FILE) \
+	         $(REPORT_DIR)/$(TARGET).xml \
+	         > $(REPORT_DIR)/$(TARGET).html
+	@echo "------------------------------------------"
+	@echo "Unit Test Reports Generated:"
+	@echo "XML  : $(REPORT_DIR)/$(TARGET).xml"
+	@echo "HTML : $(REPORT_DIR)/$(TARGET).html"
+	@echo "------------------------------------------"
+	@echo "------------------------------------------"
 # ===============================
 # Coverage Build
 # ===============================
@@ -90,24 +112,23 @@ coverage: clean
 	@echo "Coverage report generated in coverage_report/index.html"
 
 # ===============================
-# Static Analysis
+# Static Analysis (Cppcheck)
 # ===============================
 
 static:
 	cppcheck --enable=all --inconclusive \
 	         --force \
 	         --xml --xml-version=2 \
-	         ../../../06_Software 2> cppcheck-report.xml
+	         $(ROOT)/06_Software 2> cppcheck-report.xml
 	cppcheck-htmlreport \
 	         --file=cppcheck-report.xml \
 	         --report-dir=cppcheck-report \
-	         --source-dir=../../../06_Software/08_MCAL/GPIO
+	         --source-dir=$(ROOT)/06_Software/08_MCAL/$(MODULE)
 	@echo "Static analysis report generated in cppcheck-report/index.html"
 
 # ===============================
 # Advanced Static Analysis (Clang)
 # ===============================
-
 
 analyze: clean
 	mkdir -p clang-report
@@ -128,5 +149,5 @@ analyze: clean
 
 clean:
 	rm -f *.o *.gcda *.gcno coverage.info
-	rm -rf coverage_report
+	rm -rf coverage_report clang-report cppcheck-report cppcheck-report.xml
 	rm -f $(TARGET)

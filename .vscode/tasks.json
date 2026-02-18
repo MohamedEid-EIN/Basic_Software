@@ -1,0 +1,117 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Project: Build all",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "-f",
+        "Makefile",
+        "all"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/01_Build_System"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiGreen"
+      }
+    },
+
+    {
+      "label": "Show workspaceFolder",
+      "type": "shell",
+      "command": "echo WORKSPACE=${workspaceFolder}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+
+    {
+      "label": "Project: clean",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "-f",
+        "Makefile",
+        "clean"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/01_Build_System"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "icon": {
+        "id": "trash",
+        "color": "terminal.ansiRed"
+      }
+    },
+
+    {
+      "label": "Project: rebuild",
+      "dependsOn": [
+        "Project: clean",
+        "Project: Build all"
+      ],
+      "dependsOrder": "sequence",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "icon": {
+        "id": "sync",
+        "color": "terminal.ansiYellow"
+      }
+    },
+
+    {
+      "label": "Project: clear",
+      "type": "shell",
+      "command": "clear",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Build GPIO Tests",
+      "type": "shell",
+      "command": "make",
+      "options": {
+        "cwd": "${workspaceFolder}/08_Tests/01_Unit_Test/GPIO"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}

@@ -1,1 +1,0 @@
-../../06_Software/08_Platform/Linker/Cfg/Linker_Cfg.ld

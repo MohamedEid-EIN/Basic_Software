@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "ARM Cortex-M4 (Firmware)",
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb",
+                "-ffreestanding"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm",
+            "includePath": [
+                "${workspaceFolder}/06_Software/**"
+            ]
+        },
+        {
+            "name": "Linux Host (Unit Tests)",
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/06_Software/**",
+                "${workspaceFolder}/08_Tests/**"
+            ]
+        }
+    ],
+    "version": 4
+}

@@ -6,9 +6,6 @@
       "type": "shell",
       "command": "make",
       "args": [
-        "-f",
-        "Makefile",
-        "all"
       ],
       "options": {
         "cwd": "${workspaceFolder}/01_Build_System"

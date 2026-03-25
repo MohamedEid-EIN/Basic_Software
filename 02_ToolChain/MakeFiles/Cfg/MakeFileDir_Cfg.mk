@@ -126,20 +126,28 @@ STD_TYPES_ROOT := $(LIB_ROOT)/STD_TYPES
 STD_TYPES_INC_DIR := $(STD_TYPES_ROOT)/Include
 STD_TYPES_CFG_DIR := $(STD_TYPES_ROOT)/Cfg
 
-# ------------ STD_TYPES Module --------------
+# ------------ UTILS Module --------------
 UTILS_ROOT := $(LIB_ROOT)/UTILS
 UTILS_INC_DIR := $(UTILS_ROOT)/Include
 
+# ------------ ALGO Module --------------
+ALGO_ROOT := $(LIB_ROOT)/ALGO
+ALGO_SRC_DIR := $(ALGO_ROOT)/Source
+ALGO_HDR_DIR := $(ALGO_ROOT)/Heqader
+ALGO_INC_DIR := $(ALGO_HDR_DIR)/Include
 
 #========================================================
 # ------------ LIB Source Directories --------------
-LIB_SRC_DIRS =
+LIB_SRC_DIRS = \
+    $(ALGO_SRC_DIR)
 
 # ------------ LIB Include Directories --------------
 LIB_INC_DIRS = \
 	$(UTILS_INC_DIR) \
 	$(STD_TYPES_INC_DIR) \
-	$(STD_TYPES_CFG_DIR)
+	$(STD_TYPES_CFG_DIR) \
+	$(ALGO_HDR_DIR) \
+	$(ALGO_INC_DIR)
 ###################################################################################
 # Services Layer Components Directories
 ###################################################################################

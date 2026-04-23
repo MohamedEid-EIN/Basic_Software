@@ -67,25 +67,8 @@
 #define GPIO_PIN_A14   U8_TYPECAST(GPIO_PIN_A13 + 1U)
 #define GPIO_PIN_A15   U8_TYPECAST(GPIO_PIN_A14 + 1U)
 
-#define GPIO_PIN_B0    U8_TYPECAST(GPIO_PIN_A15 + 1U)
-#define GPIO_PIN_B1    U8_TYPECAST(GPIO_PIN_B0  + 1U)
-#define GPIO_PIN_B2    U8_TYPECAST(GPIO_PIN_B1  + 1U)
-#define GPIO_PIN_B3    U8_TYPECAST(GPIO_PIN_B2  + 1U)
-#define GPIO_PIN_B4    U8_TYPECAST(GPIO_PIN_B3  + 1U)
-#define GPIO_PIN_B5    U8_TYPECAST(GPIO_PIN_B4  + 1U)
-#define GPIO_PIN_B6    U8_TYPECAST(GPIO_PIN_B5  + 1U)
-#define GPIO_PIN_B7    U8_TYPECAST(GPIO_PIN_B6  + 1U)
-#define GPIO_PIN_B8    U8_TYPECAST(GPIO_PIN_B7  + 1U)
-#define GPIO_PIN_B9    U8_TYPECAST(GPIO_PIN_B8  + 1U)
-#define GPIO_PIN_B10   U8_TYPECAST(GPIO_PIN_B9  + 1U)
-//#define GPIO_PIN_B11   U32_TYPECAST(GPIO_PIN_B10 + 1U)
-#define GPIO_PIN_B12   U8_TYPECAST(GPIO_PIN_B10 + 1U)
-#define GPIO_PIN_B13   U8_TYPECAST(GPIO_PIN_B12 + 1U)
-#define GPIO_PIN_B14   U8_TYPECAST(GPIO_PIN_B13 + 1U)
-#define GPIO_PIN_B15   U8_TYPECAST(GPIO_PIN_B14 + 1U)
-
 /* Total number of configured logical GPIO pins */
-#define GPIO_MAX_PIN_CFG  U8_TYPECAST(GPIO_PIN_B15 + 1U)
+#define GPIO_MAX_PIN_CFG  U8_TYPECAST(GPIO_PIN_A15 + 1U)
 
 /*__________________________________________________________________________________________
 | Interface Name : GPIO port identifiers                                                   |
@@ -97,10 +80,9 @@
 |   - Upper layers must not assume any pin-level configuration from port identifiers.      |
 |_________________________________________________________________________________________*/
 #define GPIO_PORTA   U32_TYPECAST(0U)
-#define GPIO_PORTB   U32_TYPECAST(GPIO_PORTA + 1U)
 
 /* Total number of configured GPIO ports */
-#define GPIO_MAX_PORT U32_TYPECAST(GPIO_PORTB + 1U)
+#define GPIO_MAX_PORT U32_TYPECAST(GPIO_PORTA + 1U)
 
 /**********************************************************************************************************************************************************
  * GPIO Service APIS

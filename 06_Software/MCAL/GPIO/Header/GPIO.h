@@ -143,7 +143,7 @@ extern DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM];
  | Storage      : RAM                                                                       |
  | Usage        : Internal hardware register access                                         |
  |_________________________________________________________________________________________*/
-extern DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM];
+extern const DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM];
 
 /*__________________________________________________________________________________________
  | Data Name    : Port_Usage_Table                                                          |
@@ -181,7 +181,7 @@ extern volatile DataType_u32 GPIO_Module_State;
  | Context       : Callable from MCU context                                               |
  |________________________________________________________________________________________*/
 DataType_Request_Status GPIO_ConfigureRegisters(
-    DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION]);
+    DataType_Registers* Registers_Shadow);
 
 /*_________________________________________________________________________________________
  | Function Name : GPIO_PortLockInit                                                       |
@@ -212,7 +212,7 @@ DataType_Request_Status GPIO_PortLockInit(
  | Usage         : Internal configuration builder                                           |
  | Context       : Callable from MCU context                                                |
  |_________________________________________________________________________________________*/
-void GPIO_BuildConfiguration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION]);
+void GPIO_BuildConfiguration(DataType_Registers* Registers_Shadow);
 
 /*__________________________________________________________________________________________
  | Function Name : GPIO_SetModuleState                                                      |

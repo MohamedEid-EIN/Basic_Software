@@ -66,24 +66,8 @@
 //#define MCAL_GPIO_SIGNAL_13     GPIO_PIN_A13
 //#define MCAL_GPIO_SIGNAL_14     GPIO_PIN_A14
 #define MCAL_GPIO_SIGNAL_15     GPIO_PIN_A15
-#define MCAL_GPIO_SIGNAL_16     GPIO_PIN_B0
-#define MCAL_GPIO_SIGNAL_17     GPIO_PIN_B1
-#define MCAL_GPIO_SIGNAL_18     GPIO_PIN_B2
-#define MCAL_GPIO_SIGNAL_19     GPIO_PIN_B3
-#define MCAL_GPIO_SIGNAL_20     GPIO_PIN_B4
-#define MCAL_GPIO_SIGNAL_21     GPIO_PIN_B5
-#define MCAL_GPIO_SIGNAL_22     GPIO_PIN_B6
-#define MCAL_GPIO_SIGNAL_23     GPIO_PIN_B7
-#define MCAL_GPIO_SIGNAL_24     GPIO_PIN_B8
-#define MCAL_GPIO_SIGNAL_25     GPIO_PIN_B9
-#define MCAL_GPIO_SIGNAL_26     GPIO_PIN_B10
-//#define MCAL_GPIO_SIGNAL_27     GPIO_PIN_B11
-#define MCAL_GPIO_SIGNAL_28     GPIO_PIN_B12
-#define MCAL_GPIO_SIGNAL_29     GPIO_PIN_B13
-#define MCAL_GPIO_SIGNAL_30     GPIO_PIN_B14
-#define MCAL_GPIO_SIGNAL_31     GPIO_PIN_B15
 
-#define MCAL_GPIO_MAX_SIGNAL   (DataType_u32)(MCAL_GPIO_SIGNAL_31 + 1U)
+#define MCAL_GPIO_MAX_SIGNAL   (DataType_u32)(MCAL_GPIO_SIGNAL_15 + 1U)
 
 /*__________________________________________________________________________________________
 | MCAL GPIO Port Definitions                                                               |
@@ -91,13 +75,8 @@
 | Notes        : Intended for diagnostics and bulk operations only.                        |
 |_________________________________________________________________________________________*/
 #define MCAL_GPIO_GROUPSIGNAL_A     GPIO_PORTA
-#define MCAL_GPIO_GROUPSIGNAL_B     GPIO_PORTB
-//#define MCAL_GPIO_GROUPSIGNAL_C     GPIO_PORTC
-//#define MCAL_GPIO_GROUPSIGNAL_D     GPIO_PORTD
-//#define MCAL_GPIO_GROUPSIGNAL_E     GPIO_PORTE
-//#define MCAL_GPIO_GROUPSIGNAL_H     GPIO_PORTH
 
-#define MCAL_GPIO_MAX_GROUPSIGNAL   (DataType_u32)(MCAL_GPIO_GROUPSIGNAL_B + 1U)
+#define MCAL_GPIO_MAX_GROUPSIGNAL   (DataType_u32)(MCAL_GPIO_GROUPSIGNAL_A + 1U)
 
 
 /*_________________________________________________________________________________________

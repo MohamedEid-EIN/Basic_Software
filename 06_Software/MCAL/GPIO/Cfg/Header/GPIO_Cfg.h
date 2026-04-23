@@ -50,7 +50,7 @@
  | Usage        : Used to size port configuration tables                                 |
  | Notes        : Must match number of entries in PortLockStatus_TableCfg                |
  |______________________________________________________________________________________*/
-#define NUMBER_PORT_CFG  (DataType_u8)6
+#define NUMBER_PORT_CFG  (DataType_u8)1
 
 /*________________________________________________________________________________________
  | Macro Name   : PIN_CFG                                                                 |
@@ -60,7 +60,7 @@
  | Usage        : Used to size pin configuration tables                                   |
  | Notes        : Must match number of entries in PinSetUp_TableCfg                       |
  |_______________________________________________________________________________________*/
-#define NUMBER_PINS_CFG   (DataType_u8)96
+#define NUMBER_PINS_CFG   (DataType_u8)16
 
 /*__________________________________________________________________________________________
  | Data Name     : PinSetUp_TableCfg                                                        |

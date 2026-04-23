@@ -68,19 +68,19 @@ __MEM_SECTION_CODE_END_ADDRESS             = 0x08040000;
 __MEM_SECTION_DATA_START_ADDRESS           = 0x20000000;  /* 8_KB */
 __MEM_SECTION_DATA_END_ADDRESS             = 0x20002000;
 
-__MEM_SECTION_BSS_START_ADDRESS            = 0x20002000;  /* 16_KB */
-__MEM_SECTION_BSS_END_ADDRESS              = 0x20006000;
+__MEM_SECTION_BSS_START_ADDRESS            = 0x20002000;  /* 8_KB */
+__MEM_SECTION_BSS_END_ADDRESS              = 0x20004000;
 
-__MEM_SECTION_RAMFUNC_START_ADDRESS        = 0x20006000;  /* 2_KB */
-__MEM_SECTION_RAMFUNC_END_ADDRESS          = 0x20006800;
+__MEM_SECTION_RAMFUNC_START_ADDRESS        = 0x20004000;  /* 2_KB */
+__MEM_SECTION_RAMFUNC_END_ADDRESS          = 0x20004800;
 
-__MEM_SECTION_NOINIT_START_ADDRESS         = 0x20006800;  /* 2_KB */
-__MEM_SECTION_NOINIT_END_ADDRESS           = 0x20007000;
+__MEM_SECTION_NOINIT_START_ADDRESS         = 0x20004800;  /* 2_KB */
+__MEM_SECTION_NOINIT_END_ADDRESS           = 0x20005000;
 
-__MEM_SECTION_HEAP_START_ADDRESS           = 0x20007000;  /* 8_KB */
-__MEM_SECTION_HEAP_END_ADDRESS             = 0x20009000;
+__MEM_SECTION_HEAP_START_ADDRESS           = 0x20005000;  /* 20_KB */
+__MEM_SECTION_HEAP_END_ADDRESS             = 0x2000A000;
 
-__MEM_SECTION_STACK_START_ADDRESS          = 0x20009000;  /* 28_KB */ /* Stack lower address */
+__MEM_SECTION_STACK_START_ADDRESS          = 0x2000A000;  /* 24_KB */ /* Stack lower address */
 __MEM_SECTION_STACK_END_ADDRESS            = 0x20010000;              /* Stack Higher address Top of the stack */
 __STACK_POINTER_START_ADDRESS_VALUE        = 0x20010000;              /* 0x20010000 for 64KB | 0x20020000 for 128KB */
 
@@ -126,45 +126,16 @@ SECTIONS
 
     .rodata __MEM_SECTION_CONSTANT_START_ADDRESS :
     {
+        . = ALIGN(4);
         __CONSTANT_ADDRESS_BEGIN = .;                           /* Create linker symbol to store calculated start address */
-        KEEP(*(.rodata))                                        /* Force linker to include the specifed input section into the final output even if it's unused */
+        *(.rodata)                                              /* Collect read-only data section */
+        *(.rodata.*)                                            /* Collect read-only data subsections */
+        . = ALIGN(4);
         __CONSTANT_ADDRESS_END = .;                             /* Create linker symbol to store calculated end address */
 
         /* Memory check operation */
         ASSERT((__CONSTANT_ADDRESS_END - __CONSTANT_ADDRESS_BEGIN) <= (__MEM_SECTION_CONSTANT_END_ADDRESS - __MEM_SECTION_CONSTANT_START_ADDRESS),
            "rodata data memory section overflow!");
-    } > FLASH
-/***************************************************************************************************************************************************************/
-    /* Section Name: data load memory section
-       Short Name: .data_load
-       Description: Initialized global and static variables in the FLASH memory to be copied at initializtion into SRAM at startup.
-       Calculation: Estimated fixed safe size 8_KB */
-
-    .data_load __MEM_SECTION_DATA_LOAD_START_ADDRESS :
-    {
-        __DATA_LOAD_ADDRESS_BEGIN = .;                          /* Create linker symbol to store calculated start address */
-        KEEP(*(.data_load))                                     /* Force linker to include the specifed input section into the final output even if it's unused */
-        __DATA_LOAD_ADDRESS_END = .;                            /* Create linker symbol to store calculated end address */
-
-        /* Memory check operation */
-        ASSERT((__DATA_LOAD_ADDRESS_END - __DATA_LOAD_ADDRESS_BEGIN) <= (__MEM_SECTION_DATA_LOAD_END_ADDRESS - __MEM_SECTION_DATA_LOAD_START_ADDRESS),
-           "data_load memory section overflow!");
-    } > FLASH
-/***************************************************************************************************************************************************************/
-    /* Section Name: Ram function load memory section:
-       Short Name: .ramfunc_load
-       Description: used to run some functions or operations from RAM after loading it from the FLASH memory to be copied at initializtion into SRAM.
-       Calculation: Estimated size 2_KB */
-
-    .ramfunc_load __MEM_SECTION_RAMFUNC_LOAD_START_ADDRESS :
-    {
-        __RAMFUNC_LOAD_ADDRESS_BEGIN = .;                       /* Create linker symbol to store calculated start address */
-        KEEP(*(.ramfunc_load))                                  /* Force linker to include the specifed input section into the final output even if it's unused */
-        __RAMFUNC_LOAD_ADDRESS_END = .;                         /* Create linker symbol to store calculated end address */
-
-        /* Memory check operation */
-        ASSERT((__RAMFUNC_LOAD_ADDRESS_END - __RAMFUNC_LOAD_ADDRESS_BEGIN) <= (__MEM_SECTION_RAMFUNC_LOAD_END_ADDRESS - __MEM_SECTION_RAMFUNC_LOAD_START_ADDRESS),
-           "ramfunc_load memory section overflow!");
     } > FLASH
 /***************************************************************************************************************************************************************/
     /* Section Name: before initialization memory section:
@@ -207,8 +178,11 @@ SECTIONS
 
     .text __MEM_SECTION_CODE_START_ADDRESS :
     {
+        . = ALIGN(4);
         __CODE_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
-        KEEP(*(.text))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
+        *(.text)                                                /* Collect executable code section */
+        *(.text.*)                                              /* Collect executable code subsections */
+        . = ALIGN(4);
         __CODE_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
 
         /* Memory check operation */
@@ -223,8 +197,11 @@ SECTIONS
 
     .data __MEM_SECTION_DATA_START_ADDRESS :
     {
+        . = ALIGN(4);
         __DATA_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
-        KEEP(*(.data))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
+        *(.data)                                                /* Collect initialized data section */
+        *(.data.*)                                              /* Collect initialized data subsections */
+        . = ALIGN(4);
         __DATA_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
 
         /* Memory check operation */
@@ -241,8 +218,12 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
 
     .bss __MEM_SECTION_BSS_START_ADDRESS :
     {
+        . = ALIGN(4);
         __BSS_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
-        KEEP(*(.bss))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
+        *(.bss)                                                /* Collect zero-initialized data section */
+        *(.bss.*)                                              /* Collect zero-initialized data subsections */
+        *(COMMON)                                              /* Collect common symbols into .bss */
+        . = ALIGN(4);
         __BSS_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
 
         /* Memory check operation */
@@ -257,14 +238,19 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
 
     .ramfunc __MEM_SECTION_RAMFUNC_START_ADDRESS :
     {
+        . = ALIGN(4);
         __RAMFUNC_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
-        KEEP(*(.ramfunc))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
+        *(.ramfunc)                                                /* Collect RAM function section */
+        *(.ramfunc.*)                                              /* Collect RAM function subsections */
+        . = ALIGN(4);
         __RAMFUNC_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
 
         /* Memory check operation */
         ASSERT((__RAMFUNC_ADDRESS_END - __RAMFUNC_ADDRESS_BEGIN) <= (__MEM_SECTION_RAMFUNC_END_ADDRESS - __MEM_SECTION_RAMFUNC_START_ADDRESS),
            "ramfunc memory section overflow!");
-    } > SRAM
+    } > SRAM AT > FLASH
+
+__RAMFUNC_LOAD_ADDRESS_BEGIN = LOADADDR(.ramfunc);
 /***************************************************************************************************************************************************************/
     /* Section Name: No initiailzed data memory section
        Short Name: .noinit
@@ -289,8 +275,9 @@ __DATA_LOAD_ADDRESS_BEGIN = LOADADDR(.data);
 
     .heap __MEM_SECTION_HEAP_START_ADDRESS :
     {
+        . = ALIGN(8);
         __HEAP_ADDRESS_BEGIN = .;                               /* Create linker symbol to store calculated start address */
-        KEEP(*(.heap))                                          /* Force linker to include the specifed input section into the final output even if it's unused */
+        . = (. + (__MEM_SECTION_HEAP_END_ADDRESS - __MEM_SECTION_HEAP_START_ADDRESS)); /* Reserve the complete heap size explicitly */
         __HEAP_ADDRESS_END = .;                                 /* Create linker symbol to store calculated end address */
 
         /* Memory check operation */

@@ -82,7 +82,7 @@ DataType_PortLockStatus PortLockStatus_Table[HW_SUPPORTED_PORTS_NUM] =
 | Storage      : RAM                                                                       |
 | Usage        : Used for direct hardware register access                                  |
 |_________________________________________________________________________________________*/
- DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM] =
+const DataType_GpioRegisters Registers_Table[HW_SUPPORTED_PORTS_NUM] =
 {
     PORTA_BASE_ADDRESS,
     PORTB_BASE_ADDRESS,
@@ -141,13 +141,13 @@ DataType_Request_Status GPIO_Intitialization(void)
     else
     {
         /* Shadow register table to build GPIO configuration safely */
-        DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION] = {INITIALIZE_ZERO};
+        DataType_Registers Registers_ShadowLocal[MAX_PORT_CONFIGURATION] = {INITIALIZE_ZERO};
 
         /* Build shadow register configuration based on pin configuration table */
-        GPIO_BuildConfiguration(Registers_Shadow);
+        GPIO_BuildConfiguration(Registers_ShadowLocal);
 
         /* Write shadow register values to actual hardware registers */
-        Return_Status = GPIO_ConfigureRegisters(Registers_Shadow);
+        Return_Status = GPIO_ConfigureRegisters(Registers_ShadowLocal);
 
         /* Check hardware write operation result */
         if(Return_Status != Success)
@@ -158,7 +158,7 @@ DataType_Request_Status GPIO_Intitialization(void)
         else
         {
             /* Initialize GPIO port lock feature */
-            Return_Status = GPIO_PortLockInit(Registers_Shadow);
+            Return_Status = GPIO_PortLockInit(Registers_ShadowLocal);
 
             /* Check lock initialization result */
             if(Return_Status != Success)
@@ -193,7 +193,7 @@ DataType_Request_Status GPIO_Intitialization(void)
  | Context       : MCU context                                                                                                        |
  | Notes         : Does not access hardware registers                                                                                 |
  |___________________________________________________________________________________________________________________________________*/
-void GPIO_BuildConfiguration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIGURATION])
+void GPIO_BuildConfiguration(DataType_Registers* Registers_Shadow)
 {
     /* Index for iterating over configured pins */
     DataType_u8 Index;
@@ -258,7 +258,7 @@ void GPIO_BuildConfiguration(DataType_Registers Registers_Shadow[MAX_PORT_CONFIG
 | Context       : MCU context                                                                                                       |
 | Notes         : Writes only ports marked as Used                                                                                  |
 |__________________________________________________________________________________________________________________________________*/
-DataType_Request_Status GPIO_ConfigureRegisters(DataType_Registers Registers_Shadow[HW_SUPPORTED_PORTS_NUM])
+DataType_Request_Status GPIO_ConfigureRegisters(DataType_Registers* Registers_Shadow)
 {
     /* Initialize return status assuming success */
     DataType_Request_Status Return_Status = Success;

@@ -24,6 +24,8 @@ int main(void)
         Delay_ms(30);
         MCAL_GPIO_TogglePin(MCAL_GPIO_SIGNAL_2);
         Delay_ms(30);
+        MCAL_GPIO_TogglePin(MCAL_GPIO_SIGNAL_3);
+        Delay_ms(30);
     }
 }
 
